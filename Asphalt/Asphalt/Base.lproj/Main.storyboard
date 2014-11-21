@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2o-aL-XX5">
+                                <rect key="frame" x="131" y="59" width="108" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="0.66000000000000003" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="hcv-1Y-x5D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Send MPH">
+                                    <color key="titleColor" red="0.1031193388" green="0.66448709240000003" blue="0.71957087860000002" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPushSendMphButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GjV-4r-DNv"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="42" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wxv-gb-jC4">
+                                <rect key="frame" x="16" y="59" width="93" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="14Y-XT-zqs"/>
+                                </constraints>
+                                <color key="textColor" red="0.1031193388" green="0.66448709240000003" blue="0.71957087860000002" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="wBM-pT-oim"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PZM-ua-e3f">
+                                <rect key="frame" x="16" y="113" width="93" height="27"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.1031193388" green="0.66448709240000003" blue="0.71957087860000002" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="NG2-Pz-QE6"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFM-FJ-nZx">
+                                <rect key="frame" x="131" y="110" width="108" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="0.66000000000000003" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Send Hours">
+                                    <color key="titleColor" red="0.1031193388" green="0.66448709240000003" blue="0.71957087860000002" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPushSendHoursButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ysd-F6-Y1Z"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="42" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Pa-CE-lxc">
+                                <rect key="frame" x="16" y="169" width="93" height="28"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="slj-kQ-rlL"/>
+                                </constraints>
+                                <color key="textColor" red="0.1031193388" green="0.66448709240000003" blue="0.71957087860000002" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="2bY-XB-bQO"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhL-Vp-7c7">
+                                <rect key="frame" x="227" y="230" width="77" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="0.66000000000000003" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="KSi-K6-V9J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Send Text">
+                                    <color key="titleColor" red="0.1031193388" green="0.66448709240000003" blue="0.71957087860000002" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="text" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PLx-Ih-ynI">
+                                <rect key="frame" x="16" y="230" width="198" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="neY-AB-tgS"/>
+                                </constraints>
+                                <color key="textColor" red="0.1031193388" green="0.66448709240000003" blue="0.71957087860000002" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="PeI-o9-5W8"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHY-Vc-D9p">
+                                <rect key="frame" x="3" y="310" width="271" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="0.66000000000000003" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="7ba-ad-8i2"/>
+                                    <constraint firstAttribute="width" secondItem="JHY-Vc-D9p" secondAttribute="height" multiplier="271:36" id="APD-h6-smS"/>
+                                    <constraint firstAttribute="width" constant="271" id="qtE-ep-PQ0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Send current time">
+                                    <color key="titleColor" red="0.1031193388" green="0.66448709240000003" blue="0.71957087860000002" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPushSendAllButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1JJ-0x-y9h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5s-2l-OAZ">
+                                <rect key="frame" x="131" y="167" width="108" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="0.66000000000000003" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Send Minutes">
+                                    <color key="titleColor" red="0.1031193388" green="0.66448709240000003" blue="0.71957087860000002" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPushSendMinutesButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="a2I-FB-sUB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14117647058823529" green="0.64313725490196072" blue="0.70588235294117641" alpha="0.59999999999999998" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="wxv-gb-jC4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="3Wg-D1-MD3"/>
+                            <constraint firstItem="I2o-aL-XX5" firstAttribute="leading" secondItem="wxv-gb-jC4" secondAttribute="trailing" constant="22" id="3uU-bS-o0A"/>
+                            <constraint firstItem="PZM-ua-e3f" firstAttribute="leading" secondItem="wxv-gb-jC4" secondAttribute="leading" id="49N-Me-6sH"/>
+                            <constraint firstItem="uFM-FJ-nZx" firstAttribute="leading" secondItem="I2o-aL-XX5" secondAttribute="leading" id="6PF-gh-fpG"/>
+                            <constraint firstItem="6Pa-CE-lxc" firstAttribute="leading" secondItem="PLx-Ih-ynI" secondAttribute="leading" id="7ej-bL-NpO"/>
+                            <constraint firstItem="PZM-ua-e3f" firstAttribute="trailing" secondItem="wxv-gb-jC4" secondAttribute="trailing" id="84w-jP-hJw"/>
+                            <constraint firstItem="PZM-ua-e3f" firstAttribute="top" secondItem="wxv-gb-jC4" secondAttribute="bottom" constant="24" id="8SX-Um-nS2"/>
+                            <constraint firstItem="d5s-2l-OAZ" firstAttribute="leading" secondItem="uFM-FJ-nZx" secondAttribute="leading" id="C2d-OM-rOc"/>
+                            <constraint firstItem="xhL-Vp-7c7" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="CLv-Ze-dtY"/>
+                            <constraint firstItem="6Pa-CE-lxc" firstAttribute="trailing" secondItem="PZM-ua-e3f" secondAttribute="trailing" id="FqH-bS-aWB"/>
+                            <constraint firstItem="PZM-ua-e3f" firstAttribute="bottom" secondItem="uFM-FJ-nZx" secondAttribute="bottom" id="KTV-90-h4x"/>
+                            <constraint firstItem="PLx-Ih-ynI" firstAttribute="top" secondItem="6Pa-CE-lxc" secondAttribute="bottom" constant="33" id="U5E-NB-LHT"/>
+                            <constraint firstItem="wxv-gb-jC4" firstAttribute="centerY" secondItem="I2o-aL-XX5" secondAttribute="centerY" id="YUr-G7-nvW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="I2o-aL-XX5" secondAttribute="trailing" constant="65" id="Ya6-rv-wIP"/>
+                            <constraint firstItem="I2o-aL-XX5" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="39" id="agW-wz-a44"/>
+                            <constraint firstItem="JHY-Vc-D9p" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" constant="-20.5" id="eqY-0E-UWM"/>
+                            <constraint firstItem="JHY-Vc-D9p" firstAttribute="top" secondItem="PLx-Ih-ynI" secondAttribute="bottom" constant="50" id="hIl-Qk-o16"/>
+                            <constraint firstItem="xhL-Vp-7c7" firstAttribute="leading" secondItem="PLx-Ih-ynI" secondAttribute="trailing" constant="13" id="kW4-mj-qEW"/>
+                            <constraint firstItem="uFM-FJ-nZx" firstAttribute="top" secondItem="I2o-aL-XX5" secondAttribute="bottom" constant="21" id="mBd-Dd-i2v"/>
+                            <constraint firstItem="d5s-2l-OAZ" firstAttribute="trailing" secondItem="uFM-FJ-nZx" secondAttribute="trailing" id="qTK-mM-B18"/>
+                            <constraint firstItem="uFM-FJ-nZx" firstAttribute="trailing" secondItem="I2o-aL-XX5" secondAttribute="trailing" id="sFa-8c-NtU"/>
+                            <constraint firstItem="d5s-2l-OAZ" firstAttribute="baseline" secondItem="6Pa-CE-lxc" secondAttribute="baseline" id="soO-Fj-FMs"/>
+                            <constraint firstItem="6Pa-CE-lxc" firstAttribute="top" secondItem="PZM-ua-e3f" secondAttribute="bottom" constant="29" id="xuh-hB-5ZX"/>
+                            <constraint firstItem="6Pa-CE-lxc" firstAttribute="leading" secondItem="PZM-ua-e3f" secondAttribute="leading" id="yYN-8e-5Cg"/>
+                            <constraint firstItem="xhL-Vp-7c7" firstAttribute="top" secondItem="PLx-Ih-ynI" secondAttribute="top" id="yxh-q7-LBs"/>
+                            <constraint firstItem="PZM-ua-e3f" firstAttribute="baseline" secondItem="uFM-FJ-nZx" secondAttribute="baseline" id="zzz-bq-yhQ"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="hoursField" destination="PZM-ua-e3f" id="duN-1a-FIu"/>
+                        <outlet property="minutesField" destination="6Pa-CE-lxc" id="eE4-O9-GZ5"/>
+                        <outlet property="mphField" destination="wxv-gb-jC4" id="ZJp-vb-2Jm"/>
+                        <outlet property="sendAllButton" destination="JHY-Vc-D9p" id="5PG-bD-FDg"/>
+                        <outlet property="sendHoursButton" destination="uFM-FJ-nZx" id="iFb-JS-Nsf"/>
+                        <outlet property="sendMinutesButton" destination="d5s-2l-OAZ" id="X5J-O4-lTf"/>
+                        <outlet property="sendMphButton" destination="I2o-aL-XX5" id="O2H-ZT-bAW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279" y="316"/>
+        </scene>
+    </scenes>
+</document>
