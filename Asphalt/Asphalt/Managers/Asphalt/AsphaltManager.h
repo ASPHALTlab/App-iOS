@@ -23,7 +23,7 @@
 - (BOOL)isConnected;
 + (instancetype)sharedManager;
 
-@property (strong, nonatomic) CBPeripheral *peripheral;
+@property (nonatomic, retain) CBPeripheral *peripheral;
 @property (nonatomic, weak) id<AsphaltManagerDelegate> delegate;
 
 @end

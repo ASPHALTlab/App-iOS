@@ -35,6 +35,12 @@
 	return shared;
 }
 
+- (void)scan {
+	
+	// Service to erase -- TEST MODE -- 
+	[self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"713D0000-503E-4C75-BA94-3148F18D941E"]] options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
+}
+
 // Identifier : Bike Assistant: 3378FD5A-39E0-3E3B-6205-65741D7E1267
 #pragma mark - Central Manager Delegate
 
@@ -42,11 +48,6 @@
 	
 	if ([self.delegate respondsToSelector:@selector(central:didDiscoverPeripheral:)]) {
 		[self.delegate central:self didDiscoverPeripheral:peripheral];
-	}
-	
-	// Testing mode : UUID - Only one.
-	if (![peripheral.identifier.UUIDString isEqualToString:@"99781D07-D9A5-512D-FDFA-1038CC0C92DD"]) {
-		return;
 	}
 	
 	self.discoveredPeripheral = peripheral;
@@ -62,6 +63,7 @@
 	if ([self.delegate respondsToSelector:@selector(central:didConnectOn:)]) {
 		[self.delegate central:self didConnectOn:peripheral];
 	}
+	[self.manager stopScan];
 }
 
 // E519A981-EB1F-ED37-84C9-B73F2488DA05 -- Other device -- Testing
@@ -73,7 +75,7 @@
 	}
 	
 	if (central.state == CBCentralManagerStatePoweredOn) {
-		[self.manager scanForPeripheralsWithServices:nil options:@{ CBCentralManagerScanOptionAllowDuplicatesKey:@NO }];
+		[self scan];
 	}
 }
 
@@ -92,6 +94,7 @@
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
 	
+	[self scan];
 	if ([self.delegate respondsToSelector:@selector(central:didDisconnectOn:)]) {
 		[self.delegate central:self didDisconnectOn:peripheral];
 	}
