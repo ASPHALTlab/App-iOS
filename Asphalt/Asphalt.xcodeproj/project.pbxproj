@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C4C7B4B1A0412C5006EEB75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C7B4A1A0412C5006EEB75 /* main.m */; };
 		4C4C7B4E1A0412C5006EEB75 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C7B4D1A0412C5006EEB75 /* AppDelegate.m */; };
-		4C4C7B511A0412C5006EEB75 /* Asphalt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C7B4F1A0412C5006EEB75 /* Asphalt.xcdatamodeld */; };
-		4C4C7B541A0412C5006EEB75 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C7B531A0412C5006EEB75 /* ViewController.m */; };
 		4C4C7B571A0412C5006EEB75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C4C7B551A0412C5006EEB75 /* Main.storyboard */; };
 		4C4C7B591A0412C5006EEB75 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4C7B581A0412C5006EEB75 /* Images.xcassets */; };
 		4C4C7B5C1A0412C5006EEB75 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C4C7B5A1A0412C5006EEB75 /* LaunchScreen.xib */; };
 		4C4C7B681A0412C6006EEB75 /* AsphaltTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C7B671A0412C6006EEB75 /* AsphaltTests.m */; };
 		4C4C7B721A04158C006EEB75 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4C7B711A04158C006EEB75 /* CoreBluetooth.framework */; };
-		4C4C7B751A041614006EEB75 /* CBCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C7B741A041614006EEB75 /* CBCommunication.m */; };
-		4C4C7BFE1A0466F1006EEB75 /* CBCentralManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C7BFB1A0466F1006EEB75 /* CBCentralManagerViewController.m */; };
-		4C4C7BFF1A0466F1006EEB75 /* CBPeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C7BFD1A0466F1006EEB75 /* CBPeripheralViewController.m */; };
+		4CE905971A902A6E00A753A8 /* AsphaltManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE905901A902A6E00A753A8 /* AsphaltManager.m */; };
+		4CE905981A902A6E00A753A8 /* CentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE905931A902A6E00A753A8 /* CentralManager.m */; };
+		4CE905991A902A6E00A753A8 /* PeripheralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE905961A902A6E00A753A8 /* PeripheralManager.m */; };
+		4CE9059D1A902A8100A753A8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE9059C1A902A8100A753A8 /* ViewController.m */; };
+		4CE905A01A902A9500A753A8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CE9059E1A902A9500A753A8 /* Info.plist */; };
+		4CE905A11A902A9500A753A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE9059F1A902A9500A753A8 /* main.m */; };
+		4CE905A41A902AA100A753A8 /* Asphalt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CE905A21A902AA100A753A8 /* Asphalt.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,13 +34,8 @@
 
 /* Begin PBXFileReference section */
 		4C4C7B451A0412C5006EEB75 /* Asphalt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Asphalt.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C4C7B491A0412C5006EEB75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C4C7B4A1A0412C5006EEB75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4C4C7B4C1A0412C5006EEB75 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4C4C7B4D1A0412C5006EEB75 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4C4C7B501A0412C5006EEB75 /* Asphalt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Asphalt.xcdatamodel; sourceTree = "<group>"; };
-		4C4C7B521A0412C5006EEB75 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4C4C7B531A0412C5006EEB75 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4C4C7B561A0412C5006EEB75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C4C7B581A0412C5006EEB75 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4C4C7B5B1A0412C5006EEB75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -47,13 +43,18 @@
 		4C4C7B661A0412C6006EEB75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4C7B671A0412C6006EEB75 /* AsphaltTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsphaltTests.m; sourceTree = "<group>"; };
 		4C4C7B711A04158C006EEB75 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		4C4C7B731A041614006EEB75 /* CBCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBCommunication.h; sourceTree = "<group>"; };
-		4C4C7B741A041614006EEB75 /* CBCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCommunication.m; sourceTree = "<group>"; };
 		4C4C7BF91A04661C006EEB75 /* Services.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Services.h; path = "../../../../../Downloads/CBTutorial Initial/CBTutorial/Services.h"; sourceTree = "<group>"; };
-		4C4C7BFA1A0466F1006EEB75 /* CBCentralManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBCentralManagerViewController.h; sourceTree = "<group>"; };
-		4C4C7BFB1A0466F1006EEB75 /* CBCentralManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCentralManagerViewController.m; sourceTree = "<group>"; };
-		4C4C7BFC1A0466F1006EEB75 /* CBPeripheralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPeripheralViewController.h; sourceTree = "<group>"; };
-		4C4C7BFD1A0466F1006EEB75 /* CBPeripheralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBPeripheralViewController.m; sourceTree = "<group>"; };
+		4CE9058F1A902A6E00A753A8 /* AsphaltManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsphaltManager.h; sourceTree = "<group>"; };
+		4CE905901A902A6E00A753A8 /* AsphaltManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsphaltManager.m; sourceTree = "<group>"; };
+		4CE905921A902A6E00A753A8 /* CentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralManager.h; sourceTree = "<group>"; };
+		4CE905931A902A6E00A753A8 /* CentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralManager.m; sourceTree = "<group>"; };
+		4CE905951A902A6E00A753A8 /* PeripheralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralManager.h; sourceTree = "<group>"; };
+		4CE905961A902A6E00A753A8 /* PeripheralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralManager.m; sourceTree = "<group>"; };
+		4CE9059B1A902A8100A753A8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4CE9059C1A902A8100A753A8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4CE9059E1A902A9500A753A8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting files/Info.plist"; sourceTree = "<group>"; };
+		4CE9059F1A902A9500A753A8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting files/main.m"; sourceTree = "<group>"; };
+		4CE905A31A902AA100A753A8 /* Asphalt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Asphalt.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,13 +76,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C0842151A87D85C00BE6959 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4CE905A21A902AA100A753A8 /* Asphalt.xcdatamodeld */,
+				4C4C7B581A0412C5006EEB75 /* Images.xcassets */,
+				4C4C7B5A1A0412C5006EEB75 /* LaunchScreen.xib */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		4C4C7B3C1A0412C5006EEB75 = {
 			isa = PBXGroup;
 			children = (
-				4C4C7B711A04158C006EEB75 /* CoreBluetooth.framework */,
 				4C4C7B471A0412C5006EEB75 /* Asphalt */,
 				4C4C7B641A0412C6006EEB75 /* AsphaltTests */,
 				4C4C7B461A0412C5006EEB75 /* Products */,
+				4C4C7B711A04158C006EEB75 /* CoreBluetooth.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,20 +110,12 @@
 			children = (
 				4C4C7B4C1A0412C5006EEB75 /* AppDelegate.h */,
 				4C4C7B4D1A0412C5006EEB75 /* AppDelegate.m */,
-				4C4C7B521A0412C5006EEB75 /* ViewController.h */,
-				4C4C7B531A0412C5006EEB75 /* ViewController.m */,
-				4C4C7B551A0412C5006EEB75 /* Main.storyboard */,
 				4C4C7BF91A04661C006EEB75 /* Services.h */,
-				4C4C7B581A0412C5006EEB75 /* Images.xcassets */,
-				4C4C7B5A1A0412C5006EEB75 /* LaunchScreen.xib */,
-				4C4C7B4F1A0412C5006EEB75 /* Asphalt.xcdatamodeld */,
+				4C4C7B551A0412C5006EEB75 /* Main.storyboard */,
+				4CE9058D1A902A6E00A753A8 /* Managers */,
+				4CE9059A1A902A8100A753A8 /* Views */,
+				4C0842151A87D85C00BE6959 /* Assets */,
 				4C4C7B481A0412C5006EEB75 /* Supporting Files */,
-				4C4C7B731A041614006EEB75 /* CBCommunication.h */,
-				4C4C7B741A041614006EEB75 /* CBCommunication.m */,
-				4C4C7BFA1A0466F1006EEB75 /* CBCentralManagerViewController.h */,
-				4C4C7BFB1A0466F1006EEB75 /* CBCentralManagerViewController.m */,
-				4C4C7BFC1A0466F1006EEB75 /* CBPeripheralViewController.h */,
-				4C4C7BFD1A0466F1006EEB75 /* CBPeripheralViewController.m */,
 			);
 			path = Asphalt;
 			sourceTree = "<group>";
@@ -120,8 +123,8 @@
 		4C4C7B481A0412C5006EEB75 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4C4C7B491A0412C5006EEB75 /* Info.plist */,
-				4C4C7B4A1A0412C5006EEB75 /* main.m */,
+				4CE9059E1A902A9500A753A8 /* Info.plist */,
+				4CE9059F1A902A9500A753A8 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -141,6 +144,52 @@
 				4C4C7B661A0412C6006EEB75 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CE9058D1A902A6E00A753A8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4CE9058E1A902A6E00A753A8 /* Asphalt */,
+				4CE905911A902A6E00A753A8 /* Central */,
+				4CE905941A902A6E00A753A8 /* Peripheral */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		4CE9058E1A902A6E00A753A8 /* Asphalt */ = {
+			isa = PBXGroup;
+			children = (
+				4CE9058F1A902A6E00A753A8 /* AsphaltManager.h */,
+				4CE905901A902A6E00A753A8 /* AsphaltManager.m */,
+			);
+			path = Asphalt;
+			sourceTree = "<group>";
+		};
+		4CE905911A902A6E00A753A8 /* Central */ = {
+			isa = PBXGroup;
+			children = (
+				4CE905921A902A6E00A753A8 /* CentralManager.h */,
+				4CE905931A902A6E00A753A8 /* CentralManager.m */,
+			);
+			path = Central;
+			sourceTree = "<group>";
+		};
+		4CE905941A902A6E00A753A8 /* Peripheral */ = {
+			isa = PBXGroup;
+			children = (
+				4CE905951A902A6E00A753A8 /* PeripheralManager.h */,
+				4CE905961A902A6E00A753A8 /* PeripheralManager.m */,
+			);
+			path = Peripheral;
+			sourceTree = "<group>";
+		};
+		4CE9059A1A902A8100A753A8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CE9059B1A902A8100A753A8 /* ViewController.h */,
+				4CE9059C1A902A8100A753A8 /* ViewController.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +240,11 @@
 				TargetAttributes = {
 					4C4C7B441A0412C5006EEB75 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					4C4C7B601A0412C6006EEB75 = {
 						CreatedOnToolsVersion = 6.1;
@@ -222,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CE905A01A902A9500A753A8 /* Info.plist in Resources */,
 				4C4C7B571A0412C5006EEB75 /* Main.storyboard in Resources */,
 				4C4C7B5C1A0412C5006EEB75 /* LaunchScreen.xib in Resources */,
 				4C4C7B591A0412C5006EEB75 /* Images.xcassets in Resources */,
@@ -242,13 +297,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C4C7B751A041614006EEB75 /* CBCommunication.m in Sources */,
+				4CE9059D1A902A8100A753A8 /* ViewController.m in Sources */,
+				4CE905A41A902AA100A753A8 /* Asphalt.xcdatamodeld in Sources */,
 				4C4C7B4E1A0412C5006EEB75 /* AppDelegate.m in Sources */,
-				4C4C7B4B1A0412C5006EEB75 /* main.m in Sources */,
-				4C4C7BFF1A0466F1006EEB75 /* CBPeripheralViewController.m in Sources */,
-				4C4C7B541A0412C5006EEB75 /* ViewController.m in Sources */,
-				4C4C7BFE1A0466F1006EEB75 /* CBCentralManagerViewController.m in Sources */,
-				4C4C7B511A0412C5006EEB75 /* Asphalt.xcdatamodeld in Sources */,
+				4CE905971A902A6E00A753A8 /* AsphaltManager.m in Sources */,
+				4CE905991A902A6E00A753A8 /* PeripheralManager.m in Sources */,
+				4CE905A11A902A9500A753A8 /* main.m in Sources */,
+				4CE905981A902A6E00A753A8 /* CentralManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +425,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Asphalt/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Asphalt/Supporting files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -380,7 +436,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Asphalt/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Asphalt/Supporting files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -453,13 +510,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		4C4C7B4F1A0412C5006EEB75 /* Asphalt.xcdatamodeld */ = {
+		4CE905A21A902AA100A753A8 /* Asphalt.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				4C4C7B501A0412C5006EEB75 /* Asphalt.xcdatamodel */,
+				4CE905A31A902AA100A753A8 /* Asphalt.xcdatamodel */,
 			);
-			currentVersion = 4C4C7B501A0412C5006EEB75 /* Asphalt.xcdatamodel */;
-			path = Asphalt.xcdatamodeld;
+			currentVersion = 4CE905A31A902AA100A753A8 /* Asphalt.xcdatamodel */;
+			name = Asphalt.xcdatamodeld;
+			path = "Supporting files/Asphalt.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
