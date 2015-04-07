@@ -55,29 +55,33 @@
 		return region;
 	}
 	
-	Run *firstRun = [self.tracks objectAtIndex:0];
-	Location *initialLoc = firstRun.locations.firstObject;
- 
+	
+	Location *initialLoc = ((Run *)self.tracks[0]).locations.firstObject;
+
 	float minLat = initialLoc.latitude.floatValue;
 	float minLng = initialLoc.longitude.floatValue;
 	float maxLat = initialLoc.latitude.floatValue;
 	float maxLng = initialLoc.longitude.floatValue;
- 
-	for (Location *location in firstRun.locations) {
-		if (location.latitude.floatValue < minLat) {
-			minLat = location.latitude.floatValue;
+	
+	for (Run *run in self.tracks) {
+
+		
+		for (Location *location in run.locations) {
+			if (location.latitude.floatValue < minLat) {
+				minLat = location.latitude.floatValue;
+			}
+			if (location.longitude.floatValue < minLng) {
+				minLng = location.longitude.floatValue;
+			}
+			if (location.latitude.floatValue > maxLat) {
+				maxLat = location.latitude.floatValue;
+			}
+			if (location.longitude.floatValue > maxLng) {
+				maxLng = location.longitude.floatValue;
+			}
 		}
-		if (location.longitude.floatValue < minLng) {
-			minLng = location.longitude.floatValue;
-		}
-		if (location.latitude.floatValue > maxLat) {
-			maxLat = location.latitude.floatValue;
-		}
-		if (location.longitude.floatValue > maxLng) {
-			maxLng = location.longitude.floatValue;
-		}
+		
 	}
- 
 	region.center.latitude = (minLat + maxLat) / 2.0f;
 	region.center.longitude = (minLng + maxLng) / 2.0f;
  
@@ -104,17 +108,23 @@
 	if (self.tracks.count == 0) {
 		return nil;
 	}
-	
-	Run *firstRun = [self.tracks objectAtIndex:0];
-	NSLog(@"Locations: %@", firstRun.locations);
-	CLLocationCoordinate2D coords[firstRun.locations.count];
- 
-	for (int i = 0; i < firstRun.locations.count; i++) {
-		Location *location = [firstRun.locations objectAtIndex:i];
-		coords[i] = CLLocationCoordinate2DMake(location.latitude.doubleValue, location.longitude.doubleValue);
+
+	int count = 0;
+	for (Run *run in self.tracks) {
+		count += run.locations.count;
 	}
- 
-	return [MKPolyline polylineWithCoordinates:coords count:firstRun.locations.count];
+	
+	CLLocationCoordinate2D coords[count];
+	
+	int pos = 0;
+	for (Run *run in self.tracks) {
+		for (Location *location in run.locations) {
+			coords[pos] = CLLocationCoordinate2DMake(location.latitude.doubleValue, location.longitude.doubleValue);
+			pos++;
+		}
+	}
+	
+	return [MKPolyline polylineWithCoordinates:coords count:count];
 }
 
 - (void)loadMap {
@@ -123,8 +133,12 @@
 		return ;
 	}
 	
-	Run *firstRun = [self.tracks objectAtIndex:0];
-	if (firstRun.locations.count > 0) {
+	int count = 0;
+	for (Run *run in self.tracks) {
+		count += run.locations.count;
+	}
+	
+	if (count > 0) {
 		
 		self.mapView.hidden = NO;
 		

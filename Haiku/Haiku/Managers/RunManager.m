@@ -18,14 +18,14 @@
 	NSManagedObjectContext *moc = [self managedObjectContext];
 	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Run" inManagedObjectContext:moc];
 	
-	NSFetchRequest *request = [NSFetchRequest alloc];
+	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Run"];
 	request.entity = entityDescription;
 	
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
 	NSArray *sortDescriptors = @[sortDescriptor];
 	request.sortDescriptors = sortDescriptors;
 	
-	NSError *error;
+	NSError *error = nil;
 	NSArray *arr = [moc executeFetchRequest:request error:&error];
 	
 	return arr;
