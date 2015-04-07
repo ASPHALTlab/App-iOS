@@ -18,9 +18,21 @@
 
 @implementation CentralManager
 
+//E519A981-EB1F-ED37-84C9-B73F2488DA05
+//00001531-1212-EFDE-1523-785FEABCD123
+
 - (instancetype) init {
 	if (self = [super init]) {
 		self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+		
+		NSArray *a =  [self.manager retrievePeripheralsWithIdentifiers:@[[CBUUID UUIDWithString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]]];
+		NSLog(@"A: %@", a);
+		if (a.count > 0) {
+			CBPeripheral *p = (CBPeripheral *)[a objectAtIndex:0];
+			self.discoveredPeripheral = p;
+			[self.manager cancelPeripheralConnection:p]; //IMPORTANT, to clear off any pending connections
+			[self.manager connectPeripheral:p options:nil];
+		}
 	}
 	return self;
 }
@@ -37,8 +49,14 @@
 
 - (void)scan {
 	
-	// Service to erase -- TEST MODE -- 
-	[self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"713D0000-503E-4C75-BA94-3148F18D941E"]] options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
+
+	
+	// Service to erase -- TEST MODE --
+	//9B5E7E2A-1635-094D-19E7-CF7A10B97360
+	//713D0000-503E-4C75-BA94-3148F18D941E
+	//[self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]] options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
+	[self.manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
+
 }
 
 // Identifier : Bike Assistant: 3378FD5A-39E0-3E3B-6205-65741D7E1267
@@ -50,10 +68,17 @@
 		[self.delegate central:self didDiscoverPeripheral:peripheral];
 	}
 	
-	self.discoveredPeripheral = peripheral;
-	[self.manager connectPeripheral:self.discoveredPeripheral
+	if ([peripheral.identifier.UUIDString isEqualToString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]) {
+		
+		NSLog(@"Advertisement Data : %@", advertisementData);
+		
+		self.discoveredPeripheral = peripheral;
+		[self.manager cancelPeripheralConnection:peripheral]; //IMPORTANT, to clear off any pending connections
+
+		[self.manager connectPeripheral:self.discoveredPeripheral
 							options:[NSDictionary dictionaryWithObject:@YES
 																forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
+	}
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {

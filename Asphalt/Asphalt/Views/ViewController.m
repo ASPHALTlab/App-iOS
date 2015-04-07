@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "AsphaltManager.h"
+#import "CentralManager.h"
+#import "PeripheralManager.h"
 
 @interface ViewController () <UITextFieldDelegate, AsphaltManagerDelegate>
 

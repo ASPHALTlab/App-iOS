@@ -48,7 +48,8 @@
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
-	
+	NSLog(@"Services: %@", peripheral.services);
+	NSLog(@"Error: %@", error);
 	if (error) {
 		if ([self.delegate respondsToSelector:@selector(clean)]) {
 			[self.delegate clean];
@@ -57,6 +58,7 @@
 	}
  
 	for (CBService *service in peripheral.services) {
+		NSLog(@"Service: %@", service.UUID.UUIDString);
 		[peripheral discoverCharacteristics:nil forService:service];
 	}
 }

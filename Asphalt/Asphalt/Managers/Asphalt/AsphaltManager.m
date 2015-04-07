@@ -108,6 +108,7 @@
 - (void)central:(CentralManager *)central didConnectOn:(CBPeripheral *)device {
 	NSLog(@"Central: DidConnectOn: %@", device);
 	self.peripheral = device;
+	self.peripheral.delegate = [PeripheralManager sharedPeripheral];
 	[self sendChangeConnection];
 }
 
