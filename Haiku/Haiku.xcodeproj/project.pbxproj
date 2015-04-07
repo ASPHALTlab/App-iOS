@@ -1,0 +1,619 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C28231A1ACF3AA5007AE273 /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2823191ACF3AA5007AE273 /* TrackViewController.m */; };
+		4C28232F1AD04919007AE273 /* MathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28232E1AD04919007AE273 /* MathManager.m */; };
+		4C2823381AD04A8F007AE273 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2823371AD04A8F007AE273 /* Location.m */; };
+		4C28233B1AD04A8F007AE273 /* Run.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28233A1AD04A8F007AE273 /* Run.m */; };
+		4C28233E1AD05643007AE273 /* RunManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28233D1AD05643007AE273 /* RunManager.m */; };
+		4C2823421AD0953C007AE273 /* ManualTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2823411AD0953C007AE273 /* ManualTrackingViewController.m */; };
+		4C2823441AD096CD007AE273 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2823431AD096CD007AE273 /* CoreLocation.framework */; };
+		4C28234B1AD19F8B007AE273 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28234A1AD19F8B007AE273 /* LocationManager.m */; };
+		4C2823511AD2B249007AE273 /* TrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2823501AD2B249007AE273 /* TrackManager.m */; };
+		4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936EF1ACBFCDD00EAEEFD /* main.m */; };
+		4CD936F31ACBFCDD00EAEEFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936F21ACBFCDD00EAEEFD /* AppDelegate.m */; };
+		4CD936F61ACBFCDD00EAEEFD /* Haiku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936F41ACBFCDD00EAEEFD /* Haiku.xcdatamodeld */; };
+		4CD936FC1ACBFCDD00EAEEFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD936FA1ACBFCDD00EAEEFD /* Main.storyboard */; };
+		4CD936FE1ACBFCDD00EAEEFD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD936FD1ACBFCDD00EAEEFD /* Images.xcassets */; };
+		4CD937011ACBFCDD00EAEEFD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD936FF1ACBFCDD00EAEEFD /* LaunchScreen.xib */; };
+		4CD9370D1ACBFCDD00EAEEFD /* HaikuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9370C1ACBFCDD00EAEEFD /* HaikuTests.m */; };
+		4CD937191ACBFD6E00EAEEFD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD937181ACBFD6E00EAEEFD /* HomeViewController.m */; };
+		4CD9371F1ACBFDE700EAEEFD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD9371E1ACBFDE700EAEEFD /* MapKit.framework */; };
+		4CD9372B1ACC0BEF00EAEEFD /* UIImageView_XDShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD937271ACC0BEF00EAEEFD /* UIImageView_XDShape.m */; };
+		4CD9372C1ACC0BEF00EAEEFD /* UIButton_XDShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD937291ACC0BEF00EAEEFD /* UIButton_XDShape.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CD937071ACBFCDD00EAEEFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CD936E21ACBFCDD00EAEEFD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CD936E91ACBFCDD00EAEEFD;
+			remoteInfo = Haiku;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4C2823181ACF3AA5007AE273 /* TrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackViewController.h; path = Haiku/Controllers/TrackViewController.h; sourceTree = "<group>"; };
+		4C2823191ACF3AA5007AE273 /* TrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrackViewController.m; path = Haiku/Controllers/TrackViewController.m; sourceTree = "<group>"; };
+		4C28232D1AD04919007AE273 /* MathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MathManager.h; path = Managers/MathManager.h; sourceTree = "<group>"; };
+		4C28232E1AD04919007AE273 /* MathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MathManager.m; path = Managers/MathManager.m; sourceTree = "<group>"; };
+		4C2823361AD04A8F007AE273 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = Models/Location.h; sourceTree = "<group>"; };
+		4C2823371AD04A8F007AE273 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = Models/Location.m; sourceTree = "<group>"; };
+		4C2823391AD04A8F007AE273 /* Run.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Run.h; path = Models/Run.h; sourceTree = "<group>"; };
+		4C28233A1AD04A8F007AE273 /* Run.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Run.m; path = Models/Run.m; sourceTree = "<group>"; };
+		4C28233C1AD05643007AE273 /* RunManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RunManager.h; path = Managers/RunManager.h; sourceTree = "<group>"; };
+		4C28233D1AD05643007AE273 /* RunManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RunManager.m; path = Managers/RunManager.m; sourceTree = "<group>"; };
+		4C2823401AD0953C007AE273 /* ManualTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManualTrackingViewController.h; path = Haiku/Controllers/ManualTrackingViewController.h; sourceTree = "<group>"; };
+		4C2823411AD0953C007AE273 /* ManualTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManualTrackingViewController.m; path = Haiku/Controllers/ManualTrackingViewController.m; sourceTree = "<group>"; };
+		4C2823431AD096CD007AE273 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4C2823491AD19F8B007AE273 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Managers/LocationManager.h; sourceTree = "<group>"; };
+		4C28234A1AD19F8B007AE273 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Managers/LocationManager.m; sourceTree = "<group>"; };
+		4C28234F1AD2B249007AE273 /* TrackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackManager.h; path = Managers/TrackManager.h; sourceTree = "<group>"; };
+		4C2823501AD2B249007AE273 /* TrackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrackManager.m; path = Managers/TrackManager.m; sourceTree = "<group>"; };
+		4CD936EA1ACBFCDD00EAEEFD /* Haiku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haiku.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD936EE1ACBFCDD00EAEEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD936EF1ACBFCDD00EAEEFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4CD936F11ACBFCDD00EAEEFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4CD936F21ACBFCDD00EAEEFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4CD936F51ACBFCDD00EAEEFD /* Haiku.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Haiku.xcdatamodel; sourceTree = "<group>"; };
+		4CD936FB1ACBFCDD00EAEEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4CD936FD1ACBFCDD00EAEEFD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4CD937001ACBFCDD00EAEEFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		4CD937061ACBFCDD00EAEEFD /* HaikuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HaikuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD9370B1ACBFCDD00EAEEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4CD9370C1ACBFCDD00EAEEFD /* HaikuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HaikuTests.m; sourceTree = "<group>"; };
+		4CD937171ACBFD6E00EAEEFD /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Haiku/Controllers/HomeViewController.h; sourceTree = "<group>"; };
+		4CD937181ACBFD6E00EAEEFD /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Haiku/Controllers/HomeViewController.m; sourceTree = "<group>"; };
+		4CD9371E1ACBFDE700EAEEFD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4CD937271ACC0BEF00EAEEFD /* UIImageView_XDShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageView_XDShape.m; path = Categories/UIImageView_XDShape.m; sourceTree = "<group>"; };
+		4CD937281ACC0BEF00EAEEFD /* UIImageView_XDShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageView_XDShape.h; path = Categories/UIImageView_XDShape.h; sourceTree = "<group>"; };
+		4CD937291ACC0BEF00EAEEFD /* UIButton_XDShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIButton_XDShape.m; path = Categories/UIButton_XDShape.m; sourceTree = "<group>"; };
+		4CD9372A1ACC0BEF00EAEEFD /* UIButton_XDShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIButton_XDShape.h; path = Categories/UIButton_XDShape.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4CD936E71ACBFCDD00EAEEFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C2823441AD096CD007AE273 /* CoreLocation.framework in Frameworks */,
+				4CD9371F1ACBFDE700EAEEFD /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD937031ACBFCDD00EAEEFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C28231B1ACF3AA9007AE273 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				4C2823181ACF3AA5007AE273 /* TrackViewController.h */,
+				4C2823191ACF3AA5007AE273 /* TrackViewController.m */,
+			);
+			name = Track;
+			sourceTree = "<group>";
+		};
+		4C28232C1AD048ED007AE273 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4C28234E1AD2B237007AE273 /* Track */,
+				4C28234C1AD19F94007AE273 /* Location */,
+				4C2823451AD19F57007AE273 /* Math - Locations */,
+				4C28234D1AD19F9C007AE273 /* Run */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		4C28233F1AD09515007AE273 /* Manual Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				4C2823401AD0953C007AE273 /* ManualTrackingViewController.h */,
+				4C2823411AD0953C007AE273 /* ManualTrackingViewController.m */,
+			);
+			name = "Manual Tracking";
+			sourceTree = "<group>";
+		};
+		4C2823451AD19F57007AE273 /* Math - Locations */ = {
+			isa = PBXGroup;
+			children = (
+				4C28232D1AD04919007AE273 /* MathManager.h */,
+				4C28232E1AD04919007AE273 /* MathManager.m */,
+			);
+			name = "Math - Locations";
+			sourceTree = "<group>";
+		};
+		4C28234C1AD19F94007AE273 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				4C2823491AD19F8B007AE273 /* LocationManager.h */,
+				4C28234A1AD19F8B007AE273 /* LocationManager.m */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		4C28234D1AD19F9C007AE273 /* Run */ = {
+			isa = PBXGroup;
+			children = (
+				4C28233C1AD05643007AE273 /* RunManager.h */,
+				4C28233D1AD05643007AE273 /* RunManager.m */,
+			);
+			name = Run;
+			sourceTree = "<group>";
+		};
+		4C28234E1AD2B237007AE273 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				4C28234F1AD2B249007AE273 /* TrackManager.h */,
+				4C2823501AD2B249007AE273 /* TrackManager.m */,
+			);
+			name = Track;
+			sourceTree = "<group>";
+		};
+		4CD936E11ACBFCDD00EAEEFD = {
+			isa = PBXGroup;
+			children = (
+				4CD936EC1ACBFCDD00EAEEFD /* Haiku */,
+				4CD937091ACBFCDD00EAEEFD /* HaikuTests */,
+				4CD936EB1ACBFCDD00EAEEFD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4CD936EB1ACBFCDD00EAEEFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CD936EA1ACBFCDD00EAEEFD /* Haiku.app */,
+				4CD937061ACBFCDD00EAEEFD /* HaikuTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CD936EC1ACBFCDD00EAEEFD /* Haiku */ = {
+			isa = PBXGroup;
+			children = (
+				4C28232C1AD048ED007AE273 /* Managers */,
+				4CD937201ACC0B9500EAEEFD /* Categories */,
+				4CD9371C1ACBFD8500EAEEFD /* Views */,
+				4CD9371B1ACBFD7C00EAEEFD /* Models */,
+				4CD9371A1ACBFD7300EAEEFD /* Controllers */,
+				4CD936F11ACBFCDD00EAEEFD /* AppDelegate.h */,
+				4CD936F21ACBFCDD00EAEEFD /* AppDelegate.m */,
+				4CD936FA1ACBFCDD00EAEEFD /* Main.storyboard */,
+				4CD937161ACBFD0F00EAEEFD /* Assets */,
+				4CD936ED1ACBFCDD00EAEEFD /* Supporting Files */,
+			);
+			path = Haiku;
+			sourceTree = "<group>";
+		};
+		4CD936ED1ACBFCDD00EAEEFD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4C2823431AD096CD007AE273 /* CoreLocation.framework */,
+				4CD9371E1ACBFDE700EAEEFD /* MapKit.framework */,
+				4CD936EE1ACBFCDD00EAEEFD /* Info.plist */,
+				4CD936EF1ACBFCDD00EAEEFD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CD937091ACBFCDD00EAEEFD /* HaikuTests */ = {
+			isa = PBXGroup;
+			children = (
+				4CD9370C1ACBFCDD00EAEEFD /* HaikuTests.m */,
+				4CD9370A1ACBFCDD00EAEEFD /* Supporting Files */,
+			);
+			path = HaikuTests;
+			sourceTree = "<group>";
+		};
+		4CD9370A1ACBFCDD00EAEEFD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CD9370B1ACBFCDD00EAEEFD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CD937161ACBFD0F00EAEEFD /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4CD936FD1ACBFCDD00EAEEFD /* Images.xcassets */,
+				4CD936FF1ACBFCDD00EAEEFD /* LaunchScreen.xib */,
+				4CD936F41ACBFCDD00EAEEFD /* Haiku.xcdatamodeld */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		4CD9371A1ACBFD7300EAEEFD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C28233F1AD09515007AE273 /* Manual Tracking */,
+				4CD9371D1ACBFD9000EAEEFD /* Home */,
+				4C28231B1ACF3AA9007AE273 /* Track */,
+			);
+			name = Controllers;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		4CD9371B1ACBFD7C00EAEEFD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C2823391AD04A8F007AE273 /* Run.h */,
+				4C28233A1AD04A8F007AE273 /* Run.m */,
+				4C2823361AD04A8F007AE273 /* Location.h */,
+				4C2823371AD04A8F007AE273 /* Location.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4CD9371C1ACBFD8500EAEEFD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4CD9371D1ACBFD9000EAEEFD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4CD937171ACBFD6E00EAEEFD /* HomeViewController.h */,
+				4CD937181ACBFD6E00EAEEFD /* HomeViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		4CD937201ACC0B9500EAEEFD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4CD937271ACC0BEF00EAEEFD /* UIImageView_XDShape.m */,
+				4CD937281ACC0BEF00EAEEFD /* UIImageView_XDShape.h */,
+				4CD937291ACC0BEF00EAEEFD /* UIButton_XDShape.m */,
+				4CD9372A1ACC0BEF00EAEEFD /* UIButton_XDShape.h */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4CD936E91ACBFCDD00EAEEFD /* Haiku */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD937101ACBFCDD00EAEEFD /* Build configuration list for PBXNativeTarget "Haiku" */;
+			buildPhases = (
+				4CD936E61ACBFCDD00EAEEFD /* Sources */,
+				4CD936E71ACBFCDD00EAEEFD /* Frameworks */,
+				4CD936E81ACBFCDD00EAEEFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Haiku;
+			productName = Haiku;
+			productReference = 4CD936EA1ACBFCDD00EAEEFD /* Haiku.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4CD937051ACBFCDD00EAEEFD /* HaikuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD937131ACBFCDD00EAEEFD /* Build configuration list for PBXNativeTarget "HaikuTests" */;
+			buildPhases = (
+				4CD937021ACBFCDD00EAEEFD /* Sources */,
+				4CD937031ACBFCDD00EAEEFD /* Frameworks */,
+				4CD937041ACBFCDD00EAEEFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4CD937081ACBFCDD00EAEEFD /* PBXTargetDependency */,
+			);
+			name = HaikuTests;
+			productName = HaikuTests;
+			productReference = 4CD937061ACBFCDD00EAEEFD /* HaikuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4CD936E21ACBFCDD00EAEEFD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Morgan Collino";
+				TargetAttributes = {
+					4CD936E91ACBFCDD00EAEEFD = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					4CD937051ACBFCDD00EAEEFD = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 4CD936E91ACBFCDD00EAEEFD;
+					};
+				};
+			};
+			buildConfigurationList = 4CD936E51ACBFCDD00EAEEFD /* Build configuration list for PBXProject "Haiku" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4CD936E11ACBFCDD00EAEEFD;
+			productRefGroup = 4CD936EB1ACBFCDD00EAEEFD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4CD936E91ACBFCDD00EAEEFD /* Haiku */,
+				4CD937051ACBFCDD00EAEEFD /* HaikuTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4CD936E81ACBFCDD00EAEEFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD936FC1ACBFCDD00EAEEFD /* Main.storyboard in Resources */,
+				4CD937011ACBFCDD00EAEEFD /* LaunchScreen.xib in Resources */,
+				4CD936FE1ACBFCDD00EAEEFD /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD937041ACBFCDD00EAEEFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4CD936E61ACBFCDD00EAEEFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD936F31ACBFCDD00EAEEFD /* AppDelegate.m in Sources */,
+				4CD936F61ACBFCDD00EAEEFD /* Haiku.xcdatamodeld in Sources */,
+				4C28231A1ACF3AA5007AE273 /* TrackViewController.m in Sources */,
+				4C2823511AD2B249007AE273 /* TrackManager.m in Sources */,
+				4C28232F1AD04919007AE273 /* MathManager.m in Sources */,
+				4C2823381AD04A8F007AE273 /* Location.m in Sources */,
+				4CD9372B1ACC0BEF00EAEEFD /* UIImageView_XDShape.m in Sources */,
+				4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */,
+				4C28233E1AD05643007AE273 /* RunManager.m in Sources */,
+				4C28233B1AD04A8F007AE273 /* Run.m in Sources */,
+				4C2823421AD0953C007AE273 /* ManualTrackingViewController.m in Sources */,
+				4CD937191ACBFD6E00EAEEFD /* HomeViewController.m in Sources */,
+				4CD9372C1ACC0BEF00EAEEFD /* UIButton_XDShape.m in Sources */,
+				4C28234B1AD19F8B007AE273 /* LocationManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4CD937021ACBFCDD00EAEEFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD9370D1ACBFCDD00EAEEFD /* HaikuTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CD937081ACBFCDD00EAEEFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CD936E91ACBFCDD00EAEEFD /* Haiku */;
+			targetProxy = 4CD937071ACBFCDD00EAEEFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4CD936FA1ACBFCDD00EAEEFD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CD936FB1ACBFCDD00EAEEFD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4CD936FF1ACBFCDD00EAEEFD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CD937001ACBFCDD00EAEEFD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4CD9370E1ACBFCDD00EAEEFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4CD9370F1ACBFCDD00EAEEFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4CD937111ACBFCDD00EAEEFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Haiku/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4CD937121ACBFCDD00EAEEFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Haiku/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4CD937141ACBFCDD00EAEEFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HaikuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Haiku.app/Haiku";
+			};
+			name = Debug;
+		};
+		4CD937151ACBFCDD00EAEEFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HaikuTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Haiku.app/Haiku";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4CD936E51ACBFCDD00EAEEFD /* Build configuration list for PBXProject "Haiku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD9370E1ACBFCDD00EAEEFD /* Debug */,
+				4CD9370F1ACBFCDD00EAEEFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD937101ACBFCDD00EAEEFD /* Build configuration list for PBXNativeTarget "Haiku" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD937111ACBFCDD00EAEEFD /* Debug */,
+				4CD937121ACBFCDD00EAEEFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CD937131ACBFCDD00EAEEFD /* Build configuration list for PBXNativeTarget "HaikuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD937141ACBFCDD00EAEEFD /* Debug */,
+				4CD937151ACBFCDD00EAEEFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4CD936F41ACBFCDD00EAEEFD /* Haiku.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4CD936F51ACBFCDD00EAEEFD /* Haiku.xcdatamodel */,
+			);
+			currentVersion = 4CD936F51ACBFCDD00EAEEFD /* Haiku.xcdatamodel */;
+			path = Haiku.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4CD936E21ACBFCDD00EAEEFD /* Project object */;
+}
