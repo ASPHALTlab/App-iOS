@@ -13,7 +13,12 @@
 
 @interface TrackManager : NSObject <LocationManagerProtocol>
 
-- (void)createNewTrack:(NSDate *)timestamp withInitialLocations:(NSArray *)locations;
+- (Run *)createNewTrack:(NSDate *)timestamp withInitialLocations:(NSArray *)locations;
 - (void)endTracking;
++ (instancetype)sharedManager;
+
+@property (nonatomic, strong) Run *lastRun;
+@property (nonatomic) double distance;
+@property (nonatomic) double speed;
 
 @end

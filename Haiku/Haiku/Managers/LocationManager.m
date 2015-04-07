@@ -63,7 +63,7 @@
 	NSLog(@"New locations: %@", locations);
 	self.lastCoordinate = (CLLocation *)[locations lastObject];
 	
-	if ([self.delegate respondsToSelector:@selector(locationManager:didUpdateLocations:)]) {
+	if ([self.delegate respondsToSelector:@selector(locationManager:didReceivedNewLocations:)]) {
 		[self.delegate locationManager:self didReceivedNewLocations:locations];
 	}
 }

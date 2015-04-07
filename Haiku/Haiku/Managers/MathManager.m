@@ -33,31 +33,35 @@ static float const metersInMile = 1609.344;
 	return [NSString stringWithFormat:@"%.2f %@", (meters / unitDivider), unitName];
 }
 
-+ (NSString *)stringifySecondCount:(int)seconds usingLongFormat:(BOOL)longFormat {
++ (NSString *)stringifySecondCount:(NSInteger)seconds usingLongFormat:(BOOL)longFormat {
 
-	int remainingSeconds = seconds;
-	int hours = remainingSeconds / 3600;
+	NSInteger remainingSeconds = seconds;
+	NSInteger hours = remainingSeconds / 3600;
 	remainingSeconds = remainingSeconds - hours * 3600;
-	int minutes = remainingSeconds / 60;
+	NSInteger minutes = remainingSeconds / 60;
 	remainingSeconds = remainingSeconds - minutes * 60;
  
 	if (longFormat) {
 		if (hours > 0) {
-			return [NSString stringWithFormat:@"%ihr %imin %isec", hours, minutes, remainingSeconds];
+			return [NSString stringWithFormat:@"%lihr %limin %lisec", hours, minutes, (long)remainingSeconds];
 		} else if (minutes > 0) {
-			return [NSString stringWithFormat:@"%imin %isec", minutes, remainingSeconds];
+			return [NSString stringWithFormat:@"%limin %lisec", minutes, remainingSeconds];
 		} else {
-			return [NSString stringWithFormat:@"%isec", remainingSeconds];
+			return [NSString stringWithFormat:@"%lisec", remainingSeconds];
 		}
 	} else {
 		if (hours > 0) {
-			return [NSString stringWithFormat:@"%02i:%02i:%02i", hours, minutes, remainingSeconds];
+			return [NSString stringWithFormat:@"%02li:%02li:%02li", hours, minutes, remainingSeconds];
 		} else if (minutes > 0) {
-			return [NSString stringWithFormat:@"%02i:%02i", minutes, remainingSeconds];
+			return [NSString stringWithFormat:@"%02li:%02li", minutes, remainingSeconds];
 		} else {
-			return [NSString stringWithFormat:@"00:%02i", remainingSeconds];
+			return [NSString stringWithFormat:@"00:%02li", remainingSeconds];
 		}
 	}
+}
+
++ (NSString *)stringifySpeed:(float)speed {
+	return [NSString stringWithFormat:@"%.2f km/h", speed];
 }
 
 + (NSString *)stringifyAvgPaceFromDist:(float)meters overTime:(int)seconds {

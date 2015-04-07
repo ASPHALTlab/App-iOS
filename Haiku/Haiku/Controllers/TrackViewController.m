@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self loadMap];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,7 +87,7 @@
 	return region;
 }
 
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay {
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay {
 	if ([overlay isKindOfClass:[MKPolyline class]]) {
 		MKPolyline *polyLine = (MKPolyline *)overlay;
 		MKPolylineRenderer *aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:polyLine];
@@ -107,7 +106,7 @@
 	}
 	
 	Run *firstRun = [self.tracks objectAtIndex:0];
- 
+	NSLog(@"Locations: %@", firstRun.locations);
 	CLLocationCoordinate2D coords[firstRun.locations.count];
  
 	for (int i = 0; i < firstRun.locations.count; i++) {
