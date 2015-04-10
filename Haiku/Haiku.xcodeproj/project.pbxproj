@@ -16,6 +16,7 @@
 		4C2823441AD096CD007AE273 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2823431AD096CD007AE273 /* CoreLocation.framework */; };
 		4C28234B1AD19F8B007AE273 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28234A1AD19F8B007AE273 /* LocationManager.m */; };
 		4C2823511AD2B249007AE273 /* TrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2823501AD2B249007AE273 /* TrackManager.m */; };
+		4C36CE8C1AD85CE700A8E921 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C36CE8B1AD85CE700A8E921 /* TrackListViewController.m */; };
 		4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936EF1ACBFCDD00EAEEFD /* main.m */; };
 		4CD936F31ACBFCDD00EAEEFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936F21ACBFCDD00EAEEFD /* AppDelegate.m */; };
 		4CD936F61ACBFCDD00EAEEFD /* Haiku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936F41ACBFCDD00EAEEFD /* Haiku.xcdatamodeld */; };
@@ -57,6 +58,8 @@
 		4C28234A1AD19F8B007AE273 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Managers/LocationManager.m; sourceTree = "<group>"; };
 		4C28234F1AD2B249007AE273 /* TrackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackManager.h; path = Managers/TrackManager.h; sourceTree = "<group>"; };
 		4C2823501AD2B249007AE273 /* TrackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrackManager.m; path = Managers/TrackManager.m; sourceTree = "<group>"; };
+		4C36CE8A1AD85CE700A8E921 /* TrackListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackListViewController.h; path = Haiku/Controllers/TrackListViewController.h; sourceTree = "<group>"; };
+		4C36CE8B1AD85CE700A8E921 /* TrackListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrackListViewController.m; path = Haiku/Controllers/TrackListViewController.m; sourceTree = "<group>"; };
 		4CD936EA1ACBFCDD00EAEEFD /* Haiku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haiku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD936EE1ACBFCDD00EAEEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD936EF1ACBFCDD00EAEEFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -163,6 +166,15 @@
 			name = Track;
 			sourceTree = "<group>";
 		};
+		4C36CE861AD85CAF00A8E921 /* ListTracks */ = {
+			isa = PBXGroup;
+			children = (
+				4C36CE8A1AD85CE700A8E921 /* TrackListViewController.h */,
+				4C36CE8B1AD85CE700A8E921 /* TrackListViewController.m */,
+			);
+			name = ListTracks;
+			sourceTree = "<group>";
+		};
 		4CD936E11ACBFCDD00EAEEFD = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +251,7 @@
 		4CD9371A1ACBFD7300EAEEFD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4C36CE861AD85CAF00A8E921 /* ListTracks */,
 				4C28233F1AD09515007AE273 /* Manual Tracking */,
 				4CD9371D1ACBFD9000EAEEFD /* Home */,
 				4C28231B1ACF3AA9007AE273 /* Track */,
@@ -390,6 +403,7 @@
 				4C28231A1ACF3AA5007AE273 /* TrackViewController.m in Sources */,
 				4C2823511AD2B249007AE273 /* TrackManager.m in Sources */,
 				4C28232F1AD04919007AE273 /* MathManager.m in Sources */,
+				4C36CE8C1AD85CE700A8E921 /* TrackListViewController.m in Sources */,
 				4C2823381AD04A8F007AE273 /* Location.m in Sources */,
 				4CD9372B1ACC0BEF00EAEEFD /* UIImageView_XDShape.m in Sources */,
 				4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */,

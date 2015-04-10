@@ -69,6 +69,7 @@
 		[self.timer invalidate];
 	}
 	self.track = [TrackManager sharedManager].lastRun;
+	self.track.duration = @(self.seconds);
 	
 	self.startButton.hidden = NO;
 	self.stopButton.hidden = YES;

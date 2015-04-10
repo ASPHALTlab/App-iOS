@@ -52,7 +52,9 @@
 	LocationManager *manager = [LocationManager sharedManager];
 	manager.delegate = nil;
 	[manager stopLocation];
+	
 
+	self.lastRun.distance = @(self.distance);
 	
 	[RunManager save];
 }

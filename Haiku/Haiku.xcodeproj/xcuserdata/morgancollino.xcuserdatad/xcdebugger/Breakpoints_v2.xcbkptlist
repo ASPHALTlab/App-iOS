@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Haiku/Managers/TrackManager.m"
-            timestampString = "450136814.981932"
+            timestampString = "450389202.088343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-locationManager:didReceivedNewLocations:"
             landmarkType = "5">
          </BreakpointContent>
