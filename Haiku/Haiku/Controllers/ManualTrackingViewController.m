@@ -68,17 +68,21 @@
 	if (self.timer) {
 		[self.timer invalidate];
 	}
-	self.track = [TrackManager sharedManager].lastRun;
+
+	// Set duration
 	self.track.duration = @(self.seconds);
-	
+
+	// Hide buttons
 	self.startButton.hidden = NO;
 	self.stopButton.hidden = YES;
 	
+	// Reset parameters
 	self.seconds = 0;
 	[self.timer invalidate];
 	self.timeLabel.text = [MathManager stringifySecondCount:self.seconds usingLongFormat:NO];
 
-	[[TrackManager sharedManager] endTracking];
+	//Stop tracking
+	self.track = [[TrackManager sharedManager] endTracking];
 	
 	if (self.track) {
 		self.seeResultButton.hidden = NO;

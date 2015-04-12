@@ -48,7 +48,7 @@
 	return newRun;
 }
 
-- (void)endTracking {
+- (Run *)endTracking {
 	LocationManager *manager = [LocationManager sharedManager];
 	manager.delegate = nil;
 	[manager stopLocation];
@@ -57,6 +57,7 @@
 	self.lastRun.distance = @(self.distance);
 	
 	[RunManager save];
+	return self.lastRun;
 }
 
 #pragma mark - LocationManager delegate

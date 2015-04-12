@@ -12,6 +12,8 @@
 @class Run;
 @class Location;
 
+// Interface to interact with the databases - Run model
+
 @interface RunManager : NSObject
 
 + (NSArray *)runs;

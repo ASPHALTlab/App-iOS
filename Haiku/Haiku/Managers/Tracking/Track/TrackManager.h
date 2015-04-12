@@ -14,7 +14,7 @@
 @interface TrackManager : NSObject <LocationManagerProtocol>
 
 - (Run *)createNewTrack:(NSDate *)timestamp withInitialLocations:(NSArray *)locations;
-- (void)endTracking;
+- (Run *)endTracking;
 + (instancetype)sharedManager;
 
 @property (nonatomic, strong) Run *lastRun;

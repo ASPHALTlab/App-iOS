@@ -10,6 +10,8 @@
 
 @interface MathManager : NSObject
 
+/// Use to provide static methods to stringify values like Distance / Speed /...
+
 + (NSString *)stringifyDistance:(float)meters;
 + (NSString *)stringifySecondCount:(NSInteger)seconds usingLongFormat:(BOOL)longFormat;
 + (NSString *)stringifyAvgPaceFromDist:(float)meters overTime:(int)seconds;

@@ -44,6 +44,7 @@
 	newLocation.latitude = @(coordinate.coordinate.latitude);
 	newLocation.longitude = @(coordinate.coordinate.longitude);
 	newLocation.timestamp = coordinate.timestamp;
+	newLocation.speed = @(coordinate.speed * 3.6); // m/s to km/h
 	
 	return newLocation;
 }

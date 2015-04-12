@@ -43,7 +43,6 @@
 		4C4C7B661A0412C6006EEB75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C4C7B671A0412C6006EEB75 /* AsphaltTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsphaltTests.m; sourceTree = "<group>"; };
 		4C4C7B711A04158C006EEB75 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		4C4C7BF91A04661C006EEB75 /* Services.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Services.h; path = "../../../../../Downloads/CBTutorial Initial/CBTutorial/Services.h"; sourceTree = "<group>"; };
 		4CE9058F1A902A6E00A753A8 /* AsphaltManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsphaltManager.h; sourceTree = "<group>"; };
 		4CE905901A902A6E00A753A8 /* AsphaltManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsphaltManager.m; sourceTree = "<group>"; };
 		4CE905921A902A6E00A753A8 /* CentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralManager.h; sourceTree = "<group>"; };
@@ -112,7 +111,6 @@
 				4CFBCCC01A910AE800BC20D3 /* Directions.geojson */,
 				4C4C7B4C1A0412C5006EEB75 /* AppDelegate.h */,
 				4C4C7B4D1A0412C5006EEB75 /* AppDelegate.m */,
-				4C4C7BF91A04661C006EEB75 /* Services.h */,
 				4C4C7B551A0412C5006EEB75 /* Main.storyboard */,
 				4CE9058D1A902A6E00A753A8 /* Managers */,
 				4CE9059A1A902A8100A753A8 /* Views */,

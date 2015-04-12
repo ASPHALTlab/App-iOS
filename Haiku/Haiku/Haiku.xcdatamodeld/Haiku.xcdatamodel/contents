@@ -3,6 +3,7 @@
     <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="speed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="run" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Run" inverseName="locations" inverseEntity="Run" syncable="YES"/>
     </entity>
@@ -13,7 +14,7 @@
         <relationship name="locations" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Location" inverseName="run" inverseEntity="Location" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Location" positionX="-36" positionY="45" width="128" height="103"/>
-        <element name="Run" positionX="-27" positionY="54" width="128" height="103"/>
+        <element name="Location" positionX="-36" positionY="45" width="128" height="120"/>
+        <element name="Run" positionX="-27" positionY="54" width="128" height="105"/>
     </elements>
 </model>

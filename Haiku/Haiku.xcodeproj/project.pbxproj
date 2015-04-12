@@ -8,14 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		4C28231A1ACF3AA5007AE273 /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2823191ACF3AA5007AE273 /* TrackViewController.m */; };
-		4C28232F1AD04919007AE273 /* MathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28232E1AD04919007AE273 /* MathManager.m */; };
 		4C2823381AD04A8F007AE273 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2823371AD04A8F007AE273 /* Location.m */; };
 		4C28233B1AD04A8F007AE273 /* Run.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28233A1AD04A8F007AE273 /* Run.m */; };
-		4C28233E1AD05643007AE273 /* RunManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28233D1AD05643007AE273 /* RunManager.m */; };
 		4C2823421AD0953C007AE273 /* ManualTrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2823411AD0953C007AE273 /* ManualTrackingViewController.m */; };
 		4C2823441AD096CD007AE273 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2823431AD096CD007AE273 /* CoreLocation.framework */; };
-		4C28234B1AD19F8B007AE273 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28234A1AD19F8B007AE273 /* LocationManager.m */; };
-		4C2823511AD2B249007AE273 /* TrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2823501AD2B249007AE273 /* TrackManager.m */; };
+		4C28FE5C1ADB19EA00D45CF5 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C28FE5B1ADB19EA00D45CF5 /* CoreBluetooth.framework */; };
+		4C28FE781ADB1B9000D45CF5 /* CentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28FE661ADB1B9000D45CF5 /* CentralManager.m */; };
+		4C28FE791ADB1B9000D45CF5 /* PeripheralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28FE691ADB1B9000D45CF5 /* PeripheralManager.m */; };
+		4C28FE7A1ADB1B9000D45CF5 /* RunManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28FE6D1ADB1B9000D45CF5 /* RunManager.m */; };
+		4C28FE7B1ADB1B9000D45CF5 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28FE701ADB1B9000D45CF5 /* LocationManager.m */; };
+		4C28FE7C1ADB1B9000D45CF5 /* MathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28FE731ADB1B9000D45CF5 /* MathManager.m */; };
+		4C28FE7D1ADB1B9000D45CF5 /* TrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28FE771ADB1B9000D45CF5 /* TrackManager.m */; };
 		4C36CE8C1AD85CE700A8E921 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C36CE8B1AD85CE700A8E921 /* TrackListViewController.m */; };
 		4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936EF1ACBFCDD00EAEEFD /* main.m */; };
 		4CD936F31ACBFCDD00EAEEFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936F21ACBFCDD00EAEEFD /* AppDelegate.m */; };
@@ -43,21 +46,26 @@
 /* Begin PBXFileReference section */
 		4C2823181ACF3AA5007AE273 /* TrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackViewController.h; path = Haiku/Controllers/TrackViewController.h; sourceTree = "<group>"; };
 		4C2823191ACF3AA5007AE273 /* TrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrackViewController.m; path = Haiku/Controllers/TrackViewController.m; sourceTree = "<group>"; };
-		4C28232D1AD04919007AE273 /* MathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MathManager.h; path = Managers/MathManager.h; sourceTree = "<group>"; };
-		4C28232E1AD04919007AE273 /* MathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MathManager.m; path = Managers/MathManager.m; sourceTree = "<group>"; };
 		4C2823361AD04A8F007AE273 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Location.h; path = Models/Location.h; sourceTree = "<group>"; };
 		4C2823371AD04A8F007AE273 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Location.m; path = Models/Location.m; sourceTree = "<group>"; };
 		4C2823391AD04A8F007AE273 /* Run.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Run.h; path = Models/Run.h; sourceTree = "<group>"; };
 		4C28233A1AD04A8F007AE273 /* Run.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Run.m; path = Models/Run.m; sourceTree = "<group>"; };
-		4C28233C1AD05643007AE273 /* RunManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RunManager.h; path = Managers/RunManager.h; sourceTree = "<group>"; };
-		4C28233D1AD05643007AE273 /* RunManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RunManager.m; path = Managers/RunManager.m; sourceTree = "<group>"; };
 		4C2823401AD0953C007AE273 /* ManualTrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManualTrackingViewController.h; path = Haiku/Controllers/ManualTrackingViewController.h; sourceTree = "<group>"; };
 		4C2823411AD0953C007AE273 /* ManualTrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManualTrackingViewController.m; path = Haiku/Controllers/ManualTrackingViewController.m; sourceTree = "<group>"; };
 		4C2823431AD096CD007AE273 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		4C2823491AD19F8B007AE273 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationManager.h; path = Managers/LocationManager.h; sourceTree = "<group>"; };
-		4C28234A1AD19F8B007AE273 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationManager.m; path = Managers/LocationManager.m; sourceTree = "<group>"; };
-		4C28234F1AD2B249007AE273 /* TrackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackManager.h; path = Managers/TrackManager.h; sourceTree = "<group>"; };
-		4C2823501AD2B249007AE273 /* TrackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrackManager.m; path = Managers/TrackManager.m; sourceTree = "<group>"; };
+		4C28FE5B1ADB19EA00D45CF5 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		4C28FE651ADB1B9000D45CF5 /* CentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CentralManager.h; sourceTree = "<group>"; };
+		4C28FE661ADB1B9000D45CF5 /* CentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CentralManager.m; sourceTree = "<group>"; };
+		4C28FE681ADB1B9000D45CF5 /* PeripheralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralManager.h; sourceTree = "<group>"; };
+		4C28FE691ADB1B9000D45CF5 /* PeripheralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralManager.m; sourceTree = "<group>"; };
+		4C28FE6C1ADB1B9000D45CF5 /* RunManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunManager.h; sourceTree = "<group>"; };
+		4C28FE6D1ADB1B9000D45CF5 /* RunManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunManager.m; sourceTree = "<group>"; };
+		4C28FE6F1ADB1B9000D45CF5 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		4C28FE701ADB1B9000D45CF5 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		4C28FE721ADB1B9000D45CF5 /* MathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathManager.h; sourceTree = "<group>"; };
+		4C28FE731ADB1B9000D45CF5 /* MathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathManager.m; sourceTree = "<group>"; };
+		4C28FE761ADB1B9000D45CF5 /* TrackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackManager.h; sourceTree = "<group>"; };
+		4C28FE771ADB1B9000D45CF5 /* TrackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackManager.m; sourceTree = "<group>"; };
 		4C36CE8A1AD85CE700A8E921 /* TrackListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackListViewController.h; path = Haiku/Controllers/TrackListViewController.h; sourceTree = "<group>"; };
 		4C36CE8B1AD85CE700A8E921 /* TrackListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrackListViewController.m; path = Haiku/Controllers/TrackListViewController.m; sourceTree = "<group>"; };
 		4CD936EA1ACBFCDD00EAEEFD /* Haiku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haiku.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C28FE5C1ADB19EA00D45CF5 /* CoreBluetooth.framework in Frameworks */,
 				4C2823441AD096CD007AE273 /* CoreLocation.framework in Frameworks */,
 				4CD9371F1ACBFDE700EAEEFD /* MapKit.framework in Frameworks */,
 			);
@@ -110,17 +119,6 @@
 			name = Track;
 			sourceTree = "<group>";
 		};
-		4C28232C1AD048ED007AE273 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				4C28234E1AD2B237007AE273 /* Track */,
-				4C28234C1AD19F94007AE273 /* Location */,
-				4C2823451AD19F57007AE273 /* Math - Locations */,
-				4C28234D1AD19F9C007AE273 /* Run */,
-			);
-			name = Managers;
-			sourceTree = "<group>";
-		};
 		4C28233F1AD09515007AE273 /* Manual Tracking */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,40 +128,95 @@
 			name = "Manual Tracking";
 			sourceTree = "<group>";
 		};
-		4C2823451AD19F57007AE273 /* Math - Locations */ = {
+		4C28FE621ADB1B9000D45CF5 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				4C28232D1AD04919007AE273 /* MathManager.h */,
-				4C28232E1AD04919007AE273 /* MathManager.m */,
+				4C28FE631ADB1B9000D45CF5 /* Bluetooth */,
+				4C28FE6A1ADB1B9000D45CF5 /* Databases */,
+				4C28FE6E1ADB1B9000D45CF5 /* Geolocalisation */,
+				4C28FE711ADB1B9000D45CF5 /* Render */,
+				4C28FE741ADB1B9000D45CF5 /* Tracking */,
 			);
-			name = "Math - Locations";
+			path = Managers;
 			sourceTree = "<group>";
 		};
-		4C28234C1AD19F94007AE273 /* Location */ = {
+		4C28FE631ADB1B9000D45CF5 /* Bluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				4C2823491AD19F8B007AE273 /* LocationManager.h */,
-				4C28234A1AD19F8B007AE273 /* LocationManager.m */,
+				4C28FE641ADB1B9000D45CF5 /* Central */,
+				4C28FE671ADB1B9000D45CF5 /* Peripheral */,
 			);
-			name = Location;
+			path = Bluetooth;
 			sourceTree = "<group>";
 		};
-		4C28234D1AD19F9C007AE273 /* Run */ = {
+		4C28FE641ADB1B9000D45CF5 /* Central */ = {
 			isa = PBXGroup;
 			children = (
-				4C28233C1AD05643007AE273 /* RunManager.h */,
-				4C28233D1AD05643007AE273 /* RunManager.m */,
+				4C28FE651ADB1B9000D45CF5 /* CentralManager.h */,
+				4C28FE661ADB1B9000D45CF5 /* CentralManager.m */,
 			);
-			name = Run;
+			path = Central;
 			sourceTree = "<group>";
 		};
-		4C28234E1AD2B237007AE273 /* Track */ = {
+		4C28FE671ADB1B9000D45CF5 /* Peripheral */ = {
 			isa = PBXGroup;
 			children = (
-				4C28234F1AD2B249007AE273 /* TrackManager.h */,
-				4C2823501AD2B249007AE273 /* TrackManager.m */,
+				4C28FE681ADB1B9000D45CF5 /* PeripheralManager.h */,
+				4C28FE691ADB1B9000D45CF5 /* PeripheralManager.m */,
 			);
-			name = Track;
+			path = Peripheral;
+			sourceTree = "<group>";
+		};
+		4C28FE6A1ADB1B9000D45CF5 /* Databases */ = {
+			isa = PBXGroup;
+			children = (
+				4C28FE6B1ADB1B9000D45CF5 /* Run */,
+			);
+			path = Databases;
+			sourceTree = "<group>";
+		};
+		4C28FE6B1ADB1B9000D45CF5 /* Run */ = {
+			isa = PBXGroup;
+			children = (
+				4C28FE6C1ADB1B9000D45CF5 /* RunManager.h */,
+				4C28FE6D1ADB1B9000D45CF5 /* RunManager.m */,
+			);
+			path = Run;
+			sourceTree = "<group>";
+		};
+		4C28FE6E1ADB1B9000D45CF5 /* Geolocalisation */ = {
+			isa = PBXGroup;
+			children = (
+				4C28FE6F1ADB1B9000D45CF5 /* LocationManager.h */,
+				4C28FE701ADB1B9000D45CF5 /* LocationManager.m */,
+			);
+			path = Geolocalisation;
+			sourceTree = "<group>";
+		};
+		4C28FE711ADB1B9000D45CF5 /* Render */ = {
+			isa = PBXGroup;
+			children = (
+				4C28FE721ADB1B9000D45CF5 /* MathManager.h */,
+				4C28FE731ADB1B9000D45CF5 /* MathManager.m */,
+			);
+			path = Render;
+			sourceTree = "<group>";
+		};
+		4C28FE741ADB1B9000D45CF5 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				4C28FE751ADB1B9000D45CF5 /* Track */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+		4C28FE751ADB1B9000D45CF5 /* Track */ = {
+			isa = PBXGroup;
+			children = (
+				4C28FE761ADB1B9000D45CF5 /* TrackManager.h */,
+				4C28FE771ADB1B9000D45CF5 /* TrackManager.m */,
+			);
+			path = Track;
 			sourceTree = "<group>";
 		};
 		4C36CE861AD85CAF00A8E921 /* ListTracks */ = {
@@ -196,7 +249,7 @@
 		4CD936EC1ACBFCDD00EAEEFD /* Haiku */ = {
 			isa = PBXGroup;
 			children = (
-				4C28232C1AD048ED007AE273 /* Managers */,
+				4C28FE621ADB1B9000D45CF5 /* Managers */,
 				4CD937201ACC0B9500EAEEFD /* Categories */,
 				4CD9371C1ACBFD8500EAEEFD /* Views */,
 				4CD9371B1ACBFD7C00EAEEFD /* Models */,
@@ -213,6 +266,7 @@
 		4CD936ED1ACBFCDD00EAEEFD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4C28FE5B1ADB19EA00D45CF5 /* CoreBluetooth.framework */,
 				4C2823431AD096CD007AE273 /* CoreLocation.framework */,
 				4CD9371E1ACBFDE700EAEEFD /* MapKit.framework */,
 				4CD936EE1ACBFCDD00EAEEFD /* Info.plist */,
@@ -398,21 +452,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C28FE791ADB1B9000D45CF5 /* PeripheralManager.m in Sources */,
 				4CD936F31ACBFCDD00EAEEFD /* AppDelegate.m in Sources */,
 				4CD936F61ACBFCDD00EAEEFD /* Haiku.xcdatamodeld in Sources */,
 				4C28231A1ACF3AA5007AE273 /* TrackViewController.m in Sources */,
-				4C2823511AD2B249007AE273 /* TrackManager.m in Sources */,
-				4C28232F1AD04919007AE273 /* MathManager.m in Sources */,
 				4C36CE8C1AD85CE700A8E921 /* TrackListViewController.m in Sources */,
 				4C2823381AD04A8F007AE273 /* Location.m in Sources */,
+				4C28FE7B1ADB1B9000D45CF5 /* LocationManager.m in Sources */,
 				4CD9372B1ACC0BEF00EAEEFD /* UIImageView_XDShape.m in Sources */,
 				4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */,
-				4C28233E1AD05643007AE273 /* RunManager.m in Sources */,
 				4C28233B1AD04A8F007AE273 /* Run.m in Sources */,
 				4C2823421AD0953C007AE273 /* ManualTrackingViewController.m in Sources */,
+				4C28FE7D1ADB1B9000D45CF5 /* TrackManager.m in Sources */,
 				4CD937191ACBFD6E00EAEEFD /* HomeViewController.m in Sources */,
+				4C28FE7A1ADB1B9000D45CF5 /* RunManager.m in Sources */,
+				4C28FE7C1ADB1B9000D45CF5 /* MathManager.m in Sources */,
 				4CD9372C1ACC0BEF00EAEEFD /* UIButton_XDShape.m in Sources */,
-				4C28234B1AD19F8B007AE273 /* LocationManager.m in Sources */,
+				4C28FE781ADB1B9000D45CF5 /* CentralManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,8 @@
 
 - (void)startLocation;
 - (void)stopLocation;
+
+// Static method
 + (instancetype)sharedManager;
 
 @property (nonatomic, weak) id<LocationManagerProtocol> delegate;

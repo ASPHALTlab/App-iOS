@@ -16,5 +16,6 @@
 @dynamic longitude;
 @dynamic timestamp;
 @dynamic run;
+@dynamic speed; // km/h
 
 @end
