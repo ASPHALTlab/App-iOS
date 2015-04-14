@@ -11,32 +11,19 @@
 
 @interface CentralManager ()
 
-@property (strong, nonatomic) CBPeripheral *discoveredPeripheral;
 @property (retain, nonatomic) NSUUID *identifier;
+@property (nonatomic) BOOL strictScan;
+@property (nonatomic, strong) CBCentralManager *manager;
 
 @end
 
 @implementation CentralManager
 
+static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
+
 //E519A981-EB1F-ED37-84C9-B73F2488DA05
 //00001531-1212-EFDE-1523-785FEABCD123
 
-- (instancetype) init {
-	if (self = [super init]) {
-		self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-		
-		// Give a specific UUID to be able to retreive past connection or actual (if pairing)
-		NSArray *a =  [self.manager retrievePeripheralsWithIdentifiers:@[[CBUUID UUIDWithString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]]];
-#warning REPLACE_BY_SAVED_UUIDs
-		if (a.count > 0) {
-			CBPeripheral *p = (CBPeripheral *)[a objectAtIndex:0];
-			self.discoveredPeripheral = p;
-			[self.manager cancelPeripheralConnection:p]; //IMPORTANT, to clear off any pending connections
-			[self.manager connectPeripheral:p options:nil];
-		}
-	}
-	return self;
-}
 
 + (instancetype)sharedCentral {
 	
@@ -48,7 +35,83 @@
 	return shared;
 }
 
-#pragma mark = Logical
+- (instancetype) init {
+	if (self = [super init]) {
+		self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+		self.strictScan = NO;
+		self.discoveredDevices = @[];
+#warning PUT_STRICTSCAN TO YES WHEN WE KNOW THE UUIDS SERVICES !
+		[self loadCachedObjects];
+		
+		
+		/*
+		// Give a specific UUID to be able to retreive past connection or actual (if pairing)
+		NSArray *a =  [self.manager retrievePeripheralsWithIdentifiers:@[[CBUUID UUIDWithString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]]];
+#warning REPLACE_BY_SAVED_UUIDs
+		if (a.count > 0) {
+			CBPeripheral *p = (CBPeripheral *)[a objectAtIndex:0];
+			self.discoveredPeripheral = p;
+			[self.manager cancelPeripheralConnection:p]; //IMPORTANT, to clear off any pending connections
+			[self.manager connectPeripheral:p options:nil];
+		}
+		 */
+	}
+	return self;
+}
+
+#pragma mark - Cache
+
+- (void)loadCachedObjects {
+	
+	self.cacheUUIDs = @[];
+	NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+	NSArray *cachedObjects = [userDefault objectForKey:kCacheUUIDs];
+	
+	if (cachedObjects) {
+		NSMutableArray *uuids = [[NSMutableArray alloc] init];
+		for (NSString *uuid in cachedObjects) {
+			NSUUID *newUUID = [[NSUUID alloc] initWithUUIDString:uuid];
+			[uuids addObject:newUUID];
+		}
+		self.cacheUUIDs = uuids;
+	}
+}
+
+- (void)insertUUIDInCache:(NSUUID *)newDevice {
+	
+	NSMutableArray *mutable = [self.cacheUUIDs mutableCopy];
+	[mutable addObject:newDevice];
+	
+	NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+	NSArray *cachedObjects = [userDefault objectForKey:kCacheUUIDs];
+	if (cachedObjects == nil) {
+		cachedObjects = @[newDevice.UUIDString];
+	} else {
+		NSMutableArray *mutableCachedArray = [cachedObjects mutableCopy];
+		[mutableCachedArray addObject:newDevice.UUIDString];
+		cachedObjects = mutableCachedArray;
+	}
+	
+	[userDefault setObject:cachedObjects forKey:kCacheUUIDs];
+	[userDefault synchronize];
+}
+
+- (BOOL)isUUIDKnown:(NSUUID *)uuid {
+	
+	for (NSUUID *cacheUUID in self.cacheUUIDs) {
+		if ([uuid.UUIDString isEqualToString:cacheUUID.UUIDString]) {
+			return YES;
+		}
+	}
+	return NO;
+}
+
+
+#pragma mark - Logical
+
+// Service to erase -- TEST MODE --
+//9B5E7E2A-1635-094D-19E7-CF7A10B97360
+//713D0000-503E-4C75-BA94-3148F18D941E
 
 - (void)scan {
 	
@@ -56,13 +119,12 @@
 	// More there are of services, the more the lookup will be efficient
 	// If you pass nil, you can not scan in background / try to reconnect in background mode
 	
-	// Service to erase -- TEST MODE --
-	//9B5E7E2A-1635-094D-19E7-CF7A10B97360
-	//713D0000-503E-4C75-BA94-3148F18D941E
 	
-	//[self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]] options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
-	[self.manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
-
+	if (self.strictScan == NO) {
+		[self.manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
+	} else {
+		[self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]] options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
+	}
 }
 
 // Identifier : Bike Assistant: 3378FD5A-39E0-3E3B-6205-65741D7E1267
@@ -74,21 +136,19 @@
 		[self.delegate central:self didDiscoverPeripheral:peripheral];
 	}
 	
-	// TEST MODE - TO ERASE
-	if ([peripheral.identifier.UUIDString isEqualToString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]) {
-		
-		NSLog(@"Advertisement Data : %@", advertisementData);
-		
-		self.discoveredPeripheral = peripheral;
-		[self.manager cancelPeripheralConnection:peripheral]; //IMPORTANT, to clear off any pending connections
-
-		[self.manager connectPeripheral:self.discoveredPeripheral
-							options:[NSDictionary dictionaryWithObject:@YES
-																forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
-	}
+	[self.discoveredDevices arrayByAddingObject:peripheral];
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
+	
+	self.connectedPeripheral = peripheral;
+	
+	// Insert in cache if not known
+	if ([self isUUIDKnown:peripheral.identifier] == NO) {
+		[self insertUUIDInCache:peripheral.identifier];
+	}
+	
+	// Launch the peripheral manager to discover services/characteristics of the device
 	PeripheralManager *manager = [PeripheralManager sharedPeripheral];
 	[peripheral setDelegate:manager];
 	[peripheral discoverServices:nil];
@@ -117,11 +177,10 @@
 		[self.delegate central:self didFailConnectOn:peripheral];
 	}
 	
-	if (self.discoveredPeripheral) {
-		[self.discoveredPeripheral setDelegate:nil];
-		self.discoveredPeripheral = nil;
+	if (self.connectedPeripheral) {
+		[self.connectedPeripheral setDelegate:nil];
+		self.connectedPeripheral = nil;
 	}
-	
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
@@ -131,9 +190,9 @@
 		[self.delegate central:self didDisconnectOn:peripheral];
 	}
 
-	if (self.discoveredPeripheral) {
-		[self.discoveredPeripheral setDelegate:nil];
-		self.discoveredPeripheral = nil;
+	if (self.connectedPeripheral) {
+		[self.connectedPeripheral setDelegate:nil];
+		self.connectedPeripheral = nil;
 	}
 }
 
@@ -144,5 +203,17 @@
 - (void)centralManager:(CBCentralManager *)central didRetrieveConnectedPeripherals:(NSArray *)peripherals{
 	NSLog(@"DidRetrieveConnectedPeripherals :%@", peripherals);
 }
+
+#pragma mark - Public methods
+
+- (void)connectOnPeripheral:(CBPeripheral *)peripheral {
+	
+	[self.manager cancelPeripheralConnection:peripheral]; //IMPORTANT, to clear off any pending connections
+	[self.manager connectPeripheral:peripheral
+							options:[NSDictionary dictionaryWithObject:@YES
+																forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
+}
+
+
 
 @end
