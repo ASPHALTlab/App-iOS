@@ -7,17 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @interface HaikuCommunication : NSObject
 
 // Move -- If in the future we implement a GPS
 
 
-#define UPD_DISTANCE_CHAR @"FF1"
-#define UPD_SPEED_CHAR @"FF2"
-#define UPD_MOVE_CHAR @"FF3"
-#define UPD_TIME_CHAR @"FF4"
+#define SETTINGS_SERVICE @"F0000000­0451­4000­B000­00000000­BA01"
 
+	#define SETTINGS_LEFTBASIC_CHAR @"F0000000­0451­4000­B000­00000000­BA02"
+	#define SETTINGS_RIGHTBASIC_CHAR @"F0000000­0451­4000­B000­00000000­BA03"
+	#define SETTINGS_LEFTDETAIL_CHAR @"F0000000­0451­4000­B000­00000000­BA04"
+	#define SETTINGS_RIGHTDETAIL_CHAR @"F0000000­0451­4000­B000­00000000­BA05"
+
+#define DATA_SERVICE @"F0000000­0451­4000­B000­00000000­BA11"
+
+	#define DATA_DISTANCE_CHAR @"F0000000­0451­4000­B000­00000000­BA12"
+	#define DATA_SPEED_CHAR @"F0000000­0451­4000­B000­00000000­BA13"
+	#define DATA_TIME_CHAR @"F0000000­0451­4000­B000­00000000­BA14"
+	#define DATA_AVGSPEED_CHAR @"F0000000­0451­4000­B000­00000000­BA15"
+	#define DATA_SENSOR_CHAR @"F0000000­0451­4000­B000­00000000­BA16"
 
 
 typedef NS_ENUM(NSInteger, HKMovement) {
@@ -27,11 +37,28 @@ typedef NS_ENUM(NSInteger, HKMovement) {
 	HKMovementUTurn,
 };
 
+typedef NS_ENUM(NSInteger, HKLeftRendering) {
+	HKLeftBasic,
+	HKLeftDetail,
+};
+
+typedef NS_ENUM(NSInteger, HKRightRendering) {
+	HKRightBasic,
+	HKRightDetail,
+};
+
+
+
 + (void)updateSpeed:(double)speed;
 + (void)updateTime:(NSTimeInterval)time;
 + (void)updateDistance:(double)distance; // in meters ?
-+ (void)updateMovement:(HKMovement)movement infos:(NSString *)infos;
++ (void)updateAvgSpeed:(double)speed;
++ (void)updateSensor:(NSInteger)sensor;
 
++ (void)setLeftRendering:(HKLeftRendering)rendering;
++ (void)setRightRendering:(HKRightRendering)rendering;
+
++ (CBUUID *)uiidFromString:(NSString *)string;
 
 /*
  @params: NSDictionary *infos : @{@"speed":NSNumber.double, @"time":NSNumber.integerValue, @"distance":NSNumber.double,@"movement":NSNumber.integerValue
@@ -39,4 +66,8 @@ typedef NS_ENUM(NSInteger, HKMovement) {
  */
 
 + (void)updateInfos:(NSDictionary *)infos;
+
+
++ (NSArray *)services;
++ (CBCharacteristic *)characteristicByUUID:(NSString *)uuid;
 @end

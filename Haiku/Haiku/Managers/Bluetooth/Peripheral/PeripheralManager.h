@@ -12,9 +12,12 @@
 
 @interface PeripheralManager : NSObject <CBPeripheralManagerDelegate, CBPeripheralDelegate>
 
-@property (strong, nonatomic) CBPeripheralManager *manager;
 @property (nonatomic, weak) id<PeripheralManagerProtocol> delegate;
-@property (strong, nonatomic) NSMutableDictionary *characteristics;
+
+@property (strong, nonatomic) CBPeripheralManager *manager;
+
+// Discovered characteristics
+@property (nonatomic, strong) NSMutableDictionary *discoveredCharacteristics; // Characteristics discovered
 
 // Static Methods
 + (instancetype)sharedPeripheral;

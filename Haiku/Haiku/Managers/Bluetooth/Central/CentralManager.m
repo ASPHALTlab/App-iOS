@@ -8,6 +8,7 @@
 
 #import "CentralManager.h"
 #import "PeripheralManager.h"
+#import "HaikuCommunication.h"
 
 @interface CentralManager ()
 
@@ -35,7 +36,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 	return shared;
 }
 
-- (instancetype) init {
+- (instancetype)init {
 	if (self = [super init]) {
 		self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
 		self.strictScan = NO;
@@ -43,7 +44,10 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 #warning PUT_STRICTSCAN TO YES WHEN WE KNOW THE UUIDS SERVICES !
 		[self loadCachedObjects];
 		
+		// Service use to scan & to discover
+		self.serviceUUIDs = @[[HaikuCommunication uiidFromString:SETTINGS_SERVICE], [HaikuCommunication uiidFromString:DATA_SERVICE]];
 		
+
 		/*
 		// Give a specific UUID to be able to retreive past connection or actual (if pairing)
 		NSArray *a =  [self.manager retrievePeripheralsWithIdentifiers:@[[CBUUID UUIDWithString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]]];
@@ -57,6 +61,11 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 		 */
 	}
 	return self;
+}
+
+- (void)clean {
+	self.discoveredServices = @[].mutableCopy;
+	self.discoveredDevices = @[];
 }
 
 #pragma mark - Cache
@@ -151,7 +160,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 	// Launch the peripheral manager to discover services/characteristics of the device
 	PeripheralManager *manager = [PeripheralManager sharedPeripheral];
 	[peripheral setDelegate:manager];
-	[peripheral discoverServices:nil];
+	[peripheral discoverServices:nil]; // Discover all -> Precise to be less consumption
 	if ([self.delegate respondsToSelector:@selector(central:didConnectOn:)]) {
 		[self.delegate central:self didConnectOn:peripheral];
 	}
@@ -184,6 +193,8 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
+	
+	[self clean];
 	
 	[self scan];
 	if ([self.delegate respondsToSelector:@selector(central:didDisconnectOn:)]) {

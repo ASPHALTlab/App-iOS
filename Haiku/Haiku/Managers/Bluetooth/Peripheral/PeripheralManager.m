@@ -6,12 +6,15 @@
 //
 //
 
-#import "PeripheralManager.h"
 #import <UIKit/UIKit.h>
+#import "PeripheralManager.h"
+#import "HaikuCommunication.h"
+#import "TrackManager.h"
 
 @interface PeripheralManager ()
 
-@property (strong, nonatomic) NSMutableData *data;
+@property (nonatomic, strong) NSMutableData *data;
+@property (nonatomic, strong) NSDictionary *characteristicsUUIDs;
 
 @end
 
@@ -19,8 +22,13 @@
 
 - (instancetype) init {
 	if (self = [super init]) {
-		_manager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
-		_data = [[NSMutableData alloc] init];
+		self.manager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
+		self.data = [[NSMutableData alloc] init];
+		
+		// Characteristics to be notified / write on
+		self.characteristicsUUIDs = @{SETTINGS_SERVICE : @[[HaikuCommunication uiidFromString:SETTINGS_LEFTBASIC_CHAR], [HaikuCommunication uiidFromString:SETTINGS_RIGHTBASIC_CHAR],[HaikuCommunication uiidFromString:SETTINGS_LEFTDETAIL_CHAR], [HaikuCommunication uiidFromString:SETTINGS_RIGHTDETAIL_CHAR]], DATA_SERVICE:@[[HaikuCommunication uiidFromString:DATA_DISTANCE_CHAR], [HaikuCommunication uiidFromString:DATA_SPEED_CHAR],[HaikuCommunication uiidFromString:DATA_TIME_CHAR], [HaikuCommunication uiidFromString:DATA_AVGSPEED_CHAR],[HaikuCommunication uiidFromString:DATA_SENSOR_CHAR]]};
+		
+		self.discoveredCharacteristics = [[NSMutableDictionary alloc] init];
 	}
 	return self;
 }
@@ -39,11 +47,11 @@
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
 	if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
-		[_manager startAdvertising:@{
+		[self.manager startAdvertising:@{
 												   CBAdvertisementDataLocalNameKey: [[UIDevice currentDevice] name]
 												   }];
 	} else {
-		[_manager stopAdvertising];
+		[self.manager stopAdvertising];
 	}
 }
 
@@ -60,11 +68,12 @@
  
 	for (CBService *service in peripheral.services) {
 		NSLog(@"Service: %@", service.UUID.UUIDString);
-		[peripheral discoverCharacteristics:nil forService:service];
+		[peripheral discoverCharacteristics:self.characteristicsUUIDs[service.UUID.UUIDString] forService:service];
 	}
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
+	
 	if (error) {
 		if ([self.delegate respondsToSelector:@selector(clean)]) {
 			[self.delegate clean];
@@ -75,7 +84,7 @@
 	for (CBCharacteristic *characteristic in service.characteristics) {
 		[peripheral setNotifyValue:YES forCharacteristic:characteristic];
 		// Saving characteristics
-		[self.characteristics setObject:characteristic forKey:characteristic.UUID.UUIDString];
+		[self.discoveredCharacteristics setObject:characteristic forKey:characteristic.UUID.UUIDString];
 	}
 }
 
@@ -87,15 +96,20 @@
 		return;
 	}
 	
-	NSString *stringFromData = [[NSString alloc] initWithData:characteristic.value encoding:NSUTF8StringEncoding];
-	
-	// Have we got everything we need?
-	if ([stringFromData isEqualToString:@"EOM"]) {
-		[peripheral setNotifyValue:NO forCharacteristic:characteristic];
-		//[self.manager cancelPeripheralConnection:peripheral];
+	// IF THE SENSOR == 1 => TIME TO TRACK
+	// ELSE: THE SENSOR == UNPLUGGED -> End of tracking;
+	if ([characteristic.UUID.UUIDString isEqualToString:DATA_SENSOR_CHAR]) {
+		NSLog(@"_____UPDATE____DATA_SENSOR_CHAR:");
+		
+		NSData *data = characteristic.value;
+		NSInteger value = (NSInteger)data.bytes;
+		
+		if (value == 0) {
+			[[TrackManager sharedManager] endTracking];
+		} else {
+			[[TrackManager sharedManager] createNewTrack:[NSDate date] withInitialLocations:nil];
+		}
 	}
-	
-	[_data appendData:characteristic.value];
 }
 
 
@@ -106,7 +120,21 @@
 	} else {
 		// Notification has stopped
 		NSLog(@"NOTIFICATION Stopped! Abort /!\\");
-		//[self.manager cancelPeripheralConnection:peripheral];
+	}
+	
+	// IF THE SENSOR == 1 => TIME TO TRACK
+	// ELSE: THE SENSOR == UNPLUGGED -> End of tracking;
+	NSLog(@"_____NOTIFY____DATA_SENSOR_CHAR:");
+	if ([characteristic.UUID.UUIDString isEqualToString:DATA_SENSOR_CHAR]) {
+		
+		NSData *data = characteristic.value;
+		NSInteger value = (NSInteger)data.bytes;
+		
+		if (value == 0) {
+			[[TrackManager sharedManager] endTracking];
+		} else {
+			[[TrackManager sharedManager] createNewTrack:[NSDate date] withInitialLocations:nil];
+		}
 	}
 }
 

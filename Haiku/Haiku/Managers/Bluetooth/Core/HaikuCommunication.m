@@ -8,6 +8,11 @@
 
 #import "HaikuCommunication.h"
 #import "CentralManager.h"
+#import "PeripheralManager.h"
+
+@interface HaikuCommunication ()
+
+@end
 
 @implementation HaikuCommunication
 
@@ -28,64 +33,77 @@
 		[self updateTime:time.integerValue];
 	}
 	
-	if ([infos objectForKey:@"movement"]) {
-		NSNumber *movement = [infos objectForKey:@"movement"];
-		[self updateMovement:movement.integerValue infos:@""];
+	if ([infos objectForKey:@"avgspeed"]) {
+		NSNumber *speed = [infos objectForKey:@"avgspeed"];
+		[self updateAvgSpeed:speed.doubleValue];
 	}
+	
 }
 
++ (CBUUID *)uiidFromString:(NSString *)string {
+	return [CBUUID UUIDWithString:string];
+}
+
+
++ (NSArray *)services {
+	return [CentralManager sharedCentral].serviceUUIDs;
+}
+
++ (CBCharacteristic *)characteristicByUUID:(NSString *)uuid {
+	
+	CBCharacteristic *characteristic = [[PeripheralManager sharedPeripheral].discoveredCharacteristics objectForKey:uuid];
+	
+	if (!characteristic) {
+		NSLog(@"____CHARACTERISTIC_NOT_DISCOVERED____: UUID=%@", uuid);
+	}
+	return characteristic;
+}
+
+#pragma mark - Update methods
 
 + (void)updateDistance:(double)distance {
 	
 	CentralManager *manager = [CentralManager sharedCentral];
 	
 	CBPeripheral *peripheral = manager.connectedPeripheral;
-	NSDictionary *characteristics = manager.peripheralCharacteristics;
+	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_DISTANCE_CHAR];
 	
-	if (peripheral && characteristics && [characteristics objectForKey:UPD_DISTANCE_CHAR]) {
-		
+	if (characteristic && peripheral) {
 		int8_t val = (uint8_t)distance;
 		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-		CBCharacteristic *characteristic = [characteristics objectForKey:UPD_DISTANCE_CHAR];
 		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
 		[peripheral readValueForCharacteristic:characteristic];
 	}
-
 }
 
-+ (void)updateMovement:(HKMovement)movement infos:(NSString *)infos {
++ (void)updateAvgSpeed:(double)speed {
 	
 	CentralManager *manager = [CentralManager sharedCentral];
 	
 	CBPeripheral *peripheral = manager.connectedPeripheral;
-	NSDictionary *characteristics = manager.peripheralCharacteristics;
+	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_AVGSPEED_CHAR];
 	
-	if (peripheral && characteristics && [characteristics objectForKey:UPD_MOVE_CHAR]) {
-		
-		int8_t val = (uint8_t)movement;
+	if (characteristic && peripheral) {
+		int8_t val = (uint8_t)speed;
 		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-		CBCharacteristic *characteristic = [characteristics objectForKey:UPD_MOVE_CHAR];
 		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
 		[peripheral readValueForCharacteristic:characteristic];
 	}
 }
 
 + (void)updateSpeed:(double)speed {
-
+	
 	CentralManager *manager = [CentralManager sharedCentral];
 	
 	CBPeripheral *peripheral = manager.connectedPeripheral;
-	NSDictionary *characteristics = manager.peripheralCharacteristics;
+	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_SPEED_CHAR];
 	
-	if (peripheral && characteristics && [characteristics objectForKey:UPD_SPEED_CHAR]) {
-		
+	if (characteristic && peripheral) {
 		int8_t val = (uint8_t)speed;
 		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-		CBCharacteristic *characteristic = [characteristics objectForKey:UPD_SPEED_CHAR];
 		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
 		[peripheral readValueForCharacteristic:characteristic];
 	}
-	
 }
 
 + (void)updateTime:(NSTimeInterval)time {
@@ -93,15 +111,101 @@
 	CentralManager *manager = [CentralManager sharedCentral];
 	
 	CBPeripheral *peripheral = manager.connectedPeripheral;
-	NSDictionary *characteristics = manager.peripheralCharacteristics;
+	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_TIME_CHAR];
 	
-	if (peripheral && characteristics && [characteristics objectForKey:UPD_TIME_CHAR]) {
-		
+	if (characteristic && peripheral) {
 		int8_t val = (uint8_t)time;
 		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-		CBCharacteristic *characteristic = [characteristics objectForKey:UPD_TIME_CHAR];
 		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
 		[peripheral readValueForCharacteristic:characteristic];
+	}
+}
+
++ (void)updateSensor:(NSInteger)sensor {
+	
+	CentralManager *manager = [CentralManager sharedCentral];
+	
+	CBPeripheral *peripheral = manager.connectedPeripheral;
+	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_SENSOR_CHAR];
+	
+	if (characteristic && peripheral) {
+		int8_t val = (uint8_t)sensor;
+		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+		[peripheral readValueForCharacteristic:characteristic];
+	}
+}
+
+#pragma mark - Rendering
+
++ (void)setLeftRendering:(HKLeftRendering)rendering {
+	
+	CentralManager *manager = [CentralManager sharedCentral];
+	
+	CBPeripheral *peripheral = manager.connectedPeripheral;
+	
+	NSString *renderingUUID = nil;
+	NSString *unrenderingUUID = nil;
+	
+	switch (rendering) {
+		case HKLeftDetail:
+			renderingUUID = SETTINGS_LEFTDETAIL_CHAR;
+			unrenderingUUID = SETTINGS_LEFTBASIC_CHAR;
+			break;
+		default:
+			// basic
+			renderingUUID = SETTINGS_LEFTBASIC_CHAR;
+			unrenderingUUID = SETTINGS_LEFTDETAIL_CHAR;
+			break;
+	}
+	
+	
+	CBCharacteristic *characteristic1 = [self characteristicByUUID:renderingUUID];
+	CBCharacteristic *characteristic2 = [self characteristicByUUID:unrenderingUUID];
+	if (characteristic1 && characteristic2 && peripheral) {
+		int8_t val = (uint8_t)0;
+		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+		[peripheral writeValue:valData forCharacteristic:characteristic2 type:CBCharacteristicWriteWithResponse];
+		val = 1;
+		[peripheral writeValue:valData forCharacteristic:characteristic1 type:CBCharacteristicWriteWithResponse];
+		[peripheral readValueForCharacteristic:characteristic1];
+		[peripheral readValueForCharacteristic:characteristic2];
+	}
+	
+}
+
++ (void)setRightRendering:(HKRightRendering)rendering {
+
+	CentralManager *manager = [CentralManager sharedCentral];
+	
+	CBPeripheral *peripheral = manager.connectedPeripheral;
+	
+	NSString *renderingUUID = nil;
+	NSString *unrenderingUUID = nil;
+	
+	switch (rendering) {
+		case HKLeftDetail:
+			renderingUUID = SETTINGS_RIGHTDETAIL_CHAR;
+			unrenderingUUID = SETTINGS_RIGHTBASIC_CHAR;
+			break;
+		default:
+			// basic
+			renderingUUID = SETTINGS_RIGHTBASIC_CHAR;
+			unrenderingUUID = SETTINGS_RIGHTDETAIL_CHAR;
+			break;
+	}
+	
+	
+	CBCharacteristic *characteristic1 = [self characteristicByUUID:renderingUUID];
+	CBCharacteristic *characteristic2 = [self characteristicByUUID:unrenderingUUID];
+	if (characteristic1 && characteristic2 && peripheral) {
+		int8_t val = (uint8_t)0;
+		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+		[peripheral writeValue:valData forCharacteristic:characteristic2 type:CBCharacteristicWriteWithResponse];
+		val = 1;
+		[peripheral writeValue:valData forCharacteristic:characteristic1 type:CBCharacteristicWriteWithResponse];
+		[peripheral readValueForCharacteristic:characteristic1];
+		[peripheral readValueForCharacteristic:characteristic2];
 	}
 }
 
