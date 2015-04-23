@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Dn6-xa-naO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Dn6-xa-naO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -171,6 +171,46 @@
                                     <segue destination="74A-Ck-QxD" kind="show" id="ufn-hG-b2P"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVM-Qq-S4j">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="305" id="9nU-2L-QkI"/>
+                                    <constraint firstAttribute="height" constant="60" id="PeX-7i-TYO"/>
+                                    <constraint firstAttribute="height" constant="60" id="cCh-dJ-LtU"/>
+                                    <constraint firstAttribute="width" constant="305" id="fcY-ac-5QB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="20"/>
+                                <state key="normal" title="Bluetooth">
+                                    <color key="titleColor" red="0.43137254899999999" green="0.73333333329999995" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9nU-2L-QkI"/>
+                                        <exclude reference="PeX-7i-TYO"/>
+                                        <exclude reference="cCh-dJ-LtU"/>
+                                        <exclude reference="fcY-ac-5QB"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="PeX-7i-TYO"/>
+                                        <include reference="fcY-ac-5QB"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="9nU-2L-QkI"/>
+                                        <exclude reference="PeX-7i-TYO"/>
+                                        <include reference="cCh-dJ-LtU"/>
+                                        <exclude reference="fcY-ac-5QB"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="jbn-8L-JmC" kind="show" id="bzw-La-8gg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.43137254899999999" green="0.73333333329999995" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -180,7 +220,9 @@
                             <constraint firstItem="wRn-MA-jO3" firstAttribute="leading" secondItem="cHo-hj-HV9" secondAttribute="leadingMargin" constant="6" id="8nS-bY-gGh">
                                 <variation key="widthClass=compact" constant="3"/>
                             </constraint>
+                            <constraint firstItem="88k-Pw-F3d" firstAttribute="leading" secondItem="lVM-Qq-S4j" secondAttribute="leading" id="DLo-pI-aNs"/>
                             <constraint firstItem="88k-Pw-F3d" firstAttribute="top" secondItem="Bma-wQ-oTD" secondAttribute="bottom" constant="25" id="PyW-QH-zPR"/>
+                            <constraint firstItem="lVM-Qq-S4j" firstAttribute="top" secondItem="88k-Pw-F3d" secondAttribute="bottom" constant="27" id="SFf-cr-ELA"/>
                             <constraint firstItem="wRn-MA-jO3" firstAttribute="top" secondItem="eVs-uv-1bK" secondAttribute="bottom" constant="105" id="UTS-88-JBI"/>
                             <constraint firstItem="Bma-wQ-oTD" firstAttribute="top" secondItem="wRn-MA-jO3" secondAttribute="bottom" constant="28" id="UWp-wo-6Nh">
                                 <variation key="widthClass=compact" constant="24"/>
@@ -195,15 +237,18 @@
                                 <exclude reference="Bma-wQ-oTD"/>
                                 <exclude reference="wRn-MA-jO3"/>
                                 <exclude reference="88k-Pw-F3d"/>
+                                <exclude reference="lVM-Qq-S4j"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="PyW-QH-zPR"/>
-                                <exclude reference="jx3-Fr-wnO"/>
-                                <exclude reference="UWp-wo-6Nh"/>
                                 <exclude reference="354-Ql-8LI"/>
                                 <exclude reference="8nS-bY-gGh"/>
                                 <exclude reference="UTS-88-JBI"/>
                                 <exclude reference="sF9-19-XUf"/>
+                                <exclude reference="UWp-wo-6Nh"/>
+                                <exclude reference="DLo-pI-aNs"/>
+                                <exclude reference="PyW-QH-zPR"/>
+                                <exclude reference="jx3-Fr-wnO"/>
+                                <exclude reference="SFf-cr-ELA"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -212,20 +257,23 @@
                                 <include reference="wRn-MA-jO3"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="UWp-wo-6Nh"/>
                                 <include reference="354-Ql-8LI"/>
                                 <include reference="8nS-bY-gGh"/>
                                 <include reference="UTS-88-JBI"/>
                                 <include reference="sF9-19-XUf"/>
+                                <include reference="UWp-wo-6Nh"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="88k-Pw-F3d"/>
+                                <include reference="lVM-Qq-S4j"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="DLo-pI-aNs"/>
                                 <include reference="PyW-QH-zPR"/>
                                 <include reference="jx3-Fr-wnO"/>
+                                <include reference="SFf-cr-ELA"/>
                             </mask>
                         </variation>
                     </view>
@@ -236,6 +284,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QNj-yW-u70" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="538.5" y="708.75"/>
+        </scene>
+        <!--Bluetooth View Controller-->
+        <scene sceneID="d3X-OT-rs5">
+            <objects>
+                <tableViewController storyboardIdentifier="BluetoothViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jbn-8L-JmC" customClass="BluetoothViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aIV-NX-sQ9">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BLE_CELL" textLabel="OWP-7b-f8d" style="IBUITableViewCellStyleDefault" id="vFI-sk-XWZ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vFI-sk-XWZ" id="pHJ-no-Su3">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OWP-7b-f8d">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jbn-8L-JmC" id="jxZ-R0-oxf"/>
+                            <outlet property="delegate" destination="jbn-8L-JmC" id="pAj-7z-iLN"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s7g-YL-S3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="538.5" y="1371.75"/>
         </scene>
         <!--Track-->
         <scene sceneID="Py6-pf-t5u">
@@ -558,6 +642,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="TrackListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yqG-uv-Zye" customClass="TrackListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nAs-M2-BKp">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -606,6 +691,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="7YM-ND-0jD"/>
-        <segue reference="eU7-2J-Zos"/>
+        <segue reference="Di0-GN-ki5"/>
     </inferredMetricsTieBreakers>
 </document>

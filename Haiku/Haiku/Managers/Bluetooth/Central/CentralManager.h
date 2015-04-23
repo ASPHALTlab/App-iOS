@@ -29,7 +29,9 @@
 // Static Methods
 + (instancetype)sharedCentral;
 
+// Public Methods
 - (void)connectOnPeripheral:(CBPeripheral *)peripheral;
+- (void)scan;
 
 @end
 

@@ -21,6 +21,8 @@
 		4C28FE7D1ADB1B9000D45CF5 /* TrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28FE771ADB1B9000D45CF5 /* TrackManager.m */; };
 		4C36CE8C1AD85CE700A8E921 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C36CE8B1AD85CE700A8E921 /* TrackListViewController.m */; };
 		4C7E67921ADDD489002DDBD7 /* HaikuCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E67911ADDD489002DDBD7 /* HaikuCommunication.m */; };
+		4C8F61DF1AE962250072DE7A /* BluetoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61DE1AE962250072DE7A /* BluetoothViewController.m */; };
+		4C8F61E21AE9969B0072DE7A /* BluetoothInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61E11AE9969B0072DE7A /* BluetoothInfoViewController.m */; };
 		4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936EF1ACBFCDD00EAEEFD /* main.m */; };
 		4CD936F31ACBFCDD00EAEEFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936F21ACBFCDD00EAEEFD /* AppDelegate.m */; };
 		4CD936F61ACBFCDD00EAEEFD /* Haiku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936F41ACBFCDD00EAEEFD /* Haiku.xcdatamodeld */; };
@@ -71,6 +73,10 @@
 		4C36CE8B1AD85CE700A8E921 /* TrackListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrackListViewController.m; path = Haiku/Controllers/TrackListViewController.m; sourceTree = "<group>"; };
 		4C7E67901ADDD489002DDBD7 /* HaikuCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HaikuCommunication.h; path = Core/HaikuCommunication.h; sourceTree = "<group>"; };
 		4C7E67911ADDD489002DDBD7 /* HaikuCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HaikuCommunication.m; path = Core/HaikuCommunication.m; sourceTree = "<group>"; };
+		4C8F61DD1AE962250072DE7A /* BluetoothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothViewController.h; path = Haiku/Controllers/BluetoothViewController.h; sourceTree = "<group>"; };
+		4C8F61DE1AE962250072DE7A /* BluetoothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothViewController.m; path = Haiku/Controllers/BluetoothViewController.m; sourceTree = "<group>"; };
+		4C8F61E01AE9969B0072DE7A /* BluetoothInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothInfoViewController.h; path = Haiku/Controllers/BluetoothInfoViewController.h; sourceTree = "<group>"; };
+		4C8F61E11AE9969B0072DE7A /* BluetoothInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothInfoViewController.m; path = Haiku/Controllers/BluetoothInfoViewController.m; sourceTree = "<group>"; };
 		4CD936EA1ACBFCDD00EAEEFD /* Haiku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haiku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD936EE1ACBFCDD00EAEEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD936EF1ACBFCDD00EAEEFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -241,6 +247,17 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
+		4C8F61DC1AE962050072DE7A /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				4C8F61DD1AE962250072DE7A /* BluetoothViewController.h */,
+				4C8F61DE1AE962250072DE7A /* BluetoothViewController.m */,
+				4C8F61E01AE9969B0072DE7A /* BluetoothInfoViewController.h */,
+				4C8F61E11AE9969B0072DE7A /* BluetoothInfoViewController.m */,
+			);
+			name = Bluetooth;
+			sourceTree = "<group>";
+		};
 		4CD936E11ACBFCDD00EAEEFD = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +335,7 @@
 		4CD9371A1ACBFD7300EAEEFD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4C8F61DC1AE962050072DE7A /* Bluetooth */,
 				4C36CE861AD85CAF00A8E921 /* ListTracks */,
 				4C28233F1AD09515007AE273 /* Manual Tracking */,
 				4CD9371D1ACBFD9000EAEEFD /* Home */,
@@ -466,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C28FE791ADB1B9000D45CF5 /* PeripheralManager.m in Sources */,
+				4C8F61E21AE9969B0072DE7A /* BluetoothInfoViewController.m in Sources */,
 				4CD936F31ACBFCDD00EAEEFD /* AppDelegate.m in Sources */,
 				4CD936F61ACBFCDD00EAEEFD /* Haiku.xcdatamodeld in Sources */,
 				4C28231A1ACF3AA5007AE273 /* TrackViewController.m in Sources */,
@@ -481,6 +500,7 @@
 				4C28FE7A1ADB1B9000D45CF5 /* RunManager.m in Sources */,
 				4C28FE7C1ADB1B9000D45CF5 /* MathManager.m in Sources */,
 				4CD9372C1ACC0BEF00EAEEFD /* UIButton_XDShape.m in Sources */,
+				4C8F61DF1AE962250072DE7A /* BluetoothViewController.m in Sources */,
 				4C28FE781ADB1B9000D45CF5 /* CentralManager.m in Sources */,
 				4C7E67921ADDD489002DDBD7 /* HaikuCommunication.m in Sources */,
 			);

@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSMutableData *data;
 @property (nonatomic, strong) NSDictionary *characteristicsUUIDs;
+@property (nonatomic) BOOL strictScan;
 
 @end
 
@@ -24,9 +25,10 @@
 	if (self = [super init]) {
 		self.manager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
 		self.data = [[NSMutableData alloc] init];
+		self.strictScan = NO;
 		
 		// Characteristics to be notified / write on
-		self.characteristicsUUIDs = @{SETTINGS_SERVICE : @[[HaikuCommunication uiidFromString:SETTINGS_LEFTBASIC_CHAR], [HaikuCommunication uiidFromString:SETTINGS_RIGHTBASIC_CHAR],[HaikuCommunication uiidFromString:SETTINGS_LEFTDETAIL_CHAR], [HaikuCommunication uiidFromString:SETTINGS_RIGHTDETAIL_CHAR]], DATA_SERVICE:@[[HaikuCommunication uiidFromString:DATA_DISTANCE_CHAR], [HaikuCommunication uiidFromString:DATA_SPEED_CHAR],[HaikuCommunication uiidFromString:DATA_TIME_CHAR], [HaikuCommunication uiidFromString:DATA_AVGSPEED_CHAR],[HaikuCommunication uiidFromString:DATA_SENSOR_CHAR]]};
+		//self.characteristicsUUIDs = @{SETTINGS_SERVICE : @[[HaikuCommunication uiidFromString:SETTINGS_LEFTBASIC_CHAR], [HaikuCommunication uiidFromString:SETTINGS_RIGHTBASIC_CHAR],[HaikuCommunication uiidFromString:SETTINGS_LEFTDETAIL_CHAR], [HaikuCommunication uiidFromString:SETTINGS_RIGHTDETAIL_CHAR]], DATA_SERVICE:@[[HaikuCommunication uiidFromString:DATA_DISTANCE_CHAR], [HaikuCommunication uiidFromString:DATA_SPEED_CHAR],[HaikuCommunication uiidFromString:DATA_TIME_CHAR], [HaikuCommunication uiidFromString:DATA_AVGSPEED_CHAR],[HaikuCommunication uiidFromString:DATA_SENSOR_CHAR]]};
 		
 		self.discoveredCharacteristics = [[NSMutableDictionary alloc] init];
 	}
@@ -58,7 +60,6 @@
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
 	
 	NSLog(@"This peripheral services : %@", peripheral.services);
-	NSLog(@"Error ? [%@]", error);
 	if (error) {
 		if ([self.delegate respondsToSelector:@selector(clean)]) {
 			[self.delegate clean];
@@ -67,8 +68,13 @@
 	}
  
 	for (CBService *service in peripheral.services) {
-		NSLog(@"Service: %@", service.UUID.UUIDString);
-		[peripheral discoverCharacteristics:self.characteristicsUUIDs[service.UUID.UUIDString] forService:service];
+		
+		NSLog(@"Service %@: UUID:%@ ", service.UUID.description, service.UUID.UUIDString);
+		if (self.strictScan == YES)	{
+			[peripheral discoverCharacteristics:self.characteristicsUUIDs[service.UUID.UUIDString]	forService:service];
+		} else {
+			[peripheral discoverCharacteristics:nil forService:service];
+		}
 	}
 }
 
@@ -116,17 +122,14 @@
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
 	
 	if (characteristic.isNotifying) {
-		NSLog(@"Notification began on %@", characteristic);
-	} else {
-		// Notification has stopped
-		NSLog(@"NOTIFICATION Stopped! Abort /!\\");
+		NSLog(@"Notification began on %@: UUID=%@", characteristic, characteristic.UUID.UUIDString);
 	}
 	
 	// IF THE SENSOR == 1 => TIME TO TRACK
 	// ELSE: THE SENSOR == UNPLUGGED -> End of tracking;
-	NSLog(@"_____NOTIFY____DATA_SENSOR_CHAR:");
 	if ([characteristic.UUID.UUIDString isEqualToString:DATA_SENSOR_CHAR]) {
-		
+		NSLog(@"_____NOTIFY____DATA_SENSOR_CHAR:");
+
 		NSData *data = characteristic.value;
 		NSInteger value = (NSInteger)data.bytes;
 		

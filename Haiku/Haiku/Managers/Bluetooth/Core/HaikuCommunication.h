@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "CentralManager.h"
 
 @interface HaikuCommunication : NSObject
 
 // Move -- If in the future we implement a GPS
 
 
-#define SETTINGS_SERVICE @"F0000000­0451­4000­B000­00000000­BA01"
+#define SETTINGS_SERVICE @"F0000000-­0451-­4000­-B000-­00000000­BA01"
 
 	#define SETTINGS_LEFTBASIC_CHAR @"F0000000­0451­4000­B000­00000000­BA02"
 	#define SETTINGS_RIGHTBASIC_CHAR @"F0000000­0451­4000­B000­00000000­BA03"
@@ -70,4 +71,7 @@ typedef NS_ENUM(NSInteger, HKRightRendering) {
 
 + (NSArray *)services;
 + (CBCharacteristic *)characteristicByUUID:(NSString *)uuid;
++ (void)scanBluetoothDevicesWithCentralDelegate:(id<CentralManagerProtocol>)delegate;
++ (void)connectOnPeripheral:(CBPeripheral *)peripheral;
+
 @end

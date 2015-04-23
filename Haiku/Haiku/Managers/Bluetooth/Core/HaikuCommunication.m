@@ -209,4 +209,15 @@
 	}
 }
 
+
++ (void)scanBluetoothDevicesWithCentralDelegate:(id<CentralManagerProtocol>)delegate {
+	[[CentralManager sharedCentral] setDelegate:delegate];
+	[[CentralManager sharedCentral] scan];
+}
+
++ (void)connectOnPeripheral:(CBPeripheral *)peripheral {
+	[[CentralManager sharedCentral] connectOnPeripheral:peripheral];
+}
+
+
 @end

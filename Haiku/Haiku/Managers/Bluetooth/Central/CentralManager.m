@@ -45,7 +45,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 		[self loadCachedObjects];
 		
 		// Service use to scan & to discover
-		self.serviceUUIDs = @[[HaikuCommunication uiidFromString:SETTINGS_SERVICE], [HaikuCommunication uiidFromString:DATA_SERVICE]];
+		//self.serviceUUIDs = @[[HaikuCommunication uiidFromString:SETTINGS_SERVICE], [HaikuCommunication uiidFromString:DATA_SERVICE]];
 		
 
 		/*
@@ -143,6 +143,11 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 	
 	if ([self.delegate respondsToSelector:@selector(central:didDiscoverPeripheral:)]) {
 		[self.delegate central:self didDiscoverPeripheral:peripheral];
+	}
+	
+	if ([self isUUIDKnown:peripheral.identifier]) {
+		NSLog(@"AUTO_CONNECT");
+		[self connectOnPeripheral:peripheral];
 	}
 	
 	[self.discoveredDevices arrayByAddingObject:peripheral];
