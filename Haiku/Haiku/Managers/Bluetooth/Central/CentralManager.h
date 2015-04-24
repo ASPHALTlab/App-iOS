@@ -37,6 +37,7 @@
 
 @protocol CentralManagerProtocol <NSObject>
 
+@optional
 - (void)central:(CentralManager *)central didConnectOn:(CBPeripheral *)device;
 - (void)central:(CentralManager *)central didDisconnectOn:(CBPeripheral *)device;
 - (void)central:(CentralManager *)central didFailConnectOn:(CBPeripheral *)device;

@@ -7,8 +7,12 @@
 //
 
 #import "BluetoothInfoViewController.h"
+#import "HaikuCommunication.h"
 
-@interface BluetoothInfoViewController ()
+@interface BluetoothInfoViewController () <CentralManagerProtocol>
+
+@property (nonatomic, retain) NSDictionary *characteristics;
+@property (nonatomic, strong) UILabel *label;
 
 @end
 
@@ -16,12 +20,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	self.title = @"Characteristics";
+	self.characteristics = [HaikuCommunication characteristics];
+	
+	
+	self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+	self.label.backgroundColor = [HaikuCommunication isConnected] ? [UIColor blueColor] : [UIColor redColor];
+	UIBarButtonItem *isConnected = [[UIBarButtonItem alloc] initWithCustomView:self.label];
+	self.navigationItem.rightBarButtonItem = isConnected;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,63 +36,82 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[HaikuCommunication setCentralDelegate:self];
+}
+
+- (NSString *)descriptionForUUID:(NSString *)uuid {
+	
+	NSString *res = @"";
+	
+	if ([uuid isEqualToString:SETTINGS_LEFTBASIC_CHAR]) {
+		res = @"LEFT BASIC CHARACTERISTIC";
+	} else if ([uuid isEqualToString:SETTINGS_RIGHTBASIC_CHAR]) {
+		res = @"RIGHT BASIC CHARACTERISTIC";
+	} else if ([uuid isEqualToString:SETTINGS_LEFTDETAIL_CHAR]) {
+		res = @"LEFT DETAIL CHARACTERISTIC";
+	} else if ([uuid isEqualToString:SETTINGS_RIGHTDETAIL_CHAR]) {
+		res = @"RIGHT DETAIL CHARACTERISTIC";
+	} else if ([uuid isEqualToString:DATA_DISTANCE_CHAR]) {
+		res = @"DISTANCE CHARACTERISTIC";
+	} else if ([uuid isEqualToString:DATA_SPEED_CHAR]) {
+		res = @"SPEED CHARACTERISTIC";
+	} else if ([uuid isEqualToString:DATA_TIME_CHAR]) {
+		res = @"TIME CHARACTERISTIC";
+	} else if ([uuid isEqualToString:DATA_AVGSPEED_CHAR]) {
+		res = @"AVG SPEED CHARACTERISTIC";
+	} else if ([uuid isEqualToString:DATA_SENSOR_CHAR]) {
+		res = @"SENSOR CHARACTERISTIC";
+	} else if ([uuid isEqualToString:SETTINGS_SERVICE]) {
+		res = @"SETTINGS SERVICE";
+	} else if ([uuid isEqualToString:DATA_SERVICE]) {
+		res = @"DATA SERVICE";
+	}
+
+	return res;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return self.characteristics.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+	NSArray *rows = [[self.characteristics allValues] objectAtIndex:section];
+    return rows.count;
 }
 
-/*
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	NSString *uuid = [[self.characteristics allKeys] objectAtIndex:section];
+	NSString *title = [self descriptionForUUID:uuid];
+	return title;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BLE_INFO_CELL" forIndexPath:indexPath];
+	NSArray *rows = [[self.characteristics allValues] objectAtIndex:indexPath.section];
+
+	CBUUID *uuid = [rows objectAtIndex:indexPath.row];
+	CBCharacteristic *characteristics = [HaikuCommunication characteristicByUUID:uuid.UUIDString];
+	
+	cell.textLabel.text = [self descriptionForUUID:uuid.UUIDString];
+	if (!characteristics) {
+		// Characteristics not implemented by the device
+		cell.backgroundColor = [UIColor lightGrayColor];
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"Not implemented: %@", uuid.UUIDString];
+		cell.detailTextLabel.textColor = [UIColor redColor];
+	} else {
+		cell.backgroundColor = [UIColor whiteColor];
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"Value: %@ UUID: %@", characteristics.value, uuid.UUIDString];
+		cell.detailTextLabel.textColor = [UIColor darkGrayColor];
+	}
+	
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation
@@ -96,5 +122,19 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - CentralManagerProtocol
+
+#warning REPLACE WITH NOTIFICATION -> Instead of delegates
+
+- (void)central:(CentralManager *)central didConnectOn:(CBPeripheral *)device {
+	NSLog(@"ON EST CONNECTEY: %@", device);
+	self.label.backgroundColor = [UIColor blueColor];
+}
+
+- (void)central:(CentralManager *)central didDisconnectOn:(CBPeripheral *)device {
+	NSLog(@"ON EST DECONNECTEY DE : %@", device);
+	self.label.backgroundColor = [UIColor redColor];
+}
 
 @end

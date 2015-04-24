@@ -18,6 +18,9 @@
 
 // Discovered characteristics
 @property (nonatomic, strong) NSMutableDictionary *discoveredCharacteristics; // Characteristics discovered
+// Characteristics to look for
+@property (nonatomic, strong) NSDictionary *characteristicsUUIDs;
+
 
 // Static Methods
 + (instancetype)sharedPeripheral;

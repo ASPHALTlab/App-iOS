@@ -49,13 +49,21 @@
 	return [CentralManager sharedCentral].serviceUUIDs;
 }
 
++ (NSDictionary *)characteristics {
+	return [PeripheralManager sharedPeripheral].characteristicsUUIDs;
+}
+
++ (BOOL)isConnected {
+	CBPeripheral *peripheral = [CentralManager sharedCentral].connectedPeripheral;
+	if (peripheral && (peripheral.state == CBPeripheralStateConnected || peripheral.state == CBPeripheralStateConnecting)) {
+		return YES;
+	}
+	return NO;
+}
+
 + (CBCharacteristic *)characteristicByUUID:(NSString *)uuid {
 	
 	CBCharacteristic *characteristic = [[PeripheralManager sharedPeripheral].discoveredCharacteristics objectForKey:uuid];
-	
-	if (!characteristic) {
-		NSLog(@"____CHARACTERISTIC_NOT_DISCOVERED____: UUID=%@", uuid);
-	}
 	return characteristic;
 }
 
@@ -217,6 +225,14 @@
 
 + (void)connectOnPeripheral:(CBPeripheral *)peripheral {
 	[[CentralManager sharedCentral] connectOnPeripheral:peripheral];
+}
+
++ (void)setCentralDelegate:(id<CentralManagerProtocol>)delegate {
+	[[CentralManager sharedCentral] setDelegate:delegate];
+}
+
++ (void)setPeripheralDelegate:(id<PeripheralManagerProtocol>)delegate {
+	[[PeripheralManager sharedPeripheral] setDelegate:delegate];
 }
 
 

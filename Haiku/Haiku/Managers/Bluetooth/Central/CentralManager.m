@@ -45,7 +45,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 		[self loadCachedObjects];
 		
 		// Service use to scan & to discover
-		//self.serviceUUIDs = @[[HaikuCommunication uiidFromString:SETTINGS_SERVICE], [HaikuCommunication uiidFromString:DATA_SERVICE]];
+		self.serviceUUIDs = @[[HaikuCommunication uiidFromString:SETTINGS_SERVICE], [HaikuCommunication uiidFromString:DATA_SERVICE]];
 		
 
 		/*

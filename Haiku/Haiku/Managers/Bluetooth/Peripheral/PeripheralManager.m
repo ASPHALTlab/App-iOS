@@ -14,7 +14,6 @@
 @interface PeripheralManager ()
 
 @property (nonatomic, strong) NSMutableData *data;
-@property (nonatomic, strong) NSDictionary *characteristicsUUIDs;
 @property (nonatomic) BOOL strictScan;
 
 @end
@@ -28,7 +27,7 @@
 		self.strictScan = NO;
 		
 		// Characteristics to be notified / write on
-		//self.characteristicsUUIDs = @{SETTINGS_SERVICE : @[[HaikuCommunication uiidFromString:SETTINGS_LEFTBASIC_CHAR], [HaikuCommunication uiidFromString:SETTINGS_RIGHTBASIC_CHAR],[HaikuCommunication uiidFromString:SETTINGS_LEFTDETAIL_CHAR], [HaikuCommunication uiidFromString:SETTINGS_RIGHTDETAIL_CHAR]], DATA_SERVICE:@[[HaikuCommunication uiidFromString:DATA_DISTANCE_CHAR], [HaikuCommunication uiidFromString:DATA_SPEED_CHAR],[HaikuCommunication uiidFromString:DATA_TIME_CHAR], [HaikuCommunication uiidFromString:DATA_AVGSPEED_CHAR],[HaikuCommunication uiidFromString:DATA_SENSOR_CHAR]]};
+		self.characteristicsUUIDs = @{SETTINGS_SERVICE : @[[HaikuCommunication uiidFromString:SETTINGS_LEFTBASIC_CHAR], [HaikuCommunication uiidFromString:SETTINGS_RIGHTBASIC_CHAR],[HaikuCommunication uiidFromString:SETTINGS_LEFTDETAIL_CHAR], [HaikuCommunication uiidFromString:SETTINGS_RIGHTDETAIL_CHAR]], DATA_SERVICE:@[[HaikuCommunication uiidFromString:DATA_DISTANCE_CHAR], [HaikuCommunication uiidFromString:DATA_SPEED_CHAR],[HaikuCommunication uiidFromString:DATA_TIME_CHAR], [HaikuCommunication uiidFromString:DATA_AVGSPEED_CHAR],[HaikuCommunication uiidFromString:DATA_SENSOR_CHAR]]};
 		
 		self.discoveredCharacteristics = [[NSMutableDictionary alloc] init];
 	}

@@ -240,15 +240,15 @@
                                 <exclude reference="lVM-Qq-S4j"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="DLo-pI-aNs"/>
+                                <exclude reference="PyW-QH-zPR"/>
+                                <exclude reference="jx3-Fr-wnO"/>
+                                <exclude reference="UWp-wo-6Nh"/>
+                                <exclude reference="SFf-cr-ELA"/>
                                 <exclude reference="354-Ql-8LI"/>
                                 <exclude reference="8nS-bY-gGh"/>
                                 <exclude reference="UTS-88-JBI"/>
                                 <exclude reference="sF9-19-XUf"/>
-                                <exclude reference="UWp-wo-6Nh"/>
-                                <exclude reference="DLo-pI-aNs"/>
-                                <exclude reference="PyW-QH-zPR"/>
-                                <exclude reference="jx3-Fr-wnO"/>
-                                <exclude reference="SFf-cr-ELA"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -257,11 +257,11 @@
                                 <include reference="wRn-MA-jO3"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="UWp-wo-6Nh"/>
                                 <include reference="354-Ql-8LI"/>
                                 <include reference="8nS-bY-gGh"/>
                                 <include reference="UTS-88-JBI"/>
                                 <include reference="sF9-19-XUf"/>
-                                <include reference="UWp-wo-6Nh"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -290,6 +290,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="BluetoothViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jbn-8L-JmC" customClass="BluetoothViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aIV-NX-sQ9">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -309,6 +310,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="XER-ov-Z4A" kind="show" id="Wi5-Vs-WhP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -319,7 +323,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7g-YL-S3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="538.5" y="1371.75"/>
+            <point key="canvasLocation" x="454.5" y="1442.25"/>
         </scene>
         <!--Track-->
         <scene sceneID="Py6-pf-t5u">
@@ -687,6 +691,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nCN-rp-gNq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2622" y="707.25"/>
+        </scene>
+        <!--Bluetooth Info View Controller-->
+        <scene sceneID="uS3-3G-rcC">
+            <objects>
+                <tableViewController storyboardIdentifier="BluetoothInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XER-ov-Z4A" customClass="BluetoothInfoViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="daI-GZ-dES">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BLE_INFO_CELL" textLabel="xJK-cO-9sT" detailTextLabel="5nR-0y-1jI" style="IBUITableViewCellStyleSubtitle" id="CsA-lt-sax">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CsA-lt-sax" id="zec-EI-y1U">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xJK-cO-9sT">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5nR-0y-1jI">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="XER-ov-Z4A" id="1et-Cx-yPb"/>
+                            <outlet property="delegate" destination="XER-ov-Z4A" id="kQ1-FJ-xMZ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QN7-OK-fPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1231.5" y="1715.25"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
