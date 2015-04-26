@@ -30,5 +30,6 @@
 @protocol PeripheralManagerProtocol <NSObject>
 
 - (void)clean;
+- (void)peripheral:(PeripheralManager *)manager didDiscoverCharacteristicsForService:(CBService *)service;
 
 @end

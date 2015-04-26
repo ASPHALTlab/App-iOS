@@ -86,11 +86,17 @@
 		return;
 	}
 	
+	if ([self.delegate respondsToSelector:@selector(peripheral:didDiscoverCharacteristicsForService:)]) {
+		[self.delegate peripheral:self didDiscoverCharacteristicsForService:service];
+	}
+	
 	for (CBCharacteristic *characteristic in service.characteristics) {
 		[peripheral setNotifyValue:YES forCharacteristic:characteristic];
 		// Saving characteristics
 		[self.discoveredCharacteristics setObject:characteristic forKey:characteristic.UUID.UUIDString];
 	}
+	
+	NSLog(@"__END_CHECK CHARACTERISticS");
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {

@@ -23,6 +23,7 @@
 		4C7E67921ADDD489002DDBD7 /* HaikuCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E67911ADDD489002DDBD7 /* HaikuCommunication.m */; };
 		4C8F61DF1AE962250072DE7A /* BluetoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61DE1AE962250072DE7A /* BluetoothViewController.m */; };
 		4C8F61E21AE9969B0072DE7A /* BluetoothInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61E11AE9969B0072DE7A /* BluetoothInfoViewController.m */; };
+		4C8F61E51AEC4E580072DE7A /* BluetoothDoubleValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61E41AEC4E580072DE7A /* BluetoothDoubleValueViewController.m */; };
 		4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936EF1ACBFCDD00EAEEFD /* main.m */; };
 		4CD936F31ACBFCDD00EAEEFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936F21ACBFCDD00EAEEFD /* AppDelegate.m */; };
 		4CD936F61ACBFCDD00EAEEFD /* Haiku.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936F41ACBFCDD00EAEEFD /* Haiku.xcdatamodeld */; };
@@ -77,6 +78,8 @@
 		4C8F61DE1AE962250072DE7A /* BluetoothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothViewController.m; path = Haiku/Controllers/BluetoothViewController.m; sourceTree = "<group>"; };
 		4C8F61E01AE9969B0072DE7A /* BluetoothInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothInfoViewController.h; path = Haiku/Controllers/BluetoothInfoViewController.h; sourceTree = "<group>"; };
 		4C8F61E11AE9969B0072DE7A /* BluetoothInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothInfoViewController.m; path = Haiku/Controllers/BluetoothInfoViewController.m; sourceTree = "<group>"; };
+		4C8F61E31AEC4E580072DE7A /* BluetoothDoubleValueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothDoubleValueViewController.h; path = Haiku/Controllers/BluetoothDoubleValueViewController.h; sourceTree = "<group>"; };
+		4C8F61E41AEC4E580072DE7A /* BluetoothDoubleValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothDoubleValueViewController.m; path = Haiku/Controllers/BluetoothDoubleValueViewController.m; sourceTree = "<group>"; };
 		4CD936EA1ACBFCDD00EAEEFD /* Haiku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haiku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD936EE1ACBFCDD00EAEEFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD936EF1ACBFCDD00EAEEFD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -254,6 +257,8 @@
 				4C8F61DE1AE962250072DE7A /* BluetoothViewController.m */,
 				4C8F61E01AE9969B0072DE7A /* BluetoothInfoViewController.h */,
 				4C8F61E11AE9969B0072DE7A /* BluetoothInfoViewController.m */,
+				4C8F61E31AEC4E580072DE7A /* BluetoothDoubleValueViewController.h */,
+				4C8F61E41AEC4E580072DE7A /* BluetoothDoubleValueViewController.m */,
 			);
 			name = Bluetooth;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				4CD9372B1ACC0BEF00EAEEFD /* UIImageView_XDShape.m in Sources */,
 				4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */,
 				4C28233B1AD04A8F007AE273 /* Run.m in Sources */,
+				4C8F61E51AEC4E580072DE7A /* BluetoothDoubleValueViewController.m in Sources */,
 				4C2823421AD0953C007AE273 /* ManualTrackingViewController.m in Sources */,
 				4C28FE7D1ADB1B9000D45CF5 /* TrackManager.m in Sources */,
 				4CD937191ACBFD6E00EAEEFD /* HomeViewController.m in Sources */,

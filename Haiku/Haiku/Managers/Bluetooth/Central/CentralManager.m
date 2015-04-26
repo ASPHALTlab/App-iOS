@@ -141,6 +141,10 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
 	
+	[[NSNotificationCenter defaultCenter] postNotificationName:BLE_NEW_DEVICE_DETECTED
+														object:self
+													  userInfo:@{@"peripheral":peripheral, @"advertisementData":advertisementData}];
+	
 	if ([self.delegate respondsToSelector:@selector(central:didDiscoverPeripheral:)]) {
 		[self.delegate central:self didDiscoverPeripheral:peripheral];
 	}
@@ -154,6 +158,10 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:BLE_CO_DEVICE
+														object:self
+													  userInfo:@{@"peripheral":peripheral}];
 	
 	self.connectedPeripheral = peripheral;
 	
@@ -200,6 +208,9 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
 	
 	[self clean];
+	[[NSNotificationCenter defaultCenter] postNotificationName:BLE_DECO_DEVICE
+														object:self
+													  userInfo:@{@"peripheral":peripheral}];
 	
 	[self scan];
 	if ([self.delegate respondsToSelector:@selector(central:didDisconnectOn:)]) {

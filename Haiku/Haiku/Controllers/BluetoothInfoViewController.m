@@ -7,6 +7,7 @@
 //
 
 #import "BluetoothInfoViewController.h"
+#import "BluetoothDoubleValueViewController.h"
 #import "HaikuCommunication.h"
 
 @interface BluetoothInfoViewController () <CentralManagerProtocol>
@@ -113,15 +114,31 @@
 }
 
 
-/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self performSegueWithIdentifier:@"SHOW_DOUBLE_SET" sender:self];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+	if ([[segue.destinationViewController class] isSubclassOfClass:[BluetoothDoubleValueViewController class]]) {
+		
+		UITableViewCell *cell = sender;
+		NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+		
+		NSArray *rows = [[self.characteristics allValues] objectAtIndex:indexPath.section];
+		
+		CBUUID *uuid = [rows objectAtIndex:indexPath.row];
+		CBCharacteristic *characteristic = [HaikuCommunication characteristicByUUID:uuid.UUIDString];
+		
+		BluetoothDoubleValueViewController *vc = segue.destinationViewController;
+		vc.characteristic = characteristic;
+	}
 }
-*/
 
 #pragma mark - CentralManagerProtocol
 
@@ -137,4 +154,9 @@
 	self.label.backgroundColor = [UIColor redColor];
 }
 
+#pragma mark - PeripheralManagerProtocol
+
+- (void)peripheral:(PeripheralManager *)manager didDiscoverCharacteristicsForService:(CBService *)service {
+	[self.tableView reloadData];
+}
 @end

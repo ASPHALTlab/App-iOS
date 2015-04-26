@@ -69,6 +69,36 @@
 
 #pragma mark - Update methods
 
++ (void)updateCharacteristic:(CBCharacteristic *)characteristic withValue:(NSNumber *)value sizeOctets:(NSInteger)size {
+	CentralManager *manager = [CentralManager sharedCentral];
+	
+	CBPeripheral *peripheral = manager.connectedPeripheral;
+	
+	if (!(characteristic && peripheral)) {
+		NSLog(@"ERROR: NO CHARACTERISTIC OR PERIPHERAL");
+		return;
+	}
+	
+	if (size == 2) {
+		// Double value
+		
+		int8_t entier = (unsigned char)value.integerValue;
+		int8_t decimale = (value.doubleValue - entier) * 100;
+		
+		int16_t val = (entier << 8) | (decimale & 0xff);
+		
+		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
+		NSLog(@"Val = %d", val);
+		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+			[peripheral readValueForCharacteristic:characteristic];
+		
+	} else {
+		
+	}
+	
+	
+}
+
 + (void)updateDistance:(double)distance {
 	
 	CentralManager *manager = [CentralManager sharedCentral];

@@ -39,8 +39,28 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 	[HaikuCommunication setCentralDelegate:self];
 	self.label.backgroundColor = [HaikuCommunication isConnected] ? [UIColor blueColor] : [UIColor redColor];
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	
+	// Notify only if we are not the main delegate of BLE CentralManager
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNewDevice:) name:BLE_NEW_DEVICE_DETECTED object:nil];
+}
+
+- (void)receivedNewDevice:(NSNotification*)notification {
+	
+	NSLog(@"RECEIVED NEW DEVICE VIA NOTIF");
+	NSDictionary *userInfo = notification.userInfo;
+	CBPeripheral *peripheral = [userInfo objectForKey:@"peripheral"];
+	[self central:nil didDiscoverPeripheral:peripheral];
 }
 
 #pragma mark - Table view data source
@@ -88,7 +108,6 @@
 #pragma mark - CentralManagerProtocol
 
 - (void)central:(CentralManager *)central didConnectOn:(CBPeripheral *)device {
-	NSLog(@"ON EST CONNECTEY: %@", device);
 	self.label.backgroundColor = [UIColor blueColor];
 }
 
