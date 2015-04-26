@@ -122,7 +122,6 @@
 	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_AVGSPEED_CHAR];
 	
 	if (characteristic && peripheral) {
-		
 		int8_t entier = (int8_t)speed;
 		int8_t decimale = (speed - entier) * 100;
 		
