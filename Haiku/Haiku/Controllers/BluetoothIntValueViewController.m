@@ -1,23 +1,23 @@
 //
-//  BluetoothDoubleValueViewController.m
+//  BluetoothIntValueViewController.m
 //  Haiku
 //
 //  Created by Morgan Collino on 4/26/15.
 //  Copyright (c) 2015 Morgan Collino. All rights reserved.
 //
 
-#import "BluetoothDoubleValueViewController.h"
+#import "BluetoothIntValueViewController.h"
 #import "HaikuCommunication.h"
 
-@interface BluetoothDoubleValueViewController () <UITextFieldDelegate>
+@interface BluetoothIntValueViewController ()
 
-@property (nonatomic, weak) IBOutlet UITextField *value;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *control;
 @property (nonatomic, weak) IBOutlet UIButton *send;
 @property (nonatomic, strong) UILabel *label;
 
 @end
 
-@implementation BluetoothDoubleValueViewController
+@implementation BluetoothIntValueViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +25,7 @@
 	self.label.backgroundColor = [HaikuCommunication isConnected] ? [UIColor blueColor] : [UIColor redColor];
 	UIBarButtonItem *isConnected = [[UIBarButtonItem alloc] initWithCustomView:self.label];
 	self.navigationItem.rightBarButtonItem = isConnected;
-	
+
 	// REGISTER TO NOTIFICATIONS
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didConnectBLEDeviceOn:) name:BLE_CO_DEVICE object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDisconnectBLEDevice:) name:BLE_DECO_DEVICE object:nil];
@@ -36,16 +36,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	return NO;
-}
-
 - (IBAction)tapOnSendButton:(id)sender {
-
-	NSString *realValue = [self.value.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
-	double value = realValue.doubleValue;
-
-	[HaikuCommunication updateCharacteristic:self.characteristic withValue:@(value) sizeOctets:2];
+	
+	NSInteger value = self.control.selectedSegmentIndex;
+	[HaikuCommunication updateCharacteristic:self.characteristic withValue:@(value) sizeOctets:1];
 }
 
 - (void)dealloc {

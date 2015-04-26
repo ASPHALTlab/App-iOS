@@ -8,6 +8,7 @@
 
 #import "BluetoothInfoViewController.h"
 #import "BluetoothDoubleValueViewController.h"
+#import "BluetoothIntValueViewController.h"
 #import "HaikuCommunication.h"
 
 @interface BluetoothInfoViewController () <CentralManagerProtocol>
@@ -30,6 +31,14 @@
 	UIBarButtonItem *isConnected = [[UIBarButtonItem alloc] initWithCustomView:self.label];
 	self.navigationItem.rightBarButtonItem = isConnected;
 
+	// REGISTER TO NOTIFICATIONS
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didConnectBLEDeviceOn:) name:BLE_CO_DEVICE object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDisconnectBLEDevice:) name:BLE_DECO_DEVICE object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDiscoverCharacteristicsForService:) name:BLE_NEW_CHARACTERISTICS_DETECTED object:nil];
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,6 +79,27 @@
 	}
 
 	return res;
+}
+
+#pragma mark - Bluetooth Notifications
+
+- (void)didConnectBLEDeviceOn:(NSNotification*)notification {
+	self.label.backgroundColor = [UIColor blueColor];
+}
+
+- (void)didDisconnectBLEDevice:(NSNotification*)notification {
+	self.label.backgroundColor = [UIColor redColor];
+}
+
+- (void)didDiscoverCharacteristicsForService:(NSNotification *)notification {
+	
+	NSDictionary *userInfo = notification.userInfo;
+	CBService *service = userInfo[@"service"];
+	
+	NSUInteger section = [[self.characteristics allKeys] indexOfObject:service.UUID.UUIDString];
+	NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:section];
+	
+	[self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - Table view data source
@@ -115,7 +145,25 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self performSegueWithIdentifier:@"SHOW_DOUBLE_SET" sender:self];
+	
+	NSArray *rows = [[self.characteristics allValues] objectAtIndex:indexPath.section];
+	
+	CBUUID *uuid = [rows objectAtIndex:indexPath.row];
+	NSString *uuidString = uuid.UUIDString;
+	
+	CBCharacteristic *characteristic = [HaikuCommunication characteristicByUUID:uuid.UUIDString];
+	
+	if (!characteristic) {
+		NSLog(@"NO CHARACTERISTIC TO EDIT !");
+		// return;
+	}
+	
+	if ([uuidString isEqualToString:DATA_DISTANCE_CHAR] || [uuidString isEqualToString:DATA_SPEED_CHAR] || [uuidString isEqualToString:DATA_TIME_CHAR] || [uuidString isEqualToString:DATA_AVGSPEED_CHAR]) {
+		[self performSegueWithIdentifier:@"SHOW_DOUBLE_SET" sender:self];
+	} else {
+		[self performSegueWithIdentifier:@"SHOW_INT_SET" sender:self];
+	}
+	
 }
 
 
@@ -123,40 +171,25 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-	if ([[segue.destinationViewController class] isSubclassOfClass:[BluetoothDoubleValueViewController class]]) {
-		
-		UITableViewCell *cell = sender;
-		NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-		
-		NSArray *rows = [[self.characteristics allValues] objectAtIndex:indexPath.section];
-		
-		CBUUID *uuid = [rows objectAtIndex:indexPath.row];
-		CBCharacteristic *characteristic = [HaikuCommunication characteristicByUUID:uuid.UUIDString];
+	
+	UITableViewCell *cell = sender;
+	NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+	
+	NSArray *rows = [[self.characteristics allValues] objectAtIndex:indexPath.section];
+	
+	CBUUID *uuid = [rows objectAtIndex:indexPath.row];
+	CBCharacteristic *characteristic = [HaikuCommunication characteristicByUUID:uuid.UUIDString];
+
+	
+	if ([[segue.destinationViewController class] isSubclassOfClass:
+		[BluetoothDoubleValueViewController class]]) {
 		
 		BluetoothDoubleValueViewController *vc = segue.destinationViewController;
+		vc.characteristic = characteristic;
+	} else if ([[segue.destinationViewController class] isSubclassOfClass:[BluetoothIntValueViewController class]]) {
+		BluetoothIntValueViewController *vc = segue.destinationViewController;
 		vc.characteristic = characteristic;
 	}
 }
 
-#pragma mark - CentralManagerProtocol
-
-#warning REPLACE WITH NOTIFICATION -> Instead of delegates
-
-- (void)central:(CentralManager *)central didConnectOn:(CBPeripheral *)device {
-	NSLog(@"ON EST CONNECTEY: %@", device);
-	self.label.backgroundColor = [UIColor blueColor];
-}
-
-- (void)central:(CentralManager *)central didDisconnectOn:(CBPeripheral *)device {
-	NSLog(@"ON EST DECONNECTEY DE : %@", device);
-	self.label.backgroundColor = [UIColor redColor];
-}
-
-#pragma mark - PeripheralManagerProtocol
-
-- (void)peripheral:(PeripheralManager *)manager didDiscoverCharacteristicsForService:(CBService *)service {
-	[self.tableView reloadData];
-}
 @end

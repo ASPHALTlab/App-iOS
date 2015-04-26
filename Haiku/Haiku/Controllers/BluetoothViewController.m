@@ -12,7 +12,7 @@
 #import "CentralManager.h"
 
 
-@interface BluetoothViewController () <CentralManagerProtocol>
+@interface BluetoothViewController ()
 
 @property (nonatomic, strong) NSMutableArray *devices;
 @property (nonatomic, strong) UILabel *label;
@@ -25,12 +25,17 @@
     [super viewDidLoad];
 	self.devices = [[NSMutableArray alloc] init];
 
-	[HaikuCommunication scanBluetoothDevicesWithCentralDelegate:self];
+	[HaikuCommunication scanBluetoothDevicesWithCentralDelegate:nil];
 	
 	self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
 	self.label.backgroundColor = [UIColor redColor];
 	UIBarButtonItem *isConnected = [[UIBarButtonItem alloc] initWithCustomView:self.label];
 	self.navigationItem.rightBarButtonItem = isConnected;
+
+	// Register to notifications BLE
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNewBLEDevice:) name:BLE_NEW_DEVICE_DETECTED object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didConnectBLEDeviceOn:) name:BLE_CO_DEVICE object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didDisconnectBLEDevice:) name:BLE_DECO_DEVICE object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +45,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	[HaikuCommunication setCentralDelegate:self];
 	self.label.backgroundColor = [HaikuCommunication isConnected] ? [UIColor blueColor] : [UIColor redColor];
 }
 
@@ -50,17 +54,27 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-	
-	// Notify only if we are not the main delegate of BLE CentralManager
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNewDevice:) name:BLE_NEW_DEVICE_DETECTED object:nil];
 }
 
-- (void)receivedNewDevice:(NSNotification*)notification {
+#pragma mark - Bluetooth Notifications
+
+- (void)receivedNewBLEDevice:(NSNotification*)notification {
 	
-	NSLog(@"RECEIVED NEW DEVICE VIA NOTIF");
 	NSDictionary *userInfo = notification.userInfo;
 	CBPeripheral *peripheral = [userInfo objectForKey:@"peripheral"];
-	[self central:nil didDiscoverPeripheral:peripheral];
+	if ([self.devices containsObject:peripheral]) {
+		[self.devices removeObject:peripheral];
+	}
+	[self.devices addObject:peripheral];
+	[self.tableView reloadData];
+}
+
+- (void)didConnectBLEDeviceOn:(NSNotification*)notification {
+	self.label.backgroundColor = [UIColor blueColor];
+}
+
+- (void)didDisconnectBLEDevice:(NSNotification*)notification {
+	self.label.backgroundColor = [UIColor redColor];
 }
 
 #pragma mark - Table view data source
@@ -102,31 +116,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-
-
-#pragma mark - CentralManagerProtocol
-
-- (void)central:(CentralManager *)central didConnectOn:(CBPeripheral *)device {
-	self.label.backgroundColor = [UIColor blueColor];
-}
-
-- (void)central:(CentralManager *)central didDiscoverPeripheral:(CBPeripheral *)device {
-	if ([self.devices containsObject:device]) {
-		[self.devices removeObject:device];
-	}
-	[self.devices addObject:device];
-	[self.tableView reloadData];
-}
-
-- (void)central:(CentralManager *)central didFailConnectOn:(CBPeripheral *)device {
-	NSLog(@"ON A FAIL DE SE CONNECTEY: %@", device);
-
-}
-
-- (void)central:(CentralManager *)central didDisconnectOn:(CBPeripheral *)device {
-	NSLog(@"ON EST DECONNECTEY DE : %@", device);
-	self.label.backgroundColor = [UIColor redColor];
 }
 
 @end

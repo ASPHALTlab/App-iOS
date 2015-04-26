@@ -35,6 +35,7 @@
 		4CD9371F1ACBFDE700EAEEFD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD9371E1ACBFDE700EAEEFD /* MapKit.framework */; };
 		4CD9372B1ACC0BEF00EAEEFD /* UIImageView_XDShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD937271ACC0BEF00EAEEFD /* UIImageView_XDShape.m */; };
 		4CD9372C1ACC0BEF00EAEEFD /* UIButton_XDShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD937291ACC0BEF00EAEEFD /* UIButton_XDShape.m */; };
+		4CDF71DC1AED219600A5FCB8 /* BluetoothIntValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDF71DB1AED219600A5FCB8 /* BluetoothIntValueViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		4CD937281ACC0BEF00EAEEFD /* UIImageView_XDShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageView_XDShape.h; path = Categories/UIImageView_XDShape.h; sourceTree = "<group>"; };
 		4CD937291ACC0BEF00EAEEFD /* UIButton_XDShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIButton_XDShape.m; path = Categories/UIButton_XDShape.m; sourceTree = "<group>"; };
 		4CD9372A1ACC0BEF00EAEEFD /* UIButton_XDShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIButton_XDShape.h; path = Categories/UIButton_XDShape.h; sourceTree = "<group>"; };
+		4CDF71DA1AED219600A5FCB8 /* BluetoothIntValueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothIntValueViewController.h; path = Haiku/Controllers/BluetoothIntValueViewController.h; sourceTree = "<group>"; };
+		4CDF71DB1AED219600A5FCB8 /* BluetoothIntValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothIntValueViewController.m; path = Haiku/Controllers/BluetoothIntValueViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,8 +260,8 @@
 				4C8F61DE1AE962250072DE7A /* BluetoothViewController.m */,
 				4C8F61E01AE9969B0072DE7A /* BluetoothInfoViewController.h */,
 				4C8F61E11AE9969B0072DE7A /* BluetoothInfoViewController.m */,
-				4C8F61E31AEC4E580072DE7A /* BluetoothDoubleValueViewController.h */,
-				4C8F61E41AEC4E580072DE7A /* BluetoothDoubleValueViewController.m */,
+				4CDF71DD1AED21A100A5FCB8 /* Int */,
+				4CDF71D61AED1F4400A5FCB8 /* Double */,
 			);
 			name = Bluetooth;
 			sourceTree = "<group>";
@@ -388,6 +391,24 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		4CDF71D61AED1F4400A5FCB8 /* Double */ = {
+			isa = PBXGroup;
+			children = (
+				4C8F61E31AEC4E580072DE7A /* BluetoothDoubleValueViewController.h */,
+				4C8F61E41AEC4E580072DE7A /* BluetoothDoubleValueViewController.m */,
+			);
+			name = Double;
+			sourceTree = "<group>";
+		};
+		4CDF71DD1AED21A100A5FCB8 /* Int */ = {
+			isa = PBXGroup;
+			children = (
+				4CDF71DA1AED219600A5FCB8 /* BluetoothIntValueViewController.h */,
+				4CDF71DB1AED219600A5FCB8 /* BluetoothIntValueViewController.m */,
+			);
+			name = Int;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -505,6 +526,7 @@
 				4CD937191ACBFD6E00EAEEFD /* HomeViewController.m in Sources */,
 				4C28FE7A1ADB1B9000D45CF5 /* RunManager.m in Sources */,
 				4C28FE7C1ADB1B9000D45CF5 /* MathManager.m in Sources */,
+				4CDF71DC1AED219600A5FCB8 /* BluetoothIntValueViewController.m in Sources */,
 				4CD9372C1ACC0BEF00EAEEFD /* UIButton_XDShape.m in Sources */,
 				4C8F61DF1AE962250072DE7A /* BluetoothViewController.m in Sources */,
 				4C28FE781ADB1B9000D45CF5 /* CentralManager.m in Sources */,

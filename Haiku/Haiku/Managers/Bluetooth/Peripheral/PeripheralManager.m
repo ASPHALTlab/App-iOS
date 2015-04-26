@@ -66,9 +66,14 @@
 		return;
 	}
  
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:BLE_NEW_SERVICES_DETECTED
+														object:self
+													  userInfo:@{@"services":peripheral.services}];
+	
 	for (CBService *service in peripheral.services) {
-		
-		NSLog(@"Service %@: UUID:%@ ", service.UUID.description, service.UUID.UUIDString);
+		NSLog(@"\t\tService : %@", service.UUID.UUIDString);
+
 		if (self.strictScan == YES)	{
 			[peripheral discoverCharacteristics:self.characteristicsUUIDs[service.UUID.UUIDString]	forService:service];
 		} else {
@@ -86,6 +91,12 @@
 		return;
 	}
 	
+	[[NSNotificationCenter defaultCenter] postNotificationName:BLE_NEW_CHARACTERISTICS_DETECTED
+														object:self
+													  userInfo:@{@"service":service}];
+
+	
+	
 	if ([self.delegate respondsToSelector:@selector(peripheral:didDiscoverCharacteristicsForService:)]) {
 		[self.delegate peripheral:self didDiscoverCharacteristicsForService:service];
 	}
@@ -95,8 +106,6 @@
 		// Saving characteristics
 		[self.discoveredCharacteristics setObject:characteristic forKey:characteristic.UUID.UUIDString];
 	}
-	
-	NSLog(@"__END_CHECK CHARACTERISticS");
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
@@ -127,7 +136,7 @@
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
 	
 	if (characteristic.isNotifying) {
-		NSLog(@"Notification began on %@: UUID=%@", characteristic, characteristic.UUID.UUIDString);
+		NSLog(@"\t\t=> Notification began on %@: UUID=%@", characteristic, characteristic.UUID.UUIDString);
 	}
 	
 	// IF THE SENSOR == 1 => TIME TO TRACK

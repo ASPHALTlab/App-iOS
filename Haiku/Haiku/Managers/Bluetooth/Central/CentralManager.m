@@ -45,20 +45,8 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 		[self loadCachedObjects];
 		
 		// Service use to scan & to discover
+	
 		self.serviceUUIDs = @[[HaikuCommunication uiidFromString:SETTINGS_SERVICE], [HaikuCommunication uiidFromString:DATA_SERVICE]];
-		
-
-		/*
-		// Give a specific UUID to be able to retreive past connection or actual (if pairing)
-		NSArray *a =  [self.manager retrievePeripheralsWithIdentifiers:@[[CBUUID UUIDWithString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]]];
-#warning REPLACE_BY_SAVED_UUIDs
-		if (a.count > 0) {
-			CBPeripheral *p = (CBPeripheral *)[a objectAtIndex:0];
-			self.discoveredPeripheral = p;
-			[self.manager cancelPeripheralConnection:p]; //IMPORTANT, to clear off any pending connections
-			[self.manager connectPeripheral:p options:nil];
-		}
-		 */
 	}
 	return self;
 }
@@ -132,7 +120,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 	if (self.strictScan == NO) {
 		[self.manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
 	} else {
-		[self.manager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:@"9B5E7E2A-1635-094D-19E7-CF7A10B97360"]] options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
+		[self.manager scanForPeripheralsWithServices:self.serviceUUIDs options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
 	}
 }
 

@@ -69,31 +69,60 @@
 
 #pragma mark - Update methods
 
-+ (void)updateCharacteristic:(CBCharacteristic *)characteristic withValue:(NSNumber *)value sizeOctets:(NSInteger)size {
-	CentralManager *manager = [CentralManager sharedCentral];
++ (int16_t)convertDoubleInto2bytesArray:(double)value {
+	int8_t entier = (int8_t)value;
+	int8_t decimale = (value - entier) * 100;
 	
+	int16_t val = (entier << 8) | (decimale & 0xff);
+	return val;
+}
+
++ (void)write2BytesValue:(int16_t)value onCharacteristic:(CBCharacteristic *)characteristic {
+
+	CentralManager *manager = [CentralManager sharedCentral];
+	CBPeripheral *peripheral = manager.connectedPeripheral;
+
+	if (peripheral && characteristic) {
+		NSData* valData = [NSData dataWithBytes:(void*)&value length:sizeof(value)];
+		[peripheral writeValue:valData forCharacteristic:characteristic type:	CBCharacteristicWriteWithResponse];
+		[peripheral readValueForCharacteristic:characteristic];
+	} else {
+		NSLog(@"___write2BytesValue_Couldn't write on characteristic !\nONE OF THEM IS NIL !");
+		NSLog(@"DEBUG: __Peripheral : %@", peripheral);
+		NSLog(@"DEBUG: __Characteristic : %@", characteristic);
+		NSLog(@"________\n\n\n\n");
+	}
+	
+}
+
++ (void)write1BytesValue:(int8_t)value onCharacteristic:(CBCharacteristic *)characteristic {
+	
+	CentralManager *manager = [CentralManager sharedCentral];
 	CBPeripheral *peripheral = manager.connectedPeripheral;
 	
-	if (!(characteristic && peripheral)) {
-		NSLog(@"ERROR: NO CHARACTERISTIC OR PERIPHERAL");
-		return;
+	if (peripheral && characteristic) {
+		NSData* valData = [NSData dataWithBytes:(void*)&value length:sizeof(value)];
+		[peripheral writeValue:valData forCharacteristic:characteristic type:	CBCharacteristicWriteWithResponse];
+		[peripheral readValueForCharacteristic:characteristic];
+	} else {
+		NSLog(@"___write1BytesValue_Couldn't write on characteristic !\nONE OF THEM IS NIL !");
+		NSLog(@"DEBUG: __Peripheral : %@", peripheral);
+		NSLog(@"DEBUG: __Characteristic : %@", characteristic);
+		NSLog(@"________\n\n\n\n");
 	}
+	
+}
+
+
++ (void)updateCharacteristic:(CBCharacteristic *)characteristic withValue:(NSNumber *)value sizeOctets:(NSInteger)size {
 	
 	if (size == 2) {
 		// Double value
-		
-		int8_t entier = (unsigned char)value.integerValue;
-		int8_t decimale = (value.doubleValue - entier) * 100;
-		
-		int16_t val = (entier << 8) | (decimale & 0xff);
-		
-		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-		NSLog(@"Val = %d", val);
-		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-			[peripheral readValueForCharacteristic:characteristic];
-		
+		int16_t val = [self convertDoubleInto2bytesArray:value.doubleValue];
+		[self write2BytesValue:val onCharacteristic:characteristic];
 	} else {
-		
+		int8_t val = value.integerValue;
+		[self write1BytesValue:val onCharacteristic:characteristic];
 	}
 	
 	
@@ -101,81 +130,38 @@
 
 + (void)updateDistance:(double)distance {
 	
-	CentralManager *manager = [CentralManager sharedCentral];
-	
-	CBPeripheral *peripheral = manager.connectedPeripheral;
 	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_DISTANCE_CHAR];
-	
-	if (characteristic && peripheral) {
-		int8_t val = (uint8_t)distance;
-		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-		[peripheral readValueForCharacteristic:characteristic];
-	}
+	int16_t val = [self convertDoubleInto2bytesArray:distance];
+	[self write2BytesValue:val onCharacteristic:characteristic];
 }
 
 + (void)updateAvgSpeed:(double)speed {
 	
-	CentralManager *manager = [CentralManager sharedCentral];
-	
-	CBPeripheral *peripheral = manager.connectedPeripheral;
 	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_AVGSPEED_CHAR];
-	
-	if (characteristic && peripheral) {
-		int8_t entier = (int8_t)speed;
-		int8_t decimale = (speed - entier) * 100;
-		
-		int16_t val = (entier << 8) | (decimale & 0xff);
-		
-		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-		[peripheral readValueForCharacteristic:characteristic];
-	}
+	int16_t val = [self convertDoubleInto2bytesArray:speed];
+	[self write2BytesValue:val onCharacteristic:characteristic];
 }
 
 + (void)updateSpeed:(double)speed {
 	
-	CentralManager *manager = [CentralManager sharedCentral];
-	
-	CBPeripheral *peripheral = manager.connectedPeripheral;
 	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_SPEED_CHAR];
-	
-	if (characteristic && peripheral) {
-		int8_t val = (uint8_t)speed;
-		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-		[peripheral readValueForCharacteristic:characteristic];
-	}
+	int16_t val = [self convertDoubleInto2bytesArray:speed];
+	[self write2BytesValue:val onCharacteristic:characteristic];
 }
 
 + (void)updateTime:(NSTimeInterval)time {
 	
-	CentralManager *manager = [CentralManager sharedCentral];
-	
-	CBPeripheral *peripheral = manager.connectedPeripheral;
 	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_TIME_CHAR];
-	
-	if (characteristic && peripheral) {
-		int8_t val = (uint8_t)time;
-		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-		[peripheral readValueForCharacteristic:characteristic];
-	}
+	int16_t val = [self convertDoubleInto2bytesArray:time];
+	[self write2BytesValue:val onCharacteristic:characteristic];
 }
 
 + (void)updateSensor:(NSInteger)sensor {
 	
-	CentralManager *manager = [CentralManager sharedCentral];
-	
-	CBPeripheral *peripheral = manager.connectedPeripheral;
 	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_SENSOR_CHAR];
 	
-	if (characteristic && peripheral) {
-		int8_t val = (uint8_t)sensor;
-		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
-		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-		[peripheral readValueForCharacteristic:characteristic];
-	}
+	int8_t val = (uint8_t)sensor;
+	[self write1BytesValue:val onCharacteristic:characteristic];
 }
 
 #pragma mark - Rendering
