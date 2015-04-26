@@ -122,7 +122,12 @@
 	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_AVGSPEED_CHAR];
 	
 	if (characteristic && peripheral) {
-		int8_t val = (uint8_t)speed;
+		
+		int8_t entier = (int8_t)speed;
+		int8_t decimale = (speed - entier) * 100;
+		
+		int16_t val = (entier << 8) | (decimale & 0xff);
+		
 		NSData* valData = [NSData dataWithBytes:(void*)&val length:sizeof(val)];
 		[peripheral writeValue:valData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
 		[peripheral readValueForCharacteristic:characteristic];
