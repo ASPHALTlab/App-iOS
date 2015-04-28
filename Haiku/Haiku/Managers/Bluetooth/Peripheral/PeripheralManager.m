@@ -109,6 +109,7 @@
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+	
 	if (error) {
 		if ([self.delegate respondsToSelector:@selector(clean)]) {
 			[self.delegate clean];
@@ -124,11 +125,11 @@
 		NSData *data = characteristic.value;
 		NSInteger value = (NSInteger)data.bytes;
 		
-		if (value == 0) {
+		/*if (value == 0) {
 			[[TrackManager sharedManager] endTracking];
 		} else {
 			[[TrackManager sharedManager] createNewTrack:[NSDate date] withInitialLocations:nil];
-		}
+		}*/
 	}
 }
 
@@ -147,11 +148,11 @@
 		NSData *data = characteristic.value;
 		NSInteger value = (NSInteger)data.bytes;
 		
-		if (value == 0) {
+		/*if (value == 0) {
 			[[TrackManager sharedManager] endTracking];
 		} else {
 			[[TrackManager sharedManager] createNewTrack:[NSDate date] withInitialLocations:nil];
-		}
+		}*/
 	}
 }
 

@@ -46,7 +46,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 		
 		// Service use to scan & to discover
 	
-		self.serviceUUIDs = @[[HaikuCommunication uiidFromString:SETTINGS_SERVICE], [HaikuCommunication uiidFromString:DATA_SERVICE]];
+		self.serviceUUIDs = @[[CBUUID UUIDWithString:DATA_SERVICE]];
 	}
 	return self;
 }
@@ -120,7 +120,9 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 	if (self.strictScan == NO) {
 		[self.manager scanForPeripheralsWithServices:nil options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
 	} else {
-		[self.manager scanForPeripheralsWithServices:self.serviceUUIDs options:@{CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
+		NSLog(@"serviceUUIDs: %@", self.serviceUUIDs);
+		NSLog(@"MANAGER: %@", self.manager);
+		[self.manager scanForPeripheralsWithServices:self.serviceUUIDs options:@{CBCentralManagerScanOptionSolicitedServiceUUIDsKey:@NO,CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
 	}
 }
 
@@ -133,6 +135,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 														object:self
 													  userInfo:@{@"peripheral":peripheral, @"advertisementData":advertisementData}];
 	
+	NSLog(@"Advertisement: %@", advertisementData);
 	if ([self.delegate respondsToSelector:@selector(central:didDiscoverPeripheral:)]) {
 		[self.delegate central:self didDiscoverPeripheral:peripheral];
 	}
@@ -174,10 +177,17 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 	// You should test all scenarios
 	if (central.state != CBCentralManagerStatePoweredOn) {
 		return;
-	}
-	
-	if (central.state == CBCentralManagerStatePoweredOn) {
+	} else if (central.state == CBCentralManagerStatePoweredOn) {
+		NSLog(@"CBCentralManagerStatePoweredOn ==> Scan");
 		[self scan];
+	} else if ([central state] == CBCentralManagerStateUnauthorized) {
+		NSLog(@"CoreBluetooth BLE state is unauthorized");
+	}
+	else if ([central state] == CBCentralManagerStateUnknown) {
+		NSLog(@"CoreBluetooth BLE state is unknown");
+	}
+	else if ([central state] == CBCentralManagerStateUnsupported) {
+		NSLog(@"CoreBluetooth BLE hardware is unsupported on this platform");
 	}
 }
 
@@ -200,7 +210,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 														object:self
 													  userInfo:@{@"peripheral":peripheral}];
 	
-	[self scan];
+	//[self scan];
 	if ([self.delegate respondsToSelector:@selector(central:didDisconnectOn:)]) {
 		[self.delegate central:self didDisconnectOn:peripheral];
 	}

@@ -83,7 +83,16 @@
 	CBPeripheral *peripheral = manager.connectedPeripheral;
 
 	if (peripheral && characteristic) {
-		NSData* valData = [NSData dataWithBytes:(void*)&value length:sizeof(value)];
+		
+		NSLog(@"SET CHARACTERISTIC: %@", characteristic);
+		
+		NSData* valData = [NSData dataWithBytes:&value length:sizeof(value)];
+		NSLog(@"NSDATA: %@", valData);
+		NSLog(@"Value: %d", value);
+		
+		int valuee = CFSwapInt32BigToHost(*(int*)([valData bytes]));
+		NSLog(@"bytes: %d", (int16_t)valuee);
+		
 		[peripheral writeValue:valData forCharacteristic:characteristic type:	CBCharacteristicWriteWithResponse];
 		[peripheral readValueForCharacteristic:characteristic];
 	} else {
@@ -240,7 +249,7 @@
 
 + (void)scanBluetoothDevicesWithCentralDelegate:(id<CentralManagerProtocol>)delegate {
 	[[CentralManager sharedCentral] setDelegate:delegate];
-	[[CentralManager sharedCentral] scan];
+	//[[CentralManager sharedCentral] scan];
 }
 
 + (void)connectOnPeripheral:(CBPeripheral *)peripheral {

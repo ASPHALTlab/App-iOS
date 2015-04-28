@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSDictionary *characteristics;
 @property (nonatomic, strong) UILabel *label;
+@property (nonatomic, weak)	NSIndexPath *indexPath;
 
 @end
 
@@ -158,6 +159,8 @@
 		// return;
 	}
 	
+	self.indexPath = indexPath;
+	
 	if ([uuidString isEqualToString:DATA_DISTANCE_CHAR] || [uuidString isEqualToString:DATA_SPEED_CHAR] || [uuidString isEqualToString:DATA_TIME_CHAR] || [uuidString isEqualToString:DATA_AVGSPEED_CHAR]) {
 		[self performSegueWithIdentifier:@"SHOW_DOUBLE_SET" sender:self];
 	} else {
@@ -172,14 +175,11 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	
-	UITableViewCell *cell = sender;
-	NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-	
+	NSIndexPath *indexPath = self.indexPath;
 	NSArray *rows = [[self.characteristics allValues] objectAtIndex:indexPath.section];
 	
 	CBUUID *uuid = [rows objectAtIndex:indexPath.row];
 	CBCharacteristic *characteristic = [HaikuCommunication characteristicByUUID:uuid.UUIDString];
-
 	
 	if ([[segue.destinationViewController class] isSubclassOfClass:
 		[BluetoothDoubleValueViewController class]]) {
