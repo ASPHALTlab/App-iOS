@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, HKStatsActionType) {
+	
+	HKStatsActionGlobal = 0,
+	HKStatsActionByRide,
+};
+
 @interface HomeViewController : UIViewController
 
 @end
