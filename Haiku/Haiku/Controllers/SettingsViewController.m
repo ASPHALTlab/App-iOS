@@ -7,10 +7,12 @@
 //
 
 #import "SettingsViewController.h"
+#import "ActionTableViewCell.h"
 
 @interface SettingsViewController ()
 
 @property (nonatomic, strong) NSDictionary *actions;
+@property (nonatomic, strong) NSDictionary *images;
 
 @end
 
@@ -20,6 +22,7 @@
     [super viewDidLoad];
 	
 	self.actions = @{@"Manual Track": @(HKSettingsActionManualTrack), @"Bluetooth": @(HKSettingsActionBluetooth)};
+	self.images = @{@(HKSettingsActionManualTrack):@"bike", @(HKSettingsActionBluetooth):@"bluetooth"};
 	self.title = @"Actions";
 }
 
@@ -42,12 +45,13 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SETTINGS_CELL" forIndexPath:indexPath];
+    ActionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SETTINGS_CELL" forIndexPath:indexPath];
 	
 	NSString *key = [[self.actions allKeys] objectAtIndex:indexPath.row];
 	NSNumber *value = [[self.actions allValues] objectAtIndex:indexPath.row];
-	cell.textLabel.text = key;
 	cell.tag = value.integerValue;
+	NSString *imageName = [self.images objectForKey:value];
+	[cell setImageWithName:imageName titleAction:key];
 	
     return cell;
 }
@@ -71,7 +75,6 @@
 	
 	
 	if (![fireSegue isEqualToString:@""]) {
-		NSLog(@"FIRE : %@", fireSegue);
 		[self performSegueWithIdentifier:fireSegue sender:self];
 	}
 }

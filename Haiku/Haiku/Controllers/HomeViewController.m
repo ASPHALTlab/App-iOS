@@ -35,7 +35,7 @@
 
 - (IBAction)tapOnMoreStats:(id)sender {
 	
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Actions" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"Cancel" otherButtonTitles:@"Global", @"By ride", nil];
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Actions" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Global", @"By ride", nil];
 	[actionSheet showInView:self.view];
 }
 

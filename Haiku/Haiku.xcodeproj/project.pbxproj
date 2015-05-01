@@ -24,6 +24,7 @@
 		4C8F61DF1AE962250072DE7A /* BluetoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61DE1AE962250072DE7A /* BluetoothViewController.m */; };
 		4C8F61E21AE9969B0072DE7A /* BluetoothInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61E11AE9969B0072DE7A /* BluetoothInfoViewController.m */; };
 		4C8F61E51AEC4E580072DE7A /* BluetoothDoubleValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61E41AEC4E580072DE7A /* BluetoothDoubleValueViewController.m */; };
+		4CA6AB691AF3CCAD003C07A0 /* ActionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6AB681AF3CCAD003C07A0 /* ActionTableViewCell.m */; };
 		4CBA05C91AF2CB34005D309D /* StatsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA05C81AF2CB34005D309D /* StatsCollectionViewCell.m */; };
 		4CCCAE411AEFCF1300A6988D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCAE401AEFCF1300A6988D /* SettingsViewController.m */; };
 		4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936EF1ACBFCDD00EAEEFD /* main.m */; };
@@ -83,6 +84,8 @@
 		4C8F61E11AE9969B0072DE7A /* BluetoothInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothInfoViewController.m; path = Haiku/Controllers/BluetoothInfoViewController.m; sourceTree = "<group>"; };
 		4C8F61E31AEC4E580072DE7A /* BluetoothDoubleValueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BluetoothDoubleValueViewController.h; path = Haiku/Controllers/BluetoothDoubleValueViewController.h; sourceTree = "<group>"; };
 		4C8F61E41AEC4E580072DE7A /* BluetoothDoubleValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothDoubleValueViewController.m; path = Haiku/Controllers/BluetoothDoubleValueViewController.m; sourceTree = "<group>"; };
+		4CA6AB671AF3CCAD003C07A0 /* ActionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionTableViewCell.h; path = Views/ActionTableViewCell.h; sourceTree = "<group>"; };
+		4CA6AB681AF3CCAD003C07A0 /* ActionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionTableViewCell.m; path = Views/ActionTableViewCell.m; sourceTree = "<group>"; };
 		4CBA05C71AF2CB34005D309D /* StatsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsCollectionViewCell.h; path = Views/StatsCollectionViewCell.h; sourceTree = "<group>"; };
 		4CBA05C81AF2CB34005D309D /* StatsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsCollectionViewCell.m; path = Views/StatsCollectionViewCell.m; sourceTree = "<group>"; };
 		4CCCAE3F1AEFCF1300A6988D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Haiku/Controllers/SettingsViewController.h; sourceTree = "<group>"; };
@@ -272,6 +275,24 @@
 			name = Bluetooth;
 			sourceTree = "<group>";
 		};
+		4CA6AB661AF3CC74003C07A0 /* Collection View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4CBA05C71AF2CB34005D309D /* StatsCollectionViewCell.h */,
+				4CBA05C81AF2CB34005D309D /* StatsCollectionViewCell.m */,
+			);
+			name = "Collection View Cells";
+			sourceTree = "<group>";
+		};
+		4CA6AB6A1AF3CCB5003C07A0 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4CA6AB671AF3CCAD003C07A0 /* ActionTableViewCell.h */,
+				4CA6AB681AF3CCAD003C07A0 /* ActionTableViewCell.m */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
 		4CCCAE3B1AEFCEC100A6988D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,8 +404,8 @@
 		4CD9371C1ACBFD8500EAEEFD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4CBA05C71AF2CB34005D309D /* StatsCollectionViewCell.h */,
-				4CBA05C81AF2CB34005D309D /* StatsCollectionViewCell.m */,
+				4CA6AB661AF3CC74003C07A0 /* Collection View Cells */,
+				4CA6AB6A1AF3CCB5003C07A0 /* Table View Cells */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -539,6 +560,7 @@
 				4C28231A1ACF3AA5007AE273 /* TrackViewController.m in Sources */,
 				4C36CE8C1AD85CE700A8E921 /* TrackListViewController.m in Sources */,
 				4C2823381AD04A8F007AE273 /* Location.m in Sources */,
+				4CA6AB691AF3CCAD003C07A0 /* ActionTableViewCell.m in Sources */,
 				4C28FE7B1ADB1B9000D45CF5 /* LocationManager.m in Sources */,
 				4CD9372B1ACC0BEF00EAEEFD /* UIImageView_XDShape.m in Sources */,
 				4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */,
