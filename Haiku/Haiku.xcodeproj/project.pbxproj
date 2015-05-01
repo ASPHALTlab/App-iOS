@@ -25,6 +25,7 @@
 		4C8F61E21AE9969B0072DE7A /* BluetoothInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61E11AE9969B0072DE7A /* BluetoothInfoViewController.m */; };
 		4C8F61E51AEC4E580072DE7A /* BluetoothDoubleValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61E41AEC4E580072DE7A /* BluetoothDoubleValueViewController.m */; };
 		4CA6AB691AF3CCAD003C07A0 /* ActionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6AB681AF3CCAD003C07A0 /* ActionTableViewCell.m */; };
+		4CA6AB6E1AF3E1CD003C07A0 /* GlobalRidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6AB6D1AF3E1CD003C07A0 /* GlobalRidesViewController.m */; };
 		4CBA05C91AF2CB34005D309D /* StatsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA05C81AF2CB34005D309D /* StatsCollectionViewCell.m */; };
 		4CCCAE411AEFCF1300A6988D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCAE401AEFCF1300A6988D /* SettingsViewController.m */; };
 		4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD936EF1ACBFCDD00EAEEFD /* main.m */; };
@@ -86,6 +87,8 @@
 		4C8F61E41AEC4E580072DE7A /* BluetoothDoubleValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BluetoothDoubleValueViewController.m; path = Haiku/Controllers/BluetoothDoubleValueViewController.m; sourceTree = "<group>"; };
 		4CA6AB671AF3CCAD003C07A0 /* ActionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionTableViewCell.h; path = Views/ActionTableViewCell.h; sourceTree = "<group>"; };
 		4CA6AB681AF3CCAD003C07A0 /* ActionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionTableViewCell.m; path = Views/ActionTableViewCell.m; sourceTree = "<group>"; };
+		4CA6AB6C1AF3E1CD003C07A0 /* GlobalRidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalRidesViewController.h; path = Haiku/Controllers/GlobalRidesViewController.h; sourceTree = "<group>"; };
+		4CA6AB6D1AF3E1CD003C07A0 /* GlobalRidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalRidesViewController.m; path = Haiku/Controllers/GlobalRidesViewController.m; sourceTree = "<group>"; };
 		4CBA05C71AF2CB34005D309D /* StatsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsCollectionViewCell.h; path = Views/StatsCollectionViewCell.h; sourceTree = "<group>"; };
 		4CBA05C81AF2CB34005D309D /* StatsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsCollectionViewCell.m; path = Views/StatsCollectionViewCell.m; sourceTree = "<group>"; };
 		4CCCAE3F1AEFCF1300A6988D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Haiku/Controllers/SettingsViewController.h; sourceTree = "<group>"; };
@@ -293,6 +296,15 @@
 			name = "Table View Cells";
 			sourceTree = "<group>";
 		};
+		4CA6AB6B1AF3E1AA003C07A0 /* Rides */ = {
+			isa = PBXGroup;
+			children = (
+				4CA6AB6C1AF3E1CD003C07A0 /* GlobalRidesViewController.h */,
+				4CA6AB6D1AF3E1CD003C07A0 /* GlobalRidesViewController.m */,
+			);
+			name = Rides;
+			sourceTree = "<group>";
+		};
 		4CCCAE3B1AEFCEC100A6988D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +391,7 @@
 		4CD9371A1ACBFD7300EAEEFD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4CA6AB6B1AF3E1AA003C07A0 /* Rides */,
 				4CCCAE3B1AEFCEC100A6988D /* Settings */,
 				4C8F61DC1AE962050072DE7A /* Bluetooth */,
 				4C36CE861AD85CAF00A8E921 /* ListTracks */,
@@ -564,6 +577,7 @@
 				4C28FE7B1ADB1B9000D45CF5 /* LocationManager.m in Sources */,
 				4CD9372B1ACC0BEF00EAEEFD /* UIImageView_XDShape.m in Sources */,
 				4CD936F01ACBFCDD00EAEEFD /* main.m in Sources */,
+				4CA6AB6E1AF3E1CD003C07A0 /* GlobalRidesViewController.m in Sources */,
 				4C28233B1AD04A8F007AE273 /* Run.m in Sources */,
 				4CCCAE411AEFCF1300A6988D /* SettingsViewController.m in Sources */,
 				4C8F61E51AEC4E580072DE7A /* BluetoothDoubleValueViewController.m in Sources */,

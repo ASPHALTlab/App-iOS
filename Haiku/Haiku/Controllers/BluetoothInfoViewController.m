@@ -98,9 +98,10 @@
 	CBService *service = userInfo[@"service"];
 	
 	NSUInteger section = [[self.characteristics allKeys] indexOfObject:service.UUID.UUIDString];
-	NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:section];
-	
-	[self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
+	if (section != NSNotFound) {
+		NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:section];
+		[self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
+	}
 }
 
 #pragma mark - Table view data source

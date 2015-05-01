@@ -55,6 +55,7 @@
 	if (buttonIndex != actionSheet.destructiveButtonIndex) {
 		if (buttonIndex == HKStatsActionGlobal) {
 			// List > Actions (Daily,Weekly, Monthly, Yearly)
+			[self performSegueWithIdentifier:@"GBL_SEGUE" sender:self];
 		} else if (buttonIndex == HKStatsActionByRide) {
 			// All rides
 			[self performSegueWithIdentifier:@"ALL_RIDES" sender:self];

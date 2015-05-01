@@ -45,6 +45,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+	self.title = @"BLE Devices";
 	self.label.backgroundColor = [HaikuCommunication isConnected] ? [UIColor blueColor] : [UIColor redColor];
 }
 
@@ -54,6 +55,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
+	self.title = @"";
 }
 
 #pragma mark - Bluetooth Notifications
@@ -95,8 +97,8 @@
 	
 	CBPeripheral *peripheral = [self.devices objectAtIndex:indexPath.row];
 
-	cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", [peripheral name], peripheral.identifier.UUIDString];
-	
+	cell.textLabel.text = [peripheral name];
+	cell.detailTextLabel.text = [peripheral.identifier UUIDString];
 	
     return cell;
 }

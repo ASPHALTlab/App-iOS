@@ -21,4 +21,9 @@
 + (Location  *)newLocationWithCoordinate:(CLLocation *)coordinate;
 + (BOOL)save;
 
++ (NSArray *)dailyRuns;
++ (NSArray *)weeklyRuns;
++ (NSArray *)monthlyRuns;
++ (NSArray *)yearlyRuns;
+
 @end

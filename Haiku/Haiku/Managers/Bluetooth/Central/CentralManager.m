@@ -131,17 +131,23 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
 	
+
+	if ([[advertisementData objectForKey:@"kCBAdvDataIsConnectable"] isEqual:@(0)]) {
+		//NSLog(@"Found a non connectable device !");
+		return;
+	}
+	
+	NSLog(@"Advertisement: %@", advertisementData);
+	
 	[[NSNotificationCenter defaultCenter] postNotificationName:BLE_NEW_DEVICE_DETECTED
 														object:self
 													  userInfo:@{@"peripheral":peripheral, @"advertisementData":advertisementData}];
 	
-	NSLog(@"Advertisement: %@", advertisementData);
 	if ([self.delegate respondsToSelector:@selector(central:didDiscoverPeripheral:)]) {
 		[self.delegate central:self didDiscoverPeripheral:peripheral];
 	}
 	
 	if ([self isUUIDKnown:peripheral.identifier]) {
-		NSLog(@"AUTO_CONNECT");
 		[self connectOnPeripheral:peripheral];
 	}
 	

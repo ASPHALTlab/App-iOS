@@ -31,6 +31,104 @@
 	return arr;
 }
 
++ (NSArray *)dailyRuns {
+	NSManagedObjectContext *moc = [self managedObjectContext];
+	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Run" inManagedObjectContext:moc];
+	
+	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Run"];
+	request.entity = entityDescription;
+	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(timestamp >= %@) AND (timestamp <= %@)", [NSDate date], [NSDate date]];
+	[request setPredicate:predicate];
+
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
+	NSArray *sortDescriptors = @[sortDescriptor];
+	request.sortDescriptors = sortDescriptors;
+	
+	NSError *error = nil;
+	NSArray *arr = [moc executeFetchRequest:request error:&error];
+	
+	return arr;
+}
++ (NSArray *)weeklyRuns {
+	NSManagedObjectContext *moc = [self managedObjectContext];
+	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Run" inManagedObjectContext:moc];
+	
+	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Run"];
+	request.entity = entityDescription;
+	
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+	NSDateComponents *comp = [gregorian components:(NSCalendarUnitYear | NSCalendarUnitWeekday | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
+	[comp setDay:1];
+	
+	NSInteger dayofweek = [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]] weekday];
+	[comp setDay:([comp day] - ((dayofweek) - 2))];// for beginning of the week.
+
+	NSDate *firstDayOfWeek = [gregorian dateFromComponents:comp];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(timestamp >= %@) AND (timestamp <= %@)", firstDayOfWeek, [NSDate date]];
+	[request setPredicate:predicate];
+	
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
+	NSArray *sortDescriptors = @[sortDescriptor];
+	request.sortDescriptors = sortDescriptors;
+	
+	NSError *error = nil;
+	NSArray *arr = [moc executeFetchRequest:request error:&error];
+	
+	return arr;
+}
++ (NSArray *)monthlyRuns {
+	NSManagedObjectContext *moc = [self managedObjectContext];
+	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Run" inManagedObjectContext:moc];
+	
+	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Run"];
+	request.entity = entityDescription;
+	
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+	NSDateComponents *comp = [gregorian components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:[NSDate date]];
+	[comp setDay:1];
+	NSDate *firstDayOfMonthDate = [gregorian dateFromComponents:comp];
+	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(timestamp >= %@) AND (timestamp <= %@)", firstDayOfMonthDate, [NSDate date]];
+	[request setPredicate:predicate];
+	
+	
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
+	NSArray *sortDescriptors = @[sortDescriptor];
+	request.sortDescriptors = sortDescriptors;
+	
+	NSError *error = nil;
+	NSArray *arr = [moc executeFetchRequest:request error:&error];
+	
+	return arr;
+}
++ (NSArray *)yearlyRuns {
+	NSManagedObjectContext *moc = [self managedObjectContext];
+	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Run" inManagedObjectContext:moc];
+	
+	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Run"];
+	request.entity = entityDescription;
+	
+	
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+	NSDateComponents *comp = [gregorian components:(NSCalendarUnitYear) fromDate:[NSDate date]];
+	[comp setYear:([comp year])];
+	NSDate *firstDayOfYearDate = [gregorian dateFromComponents:comp];
+	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(timestamp >= %@) AND (timestamp <= %@)", firstDayOfYearDate, [NSDate date]];
+	[request setPredicate:predicate];
+
+	
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:YES];
+	NSArray *sortDescriptors = @[sortDescriptor];
+	request.sortDescriptors = sortDescriptors;
+	
+	NSError *error = nil;
+	NSArray *arr = [moc executeFetchRequest:request error:&error];
+	
+	return arr;
+}
+
 + (Run *)newRun {
 	
 	NSManagedObjectContext *moc = [self managedObjectContext];

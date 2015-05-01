@@ -23,12 +23,21 @@
 	
 	self.actions = @{@"Manual Track": @(HKSettingsActionManualTrack), @"Bluetooth": @(HKSettingsActionBluetooth)};
 	self.images = @{@(HKSettingsActionManualTrack):@"bike", @(HKSettingsActionBluetooth):@"bluetooth"};
-	self.title = @"Actions";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	self.title = @"Actions";
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	self.title = @"";
 }
 
 #pragma mark - Table view data source

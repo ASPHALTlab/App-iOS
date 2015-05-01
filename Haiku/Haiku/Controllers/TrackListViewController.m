@@ -13,20 +13,16 @@
 
 @interface TrackListViewController ()
 
-@property (nonatomic, strong) NSArray *tracks;
-
 @end
 
 @implementation TrackListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-	self.tracks = [RunManager runs];
+	
+	if (self.tracks == nil) {
+		self.tracks = [RunManager runs];
+	}
 	
 	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(tapOnRightButton:)];
 	self.navigationItem.rightBarButtonItem = rightButton;
