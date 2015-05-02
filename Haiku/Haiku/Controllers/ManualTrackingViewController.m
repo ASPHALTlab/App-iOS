@@ -59,6 +59,14 @@
 	if (self.timer) {
 		[self.timer invalidate];
 	}
+	
+	self.title = @"";
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	self.title = @"Track";
 }
 
 #pragma mark - IBActions

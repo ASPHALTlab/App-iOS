@@ -29,11 +29,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	self.title = @"Track";
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	self.mapView.mapType = MKMapTypeSatellite;
 	[self.mapView removeFromSuperview];
 	self.mapView = nil;
+	self.title = @"";
 }
 
 /*
