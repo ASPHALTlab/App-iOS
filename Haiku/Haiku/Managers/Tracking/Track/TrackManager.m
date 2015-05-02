@@ -53,9 +53,14 @@
 	manager.delegate = nil;
 	[manager stopLocation];
 	
+	Location *first = [self.lastRun.locations firstObject];
+	Location *last = [self.lastRun.locations lastObject];
 
 	self.lastRun.distance = @(self.distance);
-	
+	NSTimeInterval secs = [[last timestamp] timeIntervalSinceDate:first.timestamp];
+	NSInteger minutes = secs / 60;
+	self.lastRun.duration = @(minutes);
+
 	[RunManager save];
 	return self.lastRun;
 }
