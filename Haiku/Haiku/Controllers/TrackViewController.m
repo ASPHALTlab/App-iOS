@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "Location.h"
 #import "Run.h"
+#import "HKPin.h"
 
 @interface TrackViewController () <MKMapViewDelegate>
 
@@ -116,8 +117,22 @@
 	}
 
 	int count = 0;
+	int occurence = 0;
 	for (Run *run in self.tracks) {
 		count += run.locations.count;
+		Location *first = run.locations.firstObject;
+		Location *last = run.locations.lastObject;
+		
+		CLLocationCoordinate2D firstCoordinate = CLLocationCoordinate2DMake(first.latitude.doubleValue, first.longitude.doubleValue);
+		CLLocationCoordinate2D lastCoordinate = CLLocationCoordinate2DMake(last.latitude.doubleValue, last.longitude.doubleValue);
+		
+		char currentChar = 'A' + occurence;
+		
+		HKPin *pinA = [[HKPin alloc] initWithCoordinates:firstCoordinate placeName:[NSString stringWithFormat:@"%c", currentChar] description:@""];
+		HKPin *pinB = [[HKPin alloc] initWithCoordinates:lastCoordinate placeName:[NSString stringWithFormat:@"%c", currentChar + 1] description:@""];
+		[self.mapView addAnnotation:pinA];
+		[self.mapView addAnnotation:pinB];
+		occurence += 2;
 	}
 	
 	CLLocationCoordinate2D coords[count];
