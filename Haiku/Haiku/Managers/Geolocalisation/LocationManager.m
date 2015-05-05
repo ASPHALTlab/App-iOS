@@ -22,8 +22,8 @@
 		self.locationManager = [[CLLocationManager alloc] init];
 		self.locationManager.delegate = self;
 		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-		self.locationManager.activityType = CLActivityTypeOtherNavigation;
-		self.locationManager.distanceFilter = 10;
+		self.locationManager.activityType = CLActivityTypeFitness;
+		self.locationManager.distanceFilter = 7;
 		
 		[self.locationManager requestAlwaysAuthorization]; // VERY IMPORTANT iOS >= 8
 	}
@@ -52,6 +52,10 @@
 
 - (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager {
 	// NE BOUGE PAS
+	NSLog(@"DO NOT MOVE");
+	if ([self.delegate respondsToSelector:@selector(locationManager:didReceivedNewLocations:)]) {
+		[self.delegate locationManager:self didReceivedNewLocations:nil];
+	}
 }
 
 - (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager { 

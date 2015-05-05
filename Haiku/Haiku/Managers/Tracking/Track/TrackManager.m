@@ -70,6 +70,33 @@
 
 - (void)locationManager:(LocationManager *)manager didReceivedNewLocations:(NSArray *)newLocations {
 	
+	if (newLocations == nil) {
+		// NOT MOVING
+		NSInteger indexOfFirstBeforeLast = [self.lastRun.locations count] - 2;
+		if (indexOfFirstBeforeLast >= 0) {
+			
+			Location *last = [self.lastRun.locations lastObject];
+			Location *first = [self.lastRun.locations firstObject];
+			NSTimeInterval time = [last.timestamp timeIntervalSinceDate:first.timestamp];
+	
+			Location *firstBeforeLast = [self.lastRun.locations objectAtIndex:indexOfFirstBeforeLast];
+
+			NSTimeInterval secs = [last.timestamp timeIntervalSinceDate:firstBeforeLast.timestamp];
+			
+			CLLocation *firstBeforeLastLocation = [[CLLocation alloc] initWithLatitude:firstBeforeLast.latitude.doubleValue longitude:firstBeforeLast.longitude.doubleValue];
+
+			CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:last.latitude.doubleValue longitude:last.longitude.doubleValue];
+
+			
+			double lastDistance = [lastLocation distanceFromLocation:firstBeforeLastLocation];
+			self.distance += lastDistance;
+			self.speed = (lastDistance / secs) * 3.6; // km/h
+			[HaikuCommunication updateSpeed:self.speed];
+			[HaikuCommunication updateTime:time/60.0];
+			return;
+		}
+	}
+	
 	for (CLLocation *location in newLocations) {
 		// Create new Model Location -> Run to run;
 		

@@ -22,7 +22,7 @@
     [super viewDidLoad];
 	
 	self.actions = @{@"Manual Track": @(HKSettingsActionManualTrack), @"Bluetooth": @(HKSettingsActionBluetooth),@"Device": @(HKSettingsActionDevice)};
-	self.images = @{@(HKSettingsActionManualTrack):@"bike", @(HKSettingsActionBluetooth):@"bluetooth",@(HKSettingsActionDevice):@"bike"};
+	self.images = @{@(HKSettingsActionManualTrack):@"bike", @(HKSettingsActionBluetooth):@"bluetooth",@(HKSettingsActionDevice):@"device"};
 }
 
 - (void)didReceiveMemoryWarning {

@@ -11,6 +11,7 @@
 #import "Run.h"
 #import "MathManager.h"
 #import "TrackViewController.h"
+#import "HaikuCommunication.h"
 
 @interface ManualTrackingViewController ()
 
@@ -38,6 +39,10 @@
 	self.seeResultButton.hidden = YES;
 
     // Do any additional setup after loading the view.
+	
+	[HaikuCommunication updateSpeed:0];
+	[HaikuCommunication updateDistance:0];
+	[HaikuCommunication updateTime:0];
 }
 
 - (void)didReceiveMemoryWarning {

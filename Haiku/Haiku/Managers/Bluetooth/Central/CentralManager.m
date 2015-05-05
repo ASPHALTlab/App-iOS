@@ -15,7 +15,7 @@
 @property (retain, nonatomic) NSUUID *identifier;
 @property (nonatomic) BOOL strictScan;
 @property (nonatomic, strong) CBCentralManager *manager;
-
+@property (nonatomic, copy) NSArray *knownPeripherals;
 @end
 
 @implementation CentralManager
@@ -44,6 +44,8 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 #warning PUT_STRICTSCAN TO YES WHEN WE KNOW THE UUIDS SERVICES !
 		[self loadCachedObjects];
 		
+		self.knownPeripherals = [self.manager retrievePeripheralsWithIdentifiers:self.cacheUUIDs];
+		
 		// Service use to scan & to discover
 	
 		/* 
@@ -55,7 +57,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 		 1811,
 		 Battery
 		 */
-		self.serviceUUIDs = @[[CBUUID UUIDWithString:@"1806"]];
+		self.serviceUUIDs = @[[CBUUID UUIDWithString:@"1806"], [CBUUID UUIDWithString:@"1807"],[CBUUID UUIDWithString:@"180F"],[CBUUID UUIDWithString:@"1805"],[CBUUID UUIDWithString:@"180B"],[CBUUID UUIDWithString:@"1811"]];
 	}
 	return self;
 }
@@ -160,7 +162,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 		[self connectOnPeripheral:peripheral];
 	}
 	
-	[self.discoveredDevices arrayByAddingObject:peripheral];
+	self.discoveredDevices = [self.discoveredDevices arrayByAddingObject:peripheral];
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
@@ -175,6 +177,14 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 	if ([self isUUIDKnown:peripheral.identifier] == NO) {
 		[self insertUUIDInCache:peripheral.identifier];
 	}
+	
+	if ([self.discoveredDevices containsObject:peripheral] == NO) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:BLE_NEW_DEVICE_DETECTED
+															object:self
+														  userInfo:@{@"peripheral":peripheral}];
+		self.discoveredDevices = [self.discoveredDevices arrayByAddingObject:peripheral];
+	}
+
 	
 	// Launch the peripheral manager to discover services/characteristics of the device
 	PeripheralManager *manager = [PeripheralManager sharedPeripheral];
@@ -194,6 +204,13 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 		return;
 	} else if (central.state == CBCentralManagerStatePoweredOn) {
 		NSLog(@"CBCentralManagerStatePoweredOn ==> Scan");
+		for (CBPeripheral *peripheral in self.knownPeripherals) {
+			// try connect to the last one
+			NSLog(@"try connect to: %@", peripheral);
+			[self connectOnPeripheral:peripheral];
+		}
+
+		
 		[self scan];
 	} else if ([central state] == CBCentralManagerStateUnauthorized) {
 		NSLog(@"CoreBluetooth BLE state is unauthorized");
@@ -225,7 +242,6 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 														object:self
 													  userInfo:@{@"peripheral":peripheral}];
 	
-	//[self scan];
 	if ([self.delegate respondsToSelector:@selector(central:didDisconnectOn:)]) {
 		[self.delegate central:self didDisconnectOn:peripheral];
 	}
