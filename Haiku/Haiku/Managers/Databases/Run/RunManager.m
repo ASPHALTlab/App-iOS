@@ -28,6 +28,8 @@
 	NSError *error = nil;
 	NSArray *arr = [moc executeFetchRequest:request error:&error];
 	
+	NSLog(@"ALL: %@", arr);
+	
 	return arr;
 }
 
@@ -48,6 +50,7 @@
 	NSError *error = nil;
 	NSArray *arr = [moc executeFetchRequest:request error:&error];
 	
+	NSLog(@"Arr: %@", arr);
 	return arr;
 }
 + (NSArray *)weeklyRuns {
@@ -133,6 +136,7 @@
 	
 	NSManagedObjectContext *moc = [self managedObjectContext];
 	Run *newRun = (Run *)[NSEntityDescription insertNewObjectForEntityForName:@"Run" inManagedObjectContext:moc];
+	newRun.timestamp = [NSDate date];
 	return newRun;
 }
 

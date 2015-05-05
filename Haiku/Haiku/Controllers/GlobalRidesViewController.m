@@ -63,19 +63,19 @@
 	NSString *title = @"All";
 	switch (cell.tag) {
 		case HKGlobalRideByDaily:
-			[RunManager dailyRuns];
+			rides = [RunManager dailyRuns];
 			title = @"Daily";
 			break;
 		case HKGlobalRideByWeekly:
-			[RunManager weeklyRuns];
+			rides = [RunManager weeklyRuns];
 			title = @"Weekly";
 			break;
 		case HKGlobalRideByMontly:
-			[RunManager monthlyRuns];
+			rides = [RunManager monthlyRuns];
 			title = @"Monthly";
 			break;
 		case HKGlobalRideByYearly:
-			[RunManager yearlyRuns];
+			rides = [RunManager yearlyRuns];
 			title = @"Yearly";
 			break;
 		default:
@@ -86,6 +86,7 @@
 	if ([segue.destinationViewController isKindOfClass:[TrackListViewController class]]) {
 		TrackListViewController	*vc = (TrackListViewController *)segue.destinationViewController;
 		vc.tracks = rides;
+		NSLog(@"Rides: %@", rides);
 		vc.title = title;
 	}
 }

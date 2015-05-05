@@ -21,8 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	self.actions = @{@"Manual Track": @(HKSettingsActionManualTrack), @"Bluetooth": @(HKSettingsActionBluetooth)};
-	self.images = @{@(HKSettingsActionManualTrack):@"bike", @(HKSettingsActionBluetooth):@"bluetooth"};
+	self.actions = @{@"Manual Track": @(HKSettingsActionManualTrack), @"Bluetooth": @(HKSettingsActionBluetooth),@"Device": @(HKSettingsActionDevice)};
+	self.images = @{@(HKSettingsActionManualTrack):@"bike", @(HKSettingsActionBluetooth):@"bluetooth",@(HKSettingsActionDevice):@"bike"};
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,7 +77,9 @@
 		case HKSettingsActionManualTrack:
 			fireSegue = @"MANUAL_TRACKING_SEGUE";
 			break;
-			
+		case HKSettingsActionDevice:
+			fireSegue = @"DEVICE_SEGUE";
+			break;
 		default:
 			break;
 	}

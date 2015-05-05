@@ -10,6 +10,6 @@
 
 @interface TrackListViewController : UITableViewController
 
-@property (nonatomic, strong) NSArray *tracks;
+@property (nonatomic, copy) NSArray *tracks;
 
 @end

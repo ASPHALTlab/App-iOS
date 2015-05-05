@@ -65,8 +65,7 @@
 	cell.textLabel.text = [NSString stringWithFormat:@"Track > Temps:%@, Distance: %@", run.duration, run.distance];
 	cell.detailTextLabel.text = [dateFormatter stringFromDate:run.timestamp];
 	cell.tag = indexPath.row;
-	
-    return cell;
+	return cell;
 }
 
 

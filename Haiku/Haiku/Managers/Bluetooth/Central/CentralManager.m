@@ -46,7 +46,16 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 		
 		// Service use to scan & to discover
 	
-		self.serviceUUIDs = @[[CBUUID UUIDWithString:DATA_SERVICE]];
+		/* 
+		 
+		 "Current Time",
+		 1806,
+		 1807,
+		 180B,
+		 1811,
+		 Battery
+		 */
+		self.serviceUUIDs = @[[CBUUID UUIDWithString:@"1806"]];
 	}
 	return self;
 }
@@ -122,7 +131,7 @@ static NSString * const kCacheUUIDs = @"CACHE_PREVIOUS_UUIDS";
 	} else {
 		NSLog(@"serviceUUIDs: %@", self.serviceUUIDs);
 		NSLog(@"MANAGER: %@", self.manager);
-		[self.manager scanForPeripheralsWithServices:self.serviceUUIDs options:@{CBCentralManagerScanOptionSolicitedServiceUUIDsKey:@NO,CBCentralManagerScanOptionAllowDuplicatesKey:@NO}];
+		[self.manager scanForPeripheralsWithServices:self.serviceUUIDs options:nil];
 	}
 }
 

@@ -12,6 +12,7 @@ typedef NS_ENUM(NSInteger, HKSettingsActionType) {
 	
 	HKSettingsActionManualTrack = 0,
 	HKSettingsActionBluetooth,
+	HKSettingsActionDevice,
 };
 
 @interface SettingsViewController : UITableViewController

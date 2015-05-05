@@ -11,6 +11,7 @@
 #import "RunManager.h"
 #import "Run.h"
 #import "Location.h"
+#import "HaikuCommunication.h"
 
 @interface TrackManager ()
 
@@ -75,6 +76,9 @@
 		Location *newLocation = [RunManager newLocationWithCoordinate:location];
 		
 		Location *last = [self.lastRun.locations lastObject];
+		Location *first = [self.lastRun.locations firstObject];
+		NSTimeInterval time = [[newLocation timestamp] timeIntervalSinceDate:first.timestamp];
+
 		if (last) {
 			CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:last.latitude.doubleValue longitude:last.longitude.doubleValue];
 		
@@ -83,6 +87,9 @@
 			self.distance += lastDistance;
 			NSTimeInterval secs = [[newLocation timestamp] timeIntervalSinceDate:last.timestamp];
 			self.speed = (lastDistance / secs) * 3.6; // km/h
+			[HaikuCommunication updateSpeed:self.speed];
+			[HaikuCommunication updateDistance:self.distance];
+			[HaikuCommunication updateTime:time/60];
 		}
 		
 		

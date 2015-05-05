@@ -19,6 +19,8 @@
 		4C28FE7B1ADB1B9000D45CF5 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28FE701ADB1B9000D45CF5 /* LocationManager.m */; };
 		4C28FE7C1ADB1B9000D45CF5 /* MathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28FE731ADB1B9000D45CF5 /* MathManager.m */; };
 		4C28FE7D1ADB1B9000D45CF5 /* TrackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C28FE771ADB1B9000D45CF5 /* TrackManager.m */; };
+		4C2D49B11AF7BB07000E88FE /* device.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2D49B01AF7BB07000E88FE /* device.png */; };
+		4C2D49B51AF7C153000E88FE /* DeviceSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2D49B41AF7C153000E88FE /* DeviceSettingsViewController.m */; };
 		4C36CE8C1AD85CE700A8E921 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C36CE8B1AD85CE700A8E921 /* TrackListViewController.m */; };
 		4C7E67921ADDD489002DDBD7 /* HaikuCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E67911ADDD489002DDBD7 /* HaikuCommunication.m */; };
 		4C8F61DF1AE962250072DE7A /* BluetoothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F61DE1AE962250072DE7A /* BluetoothViewController.m */; };
@@ -76,6 +78,9 @@
 		4C28FE731ADB1B9000D45CF5 /* MathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathManager.m; sourceTree = "<group>"; };
 		4C28FE761ADB1B9000D45CF5 /* TrackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackManager.h; sourceTree = "<group>"; };
 		4C28FE771ADB1B9000D45CF5 /* TrackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackManager.m; sourceTree = "<group>"; };
+		4C2D49B01AF7BB07000E88FE /* device.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = device.png; sourceTree = "<group>"; };
+		4C2D49B31AF7C153000E88FE /* DeviceSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceSettingsViewController.h; path = Haiku/Controllers/DeviceSettingsViewController.h; sourceTree = "<group>"; };
+		4C2D49B41AF7C153000E88FE /* DeviceSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceSettingsViewController.m; path = Haiku/Controllers/DeviceSettingsViewController.m; sourceTree = "<group>"; };
 		4C36CE8A1AD85CE700A8E921 /* TrackListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackListViewController.h; path = Haiku/Controllers/TrackListViewController.h; sourceTree = "<group>"; };
 		4C36CE8B1AD85CE700A8E921 /* TrackListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrackListViewController.m; path = Haiku/Controllers/TrackListViewController.m; sourceTree = "<group>"; };
 		4C7E67901ADDD489002DDBD7 /* HaikuCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HaikuCommunication.h; path = Core/HaikuCommunication.h; sourceTree = "<group>"; };
@@ -250,6 +255,15 @@
 			path = Track;
 			sourceTree = "<group>";
 		};
+		4C2D49B21AF7C13A000E88FE /* Device  */ = {
+			isa = PBXGroup;
+			children = (
+				4C2D49B31AF7C153000E88FE /* DeviceSettingsViewController.h */,
+				4C2D49B41AF7C153000E88FE /* DeviceSettingsViewController.m */,
+			);
+			name = "Device ";
+			sourceTree = "<group>";
+		};
 		4C36CE861AD85CAF00A8E921 /* ListTracks */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +407,7 @@
 		4CD937161ACBFD0F00EAEEFD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4C2D49B01AF7BB07000E88FE /* device.png */,
 				4CD936FD1ACBFCDD00EAEEFD /* Images.xcassets */,
 				4CD936FF1ACBFCDD00EAEEFD /* LaunchScreen.xib */,
 				4CD936F41ACBFCDD00EAEEFD /* Haiku.xcdatamodeld */,
@@ -403,6 +418,7 @@
 		4CD9371A1ACBFD7300EAEEFD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4C2D49B21AF7C13A000E88FE /* Device  */,
 				4CA6AB6B1AF3E1AA003C07A0 /* Rides */,
 				4CCCAE3B1AEFCEC100A6988D /* Settings */,
 				4C8F61DC1AE962050072DE7A /* Bluetooth */,
@@ -523,6 +539,7 @@
 				TargetAttributes = {
 					4CD936E91ACBFCDD00EAEEFD = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = WJ6XWVYZ66;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -560,6 +577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CD936FC1ACBFCDD00EAEEFD /* Main.storyboard in Resources */,
+				4C2D49B11AF7BB07000E88FE /* device.png in Resources */,
 				4CD937011ACBFCDD00EAEEFD /* LaunchScreen.xib in Resources */,
 				4CD936FE1ACBFCDD00EAEEFD /* Images.xcassets in Resources */,
 			);
@@ -580,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C28FE791ADB1B9000D45CF5 /* PeripheralManager.m in Sources */,
+				4C2D49B51AF7C153000E88FE /* DeviceSettingsViewController.m in Sources */,
 				4C8F61E21AE9969B0072DE7A /* BluetoothInfoViewController.m in Sources */,
 				4CD936F31ACBFCDD00EAEEFD /* AppDelegate.m in Sources */,
 				4CD936F61ACBFCDD00EAEEFD /* Haiku.xcdatamodeld in Sources */,
@@ -664,7 +683,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iOS Development: Morgan Collino (VBH7KZMW59)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: Morgan Collino (VBH7KZMW59)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -705,7 +725,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iOS Development: Morgan Collino (VBH7KZMW59)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: Morgan Collino (VBH7KZMW59)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -727,9 +748,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Haiku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -737,9 +761,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Haiku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

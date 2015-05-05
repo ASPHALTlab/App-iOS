@@ -71,7 +71,15 @@
 
 + (int16_t)convertDoubleInto2bytesArray:(double)value {
 	int8_t entier = (int8_t)value;
-	int8_t decimale = (value - entier) * 100;
+	int8_t decimale = (value - entier) * 10;
+	
+	int16_t val = (decimale << 8) | (entier & 0xff);
+	return val;
+}
+
++ (int16_t)convertDoubleInto2bytesArrayReversedBytes:(NSInteger)value {
+	int8_t entier = (int8_t)value;
+	int8_t decimale = 0;
 	
 	int16_t val = (entier << 8) | (decimale & 0xff);
 	return val;
@@ -127,7 +135,13 @@
 	
 	if (size == 2) {
 		// Double value
-		int16_t val = [self convertDoubleInto2bytesArray:value.doubleValue];
+		
+		int16_t val;
+		if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:DATA_TIME_CHAR]]) {
+			val = [self convertDoubleInto2bytesArrayReversedBytes:value.integerValue];
+		} else {
+			val = [self convertDoubleInto2bytesArray:value.doubleValue];
+		}
 		[self write2BytesValue:val onCharacteristic:characteristic];
 	} else {
 		int8_t val = value.integerValue;
@@ -161,7 +175,8 @@
 + (void)updateTime:(NSTimeInterval)time {
 	
 	CBCharacteristic *characteristic = [self characteristicByUUID:DATA_TIME_CHAR];
-	int16_t val = [self convertDoubleInto2bytesArray:time];
+	int16_t val = [self convertDoubleInto2bytesArrayReversedBytes:time];
+
 	[self write2BytesValue:val onCharacteristic:characteristic];
 }
 
